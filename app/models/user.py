@@ -21,8 +21,8 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
-    question_relationship = db.relationship("Question", back_populates="user_relationship")
-    answer_relationship = db.relationship("Answer", back_populates="user_relationship")
+    question_relationship = db.relationship("Question", back_populates="question_user_relationship")
+    answer_relationship = db.relationship("Answer", back_populates="answer_user_relationship")
     like_relationship = db.relationship("Like")
     upvote_relationship = db.relationship("Upvote")
     downvote_relationship = db.relation("Downvote")

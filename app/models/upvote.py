@@ -13,5 +13,5 @@ class Upvote(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     answer_id = db.Column(db.Integer, db.ForeignKey('answers.id'), nullable=False)
 
-    user_relationship = db.relationship("User")
-    answer_relationship = db.relationship("Answer", back_populates="upvote_relationship")
+    upvote_user_relationship = db.relationship("User", overlaps="upvote_relationship")
+    upvote_answer_relationship = db.relationship("Answer", back_populates="answer_upvote_relationship")

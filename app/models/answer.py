@@ -16,10 +16,10 @@ class Answer(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
-    user_relationship = db.relationship("User", back_populates="answer_relationship")
-    question_relationship = db.relationship("Question")
-    upvote_relationship = db.relationship("Upvote")
-    downvote_relationship = db.relationship("Downvote")
+    answer_user_relationship = db.relationship("User", back_populates="answer_relationship")
+    answer_question_relationship = db.relationship("Question")
+    answer_upvote_relationship = db.relationship("Upvote")
+    answer_downvote_relationship = db.relationship("Downvote")
 
 
     def to_dict(self):

@@ -13,5 +13,5 @@ class Like(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     question_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
 
-    user_relationship = db.relationship("User")
-    question_relationship = db.relationship("Question", back_populates="downvote_relationship")
+    like_user_relationship = db.relationship("User", overlaps="like_relationship")
+    like_question_relationship = db.relationship("Question", back_populates="question_like_relationship")

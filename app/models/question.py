@@ -18,8 +18,8 @@ class Question(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
-    user_relationship = db.relationship("User", back_populates="question_relationship")
-    like_relationship = db.relationship("Like")
+    question_user_relationship = db.relationship("User", back_populates="question_relationship")
+    question_like_relationship = db.relationship("Like")
 
 
     def to_dict(self):
