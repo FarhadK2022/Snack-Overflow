@@ -4,6 +4,7 @@ from app.models import Question, db
 from app.forms import QuestionForm
 
 questions_routes = Blueprint("questions", __name__)
+ask_question_route = Blueprint("ask", __name__)
 
 def validation_errors_to_error_messages(validation_errors):
     """
@@ -15,7 +16,7 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-@questions_routes.route("/")
+@questions_routes.route("")
 def get_all_questions():
     questions = Question.query.all()
     return { question.id: question.to_dict() for question in questions }
@@ -26,7 +27,7 @@ def get_one_question(id):
   return { question.id: question.to_dict()}
 
 
-@questions_routes.route("/", methods=["POST"])
+@questions_routes.route("", methods=["POST"])
 @login_required
 def add_question():
 
