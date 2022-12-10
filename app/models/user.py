@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
     answer_relationship = db.relationship("Answer", back_populates="answer_user_relationship")
     like_relationship = db.relationship("Like")
     upvote_relationship = db.relationship("Upvote")
-    downvote_relationship = db.relation("Downvote")
+    downvote_relationship = db.relationship("Downvote")
 
     @property
     def password(self):
