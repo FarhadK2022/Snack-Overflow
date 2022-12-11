@@ -8,21 +8,13 @@ const Questions = () => {
     const dispatch = useDispatch()
 
     const questionsObj = useSelector(state => {
-        console.log("THIS IS STATE!", state.questionsReducer.allQuestions)
-        let arr = []
-
-        for(let x in state.questionsReducer.allQuestions){
-            console.log("THIS IS X", x)
-            arr.push(state.questionsReducer.allQuestions[x])
-
-        }
-        console.log("THIS IS ARR", arr)
-
-
         return state
     })
 
-    // const aQuestion = Object.values(questionsObj)
+    console.log("questionsObj", questionsObj)
+    const aQuestion = Object.values(questionsObj.questionsReducer.allQuestions)
+
+    console.log("aQuestion", aQuestion)
 
     useEffect(() => {
         dispatch(getAllQuestionsThunk())
@@ -35,8 +27,21 @@ const Questions = () => {
 
     return (
         <div className='questions-div'>
+            <h2>{aQuestion.map((obj) => {
+                return(
+                    <div>
+                        <Link style={{textDecoration: 'none'}} to={`/questions/${obj.id}`}>
+                        <p>Title: {obj.title}</p>
+                        {/*
 
-            <h1></h1>
+                         */}
+                        </Link>
+                        <p>Question Body: {obj.question}</p>
+                        <p>Tried & Expected: {obj.tried_expected}</p>
+                        <p>Tags: {obj.tags}</p>
+                    </div>
+                )
+            })}</h2>
         </div>
     )
 }

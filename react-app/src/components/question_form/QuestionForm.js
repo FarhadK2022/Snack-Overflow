@@ -1,27 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
-// import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 // import { signUp } from '../../store/session';
 import * as questionActions from '../../store/question'
 
 const QuestionForm = () => {
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState('');
   const [question, setQuestion] = useState('');
   const [tried_expected, setTried_Expected] = useState('');
   const [tags, setTags] = useState('');
-//   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-//   const onSignUp = async (e) => {
-//     e.preventDefault();
-//     if (password === repeatPassword) {
-//       const data = await dispatch(signUp(username, email, password));
-//       if (data) {
-//         setErrors(data)
-//       }
-//     }
-//   };
+
+let history = useHistory();
 
 const onSubmit = async (e) => {
     e.preventDefault();
@@ -31,10 +23,11 @@ const onSubmit = async (e) => {
     }
 
     await dispatch(questionActions.createQuestionThunk(createdQuestion))
-    // if (data) {
-    //     setErrors(data)
-    // }
+
+    let path = `/questions`;
+    await history.push(path);
 }
+
 
 
   const titleSet = (e) => {
@@ -60,11 +53,11 @@ const onSubmit = async (e) => {
 // onSubmit={onSignUp}
   return (
     <form onSubmit={onSubmit}>
-      <div>
+      {/* <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
-      </div>
+      </div> */}
       <div>
         <label>Title</label>
         <input

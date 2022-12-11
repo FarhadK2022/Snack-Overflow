@@ -26,6 +26,38 @@ def get_one_question(id):
   question = Question.query.get(id)
   return { question.id: question.to_dict()}
 
+@questions_routes.route("/<int:id>/edit", methods=["PUT"])
+@login_required
+def edit_question(id):
+
+
+  question = Question.query.get(id)
+
+
+
+  form = QuestionForm()
+
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  if form.validate_on_submit():
+
+    new_title = form.data['title']
+    new_question = form.data['question']
+    new_tried_expected = form.data['tried_expected']
+    new_tags = form.data['tags']
+
+
+
+
+    question.title = new_title
+    question.question= new_question
+    question.tried_expected= new_tried_expected
+    question.tags= new_tags
+
+    db.session.commit()
+
+  return question.to_dict()
+
 
 @ask_question_route.route("", methods=["POST"])
 @login_required
@@ -55,3 +87,12 @@ def add_question():
 
 
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@questions_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_question(id):
+  question = Question.query.get(id)
+  db.session.delete(question)
+  db.session.commit()
+  return ('Delete Successful')

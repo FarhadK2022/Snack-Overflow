@@ -2,6 +2,7 @@ const ADD_QUESTION = 'ask/NEW_QUESTION'
 const GET_QUESTIONS = 'get/ALL_QUESTIONS'
 const EDIT_QUESTION = 'edit/ONE_QUESTION'
 const DELETE_QUESTION = 'delete/ONE_QUESTION'
+const GET_QUESTION = 'get/ONE_QUESTION'
 
 const addQuestion = (question) => ({
     type: ADD_QUESTION,
@@ -23,6 +24,11 @@ const deleteQuestion = (question) => ({
     payload: question
 })
 
+const getQuestionById = (question) => ({
+    type: GET_QUESTION,
+    payload: question
+})
+
 export const deleteQuestionThunk = (payload) => async dispatch => {
     const { questionId } = payload
     const response = await fetch(`/api/questions/${questionId}`, {
@@ -38,7 +44,7 @@ export const deleteQuestionThunk = (payload) => async dispatch => {
 
 export const editQuestionThunk = (payload) => async dispatch => {
     const { questionId, title, question, tried_expected, tags } = payload
-    const response = await fetch(`/api/questions/${questionId}`, {
+    const response = await fetch(`/api/questions/${questionId}/edit`, {
         method: 'PUT',
         headers:{
             'Content-Type': 'application/json'
@@ -79,6 +85,15 @@ export const getAllQuestionsThunk = () => async dispatch => {
     }
 }
 
+export const getQuestionByIdThunk = (questionId) => async dispatch => {
+    const response = await fetch(`/api/questions/${questionId}`)
+
+    if(response.ok){
+        const question = await response.json()
+        dispatch(getQuestionById(question))
+    }
+}
+
 // const normalizeData = (data) => {
 //     const res = {}
 //     for (let key in data) {
@@ -87,15 +102,15 @@ export const getAllQuestionsThunk = () => async dispatch => {
 //     return res
 // }
 
-
-const questionsReducer = (state = { question: {}, allQuestions: {} }, action) => {
+const initialState = { question: {}, allQuestions: {} }
+const questionsReducer = (state = initialState, action) => {
 
 
     switch(action.type){
         case ADD_QUESTION:
 
             // console.log("THIS IS ACTION", action)
-
+                console.log("THIS IS STATE", state)
                 if(!state[action.id]){
                     const newState = {
                         ...state,
@@ -114,14 +129,39 @@ const questionsReducer = (state = { question: {}, allQuestions: {} }, action) =>
 
 
         case GET_QUESTIONS: {
-            // const newState = { ...state, allQuestions: { ...state.allQuestions } }
-            const newState = { ...action }
-            console.log("THIS IS NEW STATE", newState)
-            // console.log("THIS IS ACTION.QUESTIONS", action)
-            newState.allQuestions = newState.payload
-            console.log("After change", newState)
+            // // const newState = { ...state, allQuestions: { ...state.allQuestions } }
+            // const newState = { ...action }
+            // console.log("THIS IS NEW STATE", newState)
+            // // console.log("THIS IS ACTION.QUESTIONS", action)
+            // newState.allQuestions = newState.payload
+            // console.log("After change", newState)
+            // return newState
+            const newState = Object.assign({}, state)
+            newState.allQuestions = {}
+            const question = (action.payload)
+            newState.allQuestions = question
             return newState
         }
+
+        case GET_QUESTION:
+            const newState = { ...state }
+            newState.question = {}
+            const question = action.payload
+            newState.question = question
+            return newState
+
+
+        case DELETE_QUESTION:{
+            const newState = {...state, allQuestions:{...state.allQuestions}, question:{}}
+            delete newState.allQuestions[action.payload];
+            return newState;
+            }
+
+        case EDIT_QUESTION:
+            return {
+                ...state,
+                [action.payload.id]: action.payload
+            }
 
         default:
             return state;
