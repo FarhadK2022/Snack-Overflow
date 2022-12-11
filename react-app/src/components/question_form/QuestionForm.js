@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 // import { Redirect } from 'react-router-dom';
 // import { signUp } from '../../store/session';
-import * as questionActions from '../../store/zack_question'
+import * as questionActions from '../../store/question'
 
 const QuestionForm = () => {
   const [errors, setErrors] = useState([]);
@@ -30,7 +30,7 @@ const onSubmit = async (e) => {
         title, question, tried_expected, tags
     }
 
-    await dispatch(questionActions.createQuestion(createdQuestion))
+    await dispatch(questionActions.createQuestionThunk(createdQuestion))
     // if (data) {
     //     setErrors(data)
     // }

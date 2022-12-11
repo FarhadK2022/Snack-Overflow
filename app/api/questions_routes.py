@@ -16,7 +16,7 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-@questions_routes.route("")
+@questions_routes.route("", methods=["GET"])
 def get_all_questions():
     questions = Question.query.all()
     return { question.id: question.to_dict() for question in questions }
@@ -27,9 +27,13 @@ def get_one_question(id):
   return { question.id: question.to_dict()}
 
 
-@questions_routes.route("", methods=["POST"])
+@ask_question_route.route("", methods=["POST"])
 @login_required
 def add_question():
+
+  """
+  Presents a form to create a question
+  """
 
   form = QuestionForm()
 

@@ -30,6 +30,15 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
+  function firstSet(){
+    return setEmail('demo@aa.io')
+  }
+
+  function comboSet(){
+    firstSet()
+    setPassword('password')
+  }
+
   return (
     <form onSubmit={onLogin}>
       <div>
@@ -57,6 +66,7 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+        <button type='submit' onClick={comboSet}>Log In as Demo User</button>
       </div>
     </form>
   );
