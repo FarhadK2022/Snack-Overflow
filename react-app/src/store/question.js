@@ -43,17 +43,14 @@ const getQuestionById = (question) => ({
 // }
 
 export const deleteQuestionThunk = (questionId) => async dispatch => {
-    // questionId = +questionId  -- needed to work on Doug's side?
+    // questionId = +questionId
 
     const response = await fetch(`/api/questions/${questionId}`, {
         method: 'DELETE'
     })
 
     if (response.ok) {
-        const question = await response.json()
-
-        dispatch(deleteQuestion(question))
-        // return question
+        dispatch(deleteQuestion(questionId))
     }
 }
 
@@ -174,7 +171,7 @@ const questionsReducer = (state = initialState, action) => {
 
         case DELETE_QUESTION: {
             const newState = { ...state }
-            delete newState.question[action.payload]
+            delete newState.allQuestions[action.payload]
             return newState
         }
 

@@ -26,7 +26,7 @@ class Question(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
-    question_answer = db.relationship("Answer", back_populates="answer_question")
+    question_answer = db.relationship("Answer", back_populates="answer_question", cascade="all, delete-orphan")
     question_user = db.relationship("User", back_populates="user_question")
     question_likes = db.relationship("User", secondary=likes, back_populates="user_likes", cascade="all, delete")
 
