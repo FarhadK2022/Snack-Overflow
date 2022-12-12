@@ -4,7 +4,7 @@ import { getQuestionByIdThunk, deleteQuestionThunk } from '../../store/question'
 import { useParams, useHistory } from 'react-router-dom';
 import './questions_details.css'
 import EditQuestionButton from '../edit_question';
-
+import CreateAnswerFormModal from '../answer_form_Modal'
 
 const QuestionDetails = () => {
     const history = useHistory()
@@ -13,15 +13,8 @@ const QuestionDetails = () => {
 
     const sessionUser = useSelector(state => state.session.user)
 
-    //     {
-    //     console.log("A STATE ABC",state)
-    // });
-
-
-    // console.log("THIS IS SESSIONUSER", sessionUser)
 
     const questionInfoObj = useSelector(state => {
-        // console.log("questionInfoObj state!", state.questionsReducer.question[questionId])
         return state.questionsReducer.question[questionId]
     })
 
