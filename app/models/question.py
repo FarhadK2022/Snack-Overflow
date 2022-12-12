@@ -19,7 +19,8 @@ class Question(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
     question_user_relationship = db.relationship("User", back_populates="question_relationship")
-    question_like_relationship = db.relationship("Like")
+    question_like_relationship = db.relationship("Like", back_populates="like_question_relationship", cascade="all, delete-orphan")
+    question_answer_relationship = db.relationship("Answer", back_populates="answer_question_relationship", cascade="all, delete-orphan")
 
 
     def to_dict(self):

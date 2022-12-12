@@ -29,22 +29,37 @@ const getQuestionById = (question) => ({
     payload: question
 })
 
-export const deleteQuestionThunk = (payload) => async dispatch => {
-    const { questionId } = payload
+// export const deleteQuestionThunk = (payload) => async dispatch => {
+//     const { questionId } = payload
+//     const response = await fetch(`/api/questions/${questionId}`, {
+//         method: 'DELETE'
+//     })
+
+//     if(response.ok){
+//         const question = await response.json()
+
+//         dispatch(deleteQuestion(question))
+//     }
+// }
+
+export const deleteQuestionThunk = (questionId) => async dispatch => {
+    // questionId = +questionId  -- needed to work on Doug's side?
+
     const response = await fetch(`/api/questions/${questionId}`, {
         method: 'DELETE'
     })
 
-    if(response.ok){
+    if (response.ok) {
         const question = await response.json()
 
         dispatch(deleteQuestion(question))
+        return question
     }
 }
 
 export const editQuestionThunk = (payload) => async dispatch => {
     const { questionId, title, question, tried_expected, tags } = payload
-    const response = await fetch(`/api/questions/${questionId}/edit`, {
+    const response = await fetch(`/api/questions/${questionId}`, {
         method: 'PUT',
         headers:{
             'Content-Type': 'application/json'
@@ -151,11 +166,17 @@ const questionsReducer = (state = initialState, action) => {
             return newState
 
 
-        case DELETE_QUESTION:{
-            const newState = {...state, allQuestions:{...state.allQuestions}, question:{}}
-            delete newState.allQuestions[action.payload];
-            return newState;
-            }
+        // case DELETE_QUESTION:{
+        //     const newState = {...state, allQuestions:{...state.allQuestions}, question:{}}
+        //     delete newState.allQuestions[action.payload];
+        //     return newState;
+        //     }
+
+        case DELETE_QUESTION: {
+            const newState = { ...state }
+            delete newState.question[action.payload]
+            return newState
+        }
 
         case EDIT_QUESTION:
             return {

@@ -17,7 +17,7 @@ class Answer(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
     answer_user_relationship = db.relationship("User", back_populates="answer_relationship")
-    answer_question_relationship = db.relationship("Question")
+    answer_question_relationship = db.relationship("Question", back_populates="question_answer_relationship")
     answer_upvote_relationship = db.relationship("Upvote")
     answer_downvote_relationship = db.relationship("Downvote")
 

@@ -26,7 +26,7 @@ def get_one_question(id):
   question = Question.query.get(id)
   return { question.id: question.to_dict()}
 
-@questions_routes.route("/<int:id>/edit", methods=["PUT"])
+@questions_routes.route("/<int:id>", methods=["PUT"])
 @login_required
 def edit_question(id):
 
@@ -95,4 +95,4 @@ def delete_question(id):
   question = Question.query.get(id)
   db.session.delete(question)
   db.session.commit()
-  return ('Delete Successful')
+  return {"message": 'Delete Successful'}

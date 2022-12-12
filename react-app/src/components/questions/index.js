@@ -29,7 +29,7 @@ const Questions = () => {
         <div className='questions-div'>
             <h2>{aQuestion.map((obj) => {
                 return(
-                    <div>
+                    <div key={obj.id}>
                         <Link style={{textDecoration: 'none'}} to={`/questions/${obj.id}`}>
                         <p>Title: {obj.title}</p>
                         {/*
