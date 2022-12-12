@@ -54,6 +54,10 @@ const QuestionDetails = () => {
             <div>
             {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? <EditQuestionButton /> : null)}
             </div>
+
+            <div>
+            {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? null : <CreateAnswerFormModal />)}
+            </div>
         </div>
     )
 
