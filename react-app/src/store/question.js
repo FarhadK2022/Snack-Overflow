@@ -53,7 +53,7 @@ export const deleteQuestionThunk = (questionId) => async dispatch => {
         const question = await response.json()
 
         dispatch(deleteQuestion(question))
-        return question
+        // return question
     }
 }
 
@@ -61,13 +61,13 @@ export const editQuestionThunk = (payload) => async dispatch => {
     const { questionId, title, question, tried_expected, tags } = payload
     const response = await fetch(`/api/questions/${questionId}`, {
         method: 'PUT',
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ title, question, tried_expected, tags })
     })
 
-    if(response.ok){
+    if (response.ok) {
         const question = await response.json()
 
         dispatch(editQuestion(question))
@@ -78,13 +78,13 @@ export const createQuestionThunk = (payload) => async dispatch => {
     const { title, question, tried_expected, tags } = payload
     const response = await fetch('/api/ask', {
         method: 'POST',
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ title, question, tried_expected, tags })
     })
 
-    if(response.ok){
+    if (response.ok) {
         const question = await response.json()
 
         dispatch(addQuestion(question))
@@ -103,7 +103,7 @@ export const getAllQuestionsThunk = () => async dispatch => {
 export const getQuestionByIdThunk = (questionId) => async dispatch => {
     const response = await fetch(`/api/questions/${questionId}`)
 
-    if(response.ok){
+    if (response.ok) {
         const question = await response.json()
         dispatch(getQuestionById(question))
     }
@@ -121,25 +121,25 @@ const initialState = { question: {}, allQuestions: {} }
 const questionsReducer = (state = initialState, action) => {
 
 
-    switch(action.type){
+    switch (action.type) {
         case ADD_QUESTION:
 
             // console.log("THIS IS ACTION", action)
-                console.log("THIS IS STATE", state)
-                if(!state[action.id]){
-                    const newState = {
-                        ...state,
-                        [action.payload.id]:{
-                            id: action.payload.id,
-                            title: action.payload.title,
-                            question: action.payload.question,
-                            tried_expected: action.payload.tried_expected,
-                            tags: action.payload.tags
-                        }
-                    };
-                    // console.log("THIS IS NEW STATE", newState)
-                    return newState
-                }
+            console.log("THIS IS STATE", state)
+            if (!state[action.id]) {
+                const newState = {
+                    ...state,
+                    [action.payload.id]: {
+                        id: action.payload.id,
+                        title: action.payload.title,
+                        question: action.payload.question,
+                        tried_expected: action.payload.tried_expected,
+                        tags: action.payload.tags
+                    }
+                };
+                // console.log("THIS IS NEW STATE", newState)
+                return newState
+            }
 
 
 
@@ -179,6 +179,7 @@ const questionsReducer = (state = initialState, action) => {
         }
 
         case EDIT_QUESTION:
+
             return {
                 ...state,
                 [action.payload.id]: action.payload

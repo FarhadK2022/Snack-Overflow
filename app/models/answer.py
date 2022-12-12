@@ -18,8 +18,8 @@ class Answer(db.Model):
 
     answer_user_relationship = db.relationship("User", back_populates="answer_relationship")
     answer_question_relationship = db.relationship("Question", back_populates="question_answer_relationship")
-    answer_upvote_relationship = db.relationship("Upvote")
-    answer_downvote_relationship = db.relationship("Downvote")
+    answer_upvote_relationship = db.relationship("Upvote",back_populates="upvote_answer_relationship", cascade="all, delete-orphan")
+    answer_downvote_relationship = db.relationship("Downvote", back_populates="downvote_answer_relationship", cascade="all, delete-orphan")
 
 
     def to_dict(self):
