@@ -2,9 +2,9 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .questions import seed_questions, undo_questions
 from .answers import seed_answers, undo_answers
-from .like_seeds import seed_likes, undo_likes
-from .upvotes import seed_upvotes, undo_upvotes
-from .downvotes import seed_downvotes, undo_downvotes
+# from .likes import seed_likes, undo_likes
+# from .upvotes import seed_upvotes, undo_upvotes
+# from .downvotes import seed_downvotes, undo_downvotes
 
 from app.models.db import db, environment, SCHEMA
 
@@ -24,15 +24,15 @@ def seed():
         undo_users()
         undo_questions()
         undo_answers()
-        undo_likes()
-        undo_upvotes()
-        undo_downvotes()
+        # undo_likes()
+        # undo_upvotes()
+        # undo_downvotes()
     seed_users()
     seed_questions()
     seed_answers()
-    seed_likes()
-    seed_upvotes()
-    seed_downvotes()
+    # seed_likes()
+    # seed_upvotes()
+    # seed_downvotes()
     # Add other seed functions here
 
 
@@ -42,7 +42,7 @@ def undo():
     undo_users()
     undo_questions()
     undo_answers()
-    undo_likes()
-    undo_upvotes()
-    undo_downvotes()
+    # undo_likes()
+    # undo_upvotes()
+    # undo_downvotes()
     # Add other undo functions here

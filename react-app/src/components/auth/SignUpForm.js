@@ -7,6 +7,10 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [bio, setBio] = useState('')
+  const [location, setLocation] = useState('')
+  const [full_name, setFull_Name] = useState('')
+  const [title, setTitle] = useState('')
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -15,7 +19,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, bio, location, full_name, title));
       if (data) {
         setErrors(data)
       }
@@ -34,6 +38,22 @@ const SignUpForm = () => {
     setPassword(e.target.value);
   };
 
+  const updateBio = (e) => {
+    setBio(e.target.value)
+  }
+
+  const updateLocation = (e) => {
+    setLocation(e.target.value)
+  }
+
+  const updateFullName = (e) => {
+    setFull_Name(e.target.value)
+  }
+
+  const updateTitle = (e) => {
+    setTitle(e.target.value)
+  }
+
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
@@ -41,6 +61,10 @@ const SignUpForm = () => {
   if (user) {
     return <Redirect to='/' />;
   }
+
+
+
+
 
   return (
     <form onSubmit={onSignUp}>
@@ -65,6 +89,43 @@ const SignUpForm = () => {
           name='email'
           onChange={updateEmail}
           value={email}
+        ></input>
+      </div>
+
+      <div>
+        <label>Biography</label>
+        <textarea
+          type='text'
+          name='bio'
+          onChange={updateBio}
+          value={bio}
+        ></textarea>
+      </div>
+      <div>
+        <label>Location</label>
+        <input
+          type='text'
+          name='location'
+          onChange={updateLocation}
+          value={location}
+        ></input>
+      </div>
+      <div>
+        <label>Full Name</label>
+        <input
+          type='text'
+          name='full_name'
+          onChange={updateFullName}
+          value={full_name}
+        ></input>
+      </div>
+      <div>
+        <label>Title</label>
+        <input
+          type='text'
+          name='title'
+          onChange={updateTitle}
+          value={title}
         ></input>
       </div>
       <div>

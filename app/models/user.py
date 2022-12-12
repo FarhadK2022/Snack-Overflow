@@ -2,6 +2,8 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import datetime
+from .question import likes
+from .answer import upvotes, downvotes
 
 
 class User(db.Model, UserMixin):
@@ -21,11 +23,11 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
-    question_relationship = db.relationship("Question", back_populates="question_user_relationship")
-    answer_relationship = db.relationship("Answer", back_populates="answer_user_relationship")
-    like_relationship = db.relationship("Like")
-    upvote_relationship = db.relationship("Upvote")
-    downvote_relationship = db.relation("Downvote")
+    user_question = db.relationship("Question", back_populates="question_user")
+    user_answer = db.relationship("Answer", back_populates="answer_user")
+    user_likes = db.relationship("Question", secondary=likes, back_populates="question_likes", cascade="all, delete")
+    user_upvote = db.relationship("Answer", secondary=upvotes, back_populates="answer_upvote", cascade="all, delete")
+    user_downvote = db.relationship("Answer", secondary=downvotes, back_populates="answer_downvote", cascade="all, delete")
 
     @property
     def password(self):
