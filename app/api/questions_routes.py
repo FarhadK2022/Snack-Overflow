@@ -30,12 +30,12 @@ def get_one_question(id):
     answers_data[answers.id] = answers.to_dict()
   return ({ question.id: question.to_dict()}, answers_data)
 
-@questions_routes.route("/<int:id>", methods=["GET"])
-def getanswers(id):
-  answers_data = {}
-  for answers in question.question_answer:
-    answers_data[answers.id] = answers.to_dict()
-  return answers_data
+# @questions_routes.route("/<int:id>", methods=["GET"])
+# def getanswers(id):
+#   answers_data = {}
+#   for answers in question.question_answer:
+#     answers_data[answers.id] = answers.to_dict()
+#   return answers_data
 
 @questions_routes.route("/<int:id>", methods=["PUT"])
 @login_required
