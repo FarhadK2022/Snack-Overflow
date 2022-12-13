@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getQuestionByIdThunk, deleteQuestionThunk } from '../../store/question';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import './questions_details.css'
 import EditQuestionButton from '../edit_question';
 import CreateAnswerForm from '../answer_form_Modal/CreateAnswerForm'
@@ -43,7 +43,8 @@ const QuestionDetails = () => {
             <div> Tags: {questionInfoObj?.tags.split(',').join(' ')} </div>
             <div> Answers: {questionInfoObj?.answers.map((obj) => {
                 // {console.log("THIS IS OBJ", obj)}
-                return <li>{obj?.body} Votes: {obj?.votes}</li>
+                return <li>{obj?.body} Votes: {obj?.votes}
+                <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link></li>
             })}  </div>
 
             <div>

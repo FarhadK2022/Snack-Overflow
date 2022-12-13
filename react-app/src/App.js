@@ -9,6 +9,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import Questions from './components/questions';
 import QuestionDetails from './components/questions_details'
+import EditAnswerButton from './components/edit_answer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,6 +45,9 @@ function App() {
         <Route path='/questions/:questionId' exact={true}>
           <QuestionDetails />
         </Route>
+        <ProtectedRoute path='/edit/answers/:answerid' exact={true}>
+          <EditAnswerButton />
+        </ProtectedRoute>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route>

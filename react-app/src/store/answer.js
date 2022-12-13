@@ -24,9 +24,10 @@ const deleteAnswer = (answer) => ({
 })
 
 
-export const deleteAnswerThunk = (payload) => async dispatch => {
-    const { answer_id } = payload
-    const response = await fetch(`/api/answers/${answer_id}`, {
+export const deleteAnswerThunk = (answerid) => async dispatch => {
+    // const { answerid } = payload
+    // console.log()
+    const response = await fetch(`/api/answers/${answerid}`, {
         method: 'DELETE'
     })
 
@@ -38,8 +39,11 @@ export const deleteAnswerThunk = (payload) => async dispatch => {
 }
 
 export const editAnswerThunk = (payload) => async dispatch => {
-    const { answer_id, body } = payload
-    const response = await fetch(`/api/answers/${answer_id}`, {
+
+    const { body, answerid  } = payload
+    // console.log("THIS IS ANSWER ID", answerid)
+    // console.log("THIS IS BODY", body)
+    const response = await fetch(`/api/answers/${answerid}`, {
         method: 'PUT',
         headers:{
             'Content-Type': 'application/json'
