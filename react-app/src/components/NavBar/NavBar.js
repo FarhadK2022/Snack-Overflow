@@ -36,11 +36,11 @@ const NavBar = () => {
             </span>
           </>
           : ""}
-        <span>
+        {/* <span>
           <NavLink to='/ask' exact={true} activeClassName='active'>
             Ask Question
           </NavLink>
-        </span>
+        </span> */}
         <span>
           <NavLink to='/questions' exact={true} activeClassName='active'>
             Questions
