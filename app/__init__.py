@@ -100,11 +100,27 @@ def not_found(e):
 @app.route('/api/search', methods=['GET'])
 def search():
     arg = request.args
+    print("aaaaaaaaaaaaaaaaaa", arg)
     args = arg.to_dict()
-    params = args['question']
-    question_query = Question.query.filter(Question.title.like(f"%{params}%"))
-    search_results={}
-    for question in question_query:
-        search_results[question.id] = question.to_dict()
+    print("bbbbbbbbbbbbbbbbbbb", args)
+    params1 = args['question']
+    print("ccccccccccccccccc", params1)
+    params2 = args[' filter']
+    print("ddddddddddddddd", params2)
+    if params2 == 'title':
+        question_query = Question.query.filter(Question.title.like(f"%{params1}%"))
+        search_results={}
+        for question in question_query:
+         search_results[question.id] = question.to_dict()
+    elif params2 == 'body':
+        question_query = Question.query.filter(Question.question.like(f"%{params1}%"))
+        search_results={}
+        for question in question_query:
+         search_results[question.id] = question.to_dict()
+    elif params2 == 'tags':
+        question_query = Question.query.filter(Question.tags.like(f"%{params1}%"))
+        search_results={}
+        for question in question_query:
+         search_results[question.id] = question.to_dict()
 
     return search_results
