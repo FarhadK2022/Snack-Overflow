@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getResultsThunk } from "../../store/search";
+import './SearchBar.css'
 
 const SearchBar = () => {
   const dispatch = useDispatch()
@@ -13,7 +14,7 @@ const SearchBar = () => {
     e.preventDefault();
     setSearchInput(e.target.value);
 
-    const searchResults =  await dispatch(
+    const searchResults = await dispatch(
       getResultsThunk(searchInput)
     )
 
@@ -36,8 +37,9 @@ const SearchBar = () => {
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
         required
+        className="search-bar"
       />
-    <button type="submit">Search</button>
+      <button type="submit">Search</button>
     </form>
 
   );
