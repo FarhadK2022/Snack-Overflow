@@ -11,18 +11,32 @@ const CreateAnswerForm = ( setShowModal ) => {
   const { questionId } = useParams()
 
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const newAnswer = {
+  //     body,
+  //   };
+
+  //   const createdAnswer = await dispatch(createAnswerThunk(newAnswer, questionId, sessionUser));
+
+  //   if (createdAnswer) {
+  //     setShowModal(false);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newAnswer = {
+      questionId,
+      user_id: sessionUser.id,
       body,
     };
 
-    const createdAnswer = await dispatch(createAnswerThunk(newAnswer, questionId, sessionUser));
+    return await dispatch(createAnswerThunk(newAnswer));
 
-    if (createdAnswer) {
-      setShowModal(false);
-    }
+
   };
 
 

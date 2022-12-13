@@ -4,7 +4,7 @@ import { getQuestionByIdThunk, deleteQuestionThunk } from '../../store/question'
 import { useParams, useHistory } from 'react-router-dom';
 import './questions_details.css'
 import EditQuestionButton from '../edit_question';
-import CreateAnswerFormModal from '../answer_form_Modal'
+import CreateAnswerForm from '../answer_form_Modal/CreateAnswerForm'
 
 const QuestionDetails = () => {
     const history = useHistory()
@@ -19,6 +19,7 @@ const QuestionDetails = () => {
     })
 
 
+
     useEffect(() => {
         dispatch(getQuestionByIdThunk(questionId))
       }, [dispatch, questionId])
@@ -30,16 +31,20 @@ const QuestionDetails = () => {
     return setTimeout(function () { history.push('/questions'); }, 10);
     }
 
-    if(!questionInfoObj){
-        return null
-    }
+    // if(!questionInfoObj){
+    //     return null
+    // }
 
     return (
         <div>
-            <div> Title: {questionInfoObj.title} </div>
-            <div> Question: {questionInfoObj.question}</div>
-            <div> Tried & Expected: {questionInfoObj.tried_expected} </div>
-            <div> Tags: {questionInfoObj.tags} </div>
+            <div> Title: {questionInfoObj?.title} </div>
+            <div> Question: {questionInfoObj?.question}</div>
+            <div> Tried & Expected: {questionInfoObj?.tried_expected} </div>
+            <div> Tags: {questionInfoObj?.tags.split(',').join(' ')} </div>
+            <div> Answers: {questionInfoObj?.answers.map((obj) => {
+                // {console.log("THIS IS OBJ", obj)}
+                return <li>{obj?.body} Votes: {obj?.votes}</li>
+            })}  </div>
 
             <div>
             {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? <button onClick={(event) => deleteAQuestion(event, questionId)} className='delete-button'> Delete Question </button> : null)}
@@ -49,7 +54,7 @@ const QuestionDetails = () => {
             </div>
 
             <div>
-            {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? null : <CreateAnswerFormModal />)}
+            {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? null : <CreateAnswerForm />)}
             </div>
         </div>
     )

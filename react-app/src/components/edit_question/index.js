@@ -37,9 +37,6 @@ function EditQuestionButton() {
     setTags(e.target.value);
   };
 
-  const abcd = async (e) => {
-    await setShowForm(false)
-  }
 
 
   const editCurrentQuestion = async (e) => {

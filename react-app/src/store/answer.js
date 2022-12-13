@@ -54,25 +54,42 @@ export const editAnswerThunk = (payload) => async dispatch => {
     }
 }
 
+// export const createAnswerThunk = (payload) => async dispatch => {
+//     const { question_id, user_id, body } = payload
+//     const response = await fetch(`/api/answers`, {
+//         method: 'POST',
+//         headers:{
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ question_id, user_id, body })
+//     })
+
+//     if(response.ok){
+//         const answer = await response.json()
+
+//         dispatch(addAnswer(answer))
+//     }
+// }
 export const createAnswerThunk = (payload) => async dispatch => {
-    const { question_id, user_id, body } = payload
-    const response = await fetch(`/api/answers`, {
+    const { questionId, user_id, body } = payload
+    console.log("*****************", payload)
+    const response = await fetch(`/api/ask/${questionId}/answers`, {
         method: 'POST',
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ question_id, user_id, body })
+        body: JSON.stringify({ questionId, user_id, body })
     })
 
-    if(response.ok){
+    if (response.ok) {
         const answer = await response.json()
 
         dispatch(addAnswer(answer))
+        return answer
     }
 }
 
-export const getAllAnswersThunk = (data) => async dispatch => {
-  const {questionId} = data
+export const getAllAnswersThunk = () => async dispatch => {
     const res = await fetch(`/api/answers`);
     if (res.ok) {
         const answers = await res.json()

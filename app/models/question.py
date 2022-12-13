@@ -39,5 +39,6 @@ class Question(db.Model):
             'question': self.question,
             'tried_expected': self.tried_expected,
             'tags': self.tags,
-            'likes': len(self.question_likes)
+            'likes': len(self.question_likes),
+            'answers': [answer.to_dict() for answer in self.question_answer]
         }

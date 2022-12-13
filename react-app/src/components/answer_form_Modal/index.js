@@ -5,15 +5,20 @@ import "./answer_form.css";
 
 function CreateAnswerFormModal() {
   const [showModal, setShowModal] = useState(false);
-  console.log(showModal)
+
+  const openModal = (e) => {
+    e.preventDefault();
+    setShowModal(true)
+  }
   return (
     <>
-      <button className="button" onClick={() => setShowModal(true)}>Create Answer</button>
-      {showModal && (
+      <button className="button" onClick={(event) => openModal(event)}>Create Answer</button>
+      {console.log(CreateAnswerForm)}
+      {showModal ?
         <Modal onClose={() => setShowModal(false)}>
           <CreateAnswerForm setShowModal={setShowModal} />
         </Modal>
-      )}
+        : ""}
     </>
   );
 }
