@@ -9,11 +9,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import Questions from './components/questions';
 import QuestionDetails from './components/questions_details'
-<<<<<<< HEAD
 import SearchResultsPage from './components/SearchBar/SearchResultsPage';
-=======
 import EditAnswerButton from './components/edit_answer';
->>>>>>> zack_tues
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,15 +46,9 @@ function App() {
         <Route path='/questions/:questionId' exact={true}>
           <QuestionDetails />
         </Route>
-<<<<<<< HEAD
-        <Route path='/search' exact={true}>
-          <SearchResultsPage />
-        </Route>
-=======
         <ProtectedRoute path='/edit/answers/:answerid' exact={true}>
           <EditAnswerButton />
         </ProtectedRoute>
->>>>>>> zack_tues
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route>
