@@ -15,10 +15,10 @@ function EditQuestionButton() {
   const currentQuestion = useSelector(state => state.questionsReducer.allQuestions[questionId])
 
 
-  const [title, setTitle] = useState(currentQuestion.title)
-  const [question, setQuestion] = useState(currentQuestion.question)
-  const [tried_expected, setTried_Expected] = useState(currentQuestion.tried_expected)
-  const [tags, setTags] = useState(currentQuestion.tags)
+  const [title, setTitle] = useState(currentQuestion?.title)
+  const [question, setQuestion] = useState(currentQuestion?.question)
+  const [tried_expected, setTried_Expected] = useState(currentQuestion?.tried_expected)
+  const [tags, setTags] = useState(currentQuestion?.tags)
   const [showForm, setShowForm] = useState(false)
 
   const titleSet = (e) => {

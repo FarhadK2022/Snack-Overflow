@@ -4,8 +4,9 @@
     padding-right: 5em;
     /* background-color: aqua; */
     border-right: .075em solid rgba(150, 149, 149, 0.308);
+
     width: 6em;
-    height: 51em;
+    height: 100%;
 }
 
 .all-questions-link,
@@ -15,7 +16,8 @@
 
 }
 
-.all-questions-link:hover {
+.all-questions-link:hover,
+.home-link:hover {
     color: black;
 
 }
