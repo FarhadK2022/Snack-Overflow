@@ -36,6 +36,7 @@ const CreateAnswerForm = (setShowModal) => {
     };
 
     await dispatch(createAnswerThunk(newAnswer));
+    setBody('');
     return await dispatch(getQuestionByIdThunk(questionId))
 
 
