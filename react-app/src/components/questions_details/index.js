@@ -5,6 +5,7 @@ import { useParams, useHistory, Link } from 'react-router-dom';
 import './questions_details.css'
 import EditQuestionButton from '../edit_question';
 import CreateAnswerForm from '../answer_form_Modal/CreateAnswerForm'
+import SideNavBar from '../SideNavBar';
 
 const QuestionDetails = () => {
     const history = useHistory()
@@ -23,13 +24,13 @@ const QuestionDetails = () => {
 
     useEffect(() => {
         dispatch(getQuestionByIdThunk(questionId))
-      }, [dispatch, questionId])
+    }, [dispatch, questionId])
 
 
     const deleteAQuestion = (e, id) => {
-    e.preventDefault();
-    dispatch(deleteQuestionThunk(id))
-    return setTimeout(function () { history.push('/questions'); }, 10);
+        e.preventDefault();
+        dispatch(deleteQuestionThunk(id))
+        return setTimeout(function () { history.push('/questions'); }, 10);
     }
 
     const userId = sessionUser.id
@@ -55,28 +56,35 @@ const QuestionDetails = () => {
     // console.log("@@@@@@@@", currentLike)
 
     return (
-        <div>
-            <div> Title: {questionInfoObj?.title} </div>
-            <div> Question: {questionInfoObj?.question}</div>
-            <div> Tried & Expected: {questionInfoObj?.tried_expected} </div>
-            <div> Tags: {questionInfoObj?.tags.split(',').join(' ')} </div>
-            <div>  Likes: {questionInfoObj?.likes}    {sessionUser && currentLike?.length === 0 ? <button onClick={createLike}><i className="fa fa-heart" /></button> : null}
-            {sessionUser && currentLike?.length >= 1 ? <button onClick={removeLike}><i className="fa fa-times" /></button> : null}</div>
-            <div> Answers: {questionInfoObj?.answers.map((obj) => {
-                // {console.log("THIS IS OBJ", obj)}
-                return <li key={obj.id}>{obj?.body} Votes: {obj?.votes}
-                {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link> : null)}</li>
-            })}  </div>
-
+        <div className='main-container'>
             <div>
-            {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? <button onClick={(event) => deleteAQuestion(event, questionId)} className='delete-button'> Delete Question </button> : null)}
+                <SideNavBar />
             </div>
             <div>
-            {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? <EditQuestionButton /> : null)}
-            </div>
+                <div> Title: {questionInfoObj?.title} </div>
+                <div> Question: {questionInfoObj?.question}</div>
+                <div> Tried & Expected: {questionInfoObj?.tried_expected} </div>
+                <div> Tags: {questionInfoObj?.tags.split(',').join(' ')} </div>
+                <div>  Likes: {questionInfoObj?.likes}    {sessionUser && currentLike?.length === 0 ? <button onClick={createLike}><i className="fa fa-heart" /></button> : null}
+                    {sessionUser && currentLike?.length >= 1 ? <button onClick={removeLike}><i className="fa fa-times" /></button> : null}</div>
+                <div> Answers: {questionInfoObj?.answers.map((obj) => {
+                    // {console.log("THIS IS OBJ", obj)}
 
-            <div>
-            {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? null : <CreateAnswerForm />)}
+                    return <li key={obj.id}>{obj?.body} Votes: {obj?.votes}
+
+                        {sessionUser && (sessionUser.id === obj?.user_id ? <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link> : null)}</li>
+                })}  </div>
+
+                <div>
+                    {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? <button onClick={(event) => deleteAQuestion(event, questionId)} className='delete-button'> Delete Question </button> : null)}
+                </div>
+                <div>
+                    {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? <EditQuestionButton /> : null)}
+                </div>
+
+                <div>
+                    {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? null : <CreateAnswerForm />)}
+                </div>
             </div>
         </div>
     )
