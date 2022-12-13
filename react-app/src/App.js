@@ -11,6 +11,7 @@ import Questions from './components/questions';
 import QuestionDetails from './components/questions_details'
 import SearchResultsPage from './components/SearchBar/SearchResultsPage';
 import EditAnswerButton from './components/edit_answer';
+import SideNavBar from './components/SideNavBar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -30,6 +31,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      {/* <SideNavBar /> */}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
