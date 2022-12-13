@@ -49,6 +49,9 @@ function App() {
         <ProtectedRoute path='/edit/answers/:answerid' exact={true}>
           <EditAnswerButton />
         </ProtectedRoute>
+        <Route path='/search'>
+          <SearchResultsPage />
+        </Route>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route>

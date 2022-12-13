@@ -31,9 +31,6 @@ const SearchResults = () => {
 
                          */}
                         </Link>
-                        <p>Question Body: {obj.question}</p>
-                        <p>Tried & Expected: {obj.tried_expected}</p>
-                        <p>Tags: {obj.tags}</p>
                     </div>
                 )
             })}
