@@ -23,6 +23,11 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else{
+
+      return setErrors([
+        "Confirm Password field must be the same as the Password field",
+      ]);
     }
   };
 
@@ -100,7 +105,6 @@ const SignUpForm = () => {
           name='bio'
           onChange={updateBio}
           value={bio}
-          required
         ></textarea>
       </div>
       <div>

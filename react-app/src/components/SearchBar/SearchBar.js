@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { getResultsThunk } from "../../store/search";
 import './SearchBar.css'
 
@@ -19,14 +19,13 @@ const SearchBar = () => {
     )
 
     if (searchResults) {
-      return searchResults
+      return <Redirect to='/search' />;
     } else {
       return setErrors([
         " Please refine your search and try again!"
       ]);
     }
   };
-  console.log(searchInput)
 
   return (
 
