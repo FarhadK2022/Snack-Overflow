@@ -7,7 +7,6 @@ from flask_login import LoginManager
 from .models import db, User, Question, Answer
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-
 from .api.questions_routes import questions_routes, ask_question_route
 from .api.answers_routes import answers_routes
 from .seeds import seed_commands
@@ -96,25 +95,16 @@ def react_root(path):
 def not_found(e):
     return app.send_static_file('index.html')
 
+
+
 @app.route('/api/search', methods=['GET'])
 def search():
-    db_questions = Question.query.all()
-    Qs = db_questions.to_dict()
-    db_answers = Answer.query.all()
-    As = db_answers.to_dict()
-    args = request.args
-    params = args.to_dict()
-    print('***********hello', params)
-    question = params.get('question')
-    print(question)
-    answer = params.get('answer')
-    tags = params.get('tags')
-    result = db_questions
-    if question is not None:
-        result = {key: value for key, value in Qs if key == question}
-    elif answer is not None:
-         result = {key: value for key, value in As if key == answer}
-    elif tags is not None:
-        result = {key: value for key, value in Qs if key == tags}
+    arg = request.args
+    args = arg.to_dict()
+    params = args['question']
+    question_query = Question.query.filter(Question.title.like(f"%{params}%"))
+    search_results={}
+    for question in question_query:
+        search_results[question.id] = question.to_dict()
 
-    return result
+    return search_results

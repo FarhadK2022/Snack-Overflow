@@ -60,6 +60,7 @@ const LoginForm = () => {
           placeholder='Email'
           value={email}
           onChange={updateEmail}
+          required
         />
       </div>
       <div>
@@ -70,6 +71,7 @@ const LoginForm = () => {
           placeholder='Password'
           value={password}
           onChange={updatePassword}
+          required
         />
         <button type='submit'>Login</button>
         <button type='submit' onClick={setDemoUser}>Log In as Demo User</button>

@@ -65,6 +65,7 @@ const onSubmit = async (e) => {
           name='title'
           onChange={titleSet}
           value={title}
+          required
         ></input>
       </div>
       <div>
@@ -73,19 +74,19 @@ const onSubmit = async (e) => {
             type='text'
             name='questiontextarea'
             onChange={questionSet}
-            value={question}>
-
-            </textarea>
+            value={question}
+            required
+            ></textarea>
       </div>
       <div>
         <label>Tried & Expected</label>
-            <textarea
+          <textarea
             type='text'
             name='tetextarea'
             onChange={teSet}
-            value={tried_expected}>
-
-            </textarea>
+            value={tried_expected}
+            required
+          ></textarea>
       </div>
       <div>
         <label>Tags</label>
@@ -94,6 +95,7 @@ const onSubmit = async (e) => {
           name='tags'
           onChange={tagSet}
           value={tags}
+          required
         ></input>
       </div>
       <button type='submit'>Submit Question</button>

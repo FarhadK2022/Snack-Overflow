@@ -73,6 +73,7 @@ function EditQuestionButton() {
                 name='title'
                 onChange={titleSet}
                 value={title}
+                required
               ></input>
             </div>
             <div>
@@ -81,9 +82,9 @@ function EditQuestionButton() {
                 type='text'
                 name='questiontextarea'
                 onChange={questionSet}
-                value={question}>
-
-              </textarea>
+                value={question}
+                required
+              ></textarea>
             </div>
             <div>
               <label>Tried & Expected</label>
@@ -91,9 +92,9 @@ function EditQuestionButton() {
                 type='text'
                 name='tetextarea'
                 onChange={teSet}
-                value={tried_expected}>
-
-              </textarea>
+                value={tried_expected}
+                required
+              ></textarea>
             </div>
             <div>
               <label>Tags</label>
@@ -102,6 +103,7 @@ function EditQuestionButton() {
                 name='tags'
                 onChange={tagSet}
                 value={tags}
+                required
               ></input>
             </div>
             <button type='submit'>Submit Edited Question</button>

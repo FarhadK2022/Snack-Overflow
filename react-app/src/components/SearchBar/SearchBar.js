@@ -1,23 +1,35 @@
-import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
-
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { getResultsThunk } from "../../store/search";
 
 const SearchBar = () => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const [searchInput, setSearchInput] = useState("");
+  const [errors, setErrors] = useState([]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSearchInput(e.target.value);
 
-    const searchResults = await fetch(`/api/search?question=${searchInput}`)
-    return searchResults
+    const searchResults =  await dispatch(
+      getResultsThunk(searchInput)
+    )
+
+    if (searchResults) {
+      return searchResults
+    } else {
+      return setErrors([
+        " Please refine your search and try again!"
+      ]);
+    }
   };
   console.log(searchInput)
 
   return (
-    <form onSubmit={handleSubmit}>
 
+    <form onSubmit={handleSubmit}>
       <input
         type="search"
         placeholder="Search..."
@@ -25,10 +37,9 @@ const SearchBar = () => {
         onChange={(e) => setSearchInput(e.target.value)}
         required
       />
-
     <button type="submit">Search</button>
-
     </form>
+
   );
 };
 

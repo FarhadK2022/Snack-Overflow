@@ -9,6 +9,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import Questions from './components/questions';
 import QuestionDetails from './components/questions_details'
+import SearchResultsPage from './components/SearchBar/SearchResultsPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,9 @@ function App() {
         </Route>
         <Route path='/questions/:questionId' exact={true}>
           <QuestionDetails />
+        </Route>
+        <Route path='/search' exact={true}>
+          <SearchResultsPage />
         </Route>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
