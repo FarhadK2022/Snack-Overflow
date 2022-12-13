@@ -3,25 +3,30 @@ from app.models import db, Question, User, environment, SCHEMA
 def seed_questions():
 
     user7 = User(
-        username="Demo5",
+        username="Delta",
         email="demo5@aa.io",
         password="password",
         full_name="Ricky Schroder"
     )
 
     user8 = User(
-        username="Demo6",
+        username="Epsilon",
         email="demo6@aa.io",
         password="password",
         full_name="Monty Rangle"
     )
 
     user9 = User(
-        username="Demo7",
+        username="Zeta",
         email="demo7@aa.io",
         password="password",
         full_name="Danica Glover"
     )
+
+    db.session.add(user7)
+    db.session.add(user8)
+    db.session.add(user9)
+    db.session.commit()
 
     question_1 = Question(
         user_id=1,
@@ -153,11 +158,6 @@ def seed_questions():
     question_30 = Question(
         user_id=3, title='Why dont people put pickles on their pizza?', question='Its delicious, its similar to pineapples in adding a fresh acidity and crunch to the pizza to cut through the heaviness. Are people scared of pickles?', tried_expected='Tried: pizza with and without pickles', tags='pickles,pizza,toppings'
     )
-
-
-    db.session.add(user7)
-    db.session.add(user8)
-    db.session.add(user9)
 
     db.session.add(question_1)
     db.session.add(question_2)
