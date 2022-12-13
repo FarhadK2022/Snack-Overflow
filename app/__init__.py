@@ -4,7 +4,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
-from .models import db, User
+from .models import db, User, Question, Answer
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 
@@ -95,3 +95,26 @@ def react_root(path):
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
+
+@app.route('/api/search', methods=['GET'])
+def search():
+    db_questions = Question.query.all()
+    Qs = db_questions.to_dict()
+    db_answers = Answer.query.all()
+    As = db_answers.to_dict()
+    args = request.args
+    params = args.to_dict()
+    print('***********hello', params)
+    question = params.get('question')
+    print(question)
+    answer = params.get('answer')
+    tags = params.get('tags')
+    result = db_questions
+    if question is not None:
+        result = {key: value for key, value in Qs if key == question}
+    elif answer is not None:
+         result = {key: value for key, value in As if key == answer}
+    elif tags is not None:
+        result = {key: value for key, value in Qs if key == tags}
+
+    return result

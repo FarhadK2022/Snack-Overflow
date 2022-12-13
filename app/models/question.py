@@ -23,7 +23,7 @@ class Question(db.Model):
     title = db.Column(db.String(150), nullable=False)
     question = db.Column(db.Text, nullable=False)
     tried_expected = db.Column(db.Text, nullable=False)
-    tags = db.Column(db.String(100))
+    tags = db.Column(db.Text)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
