@@ -34,14 +34,16 @@ def edit_answer(id):
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
-
+    print("this is form data", form.data)
     new_body = form.data['body']
 
 
     answer.body = new_body
-
+    print("before commit", form.data)
 
     db.session.commit()
+    print("after commit", answer.body)
+
 
   return answer.to_dict()
 
@@ -81,4 +83,4 @@ def delete_question(id):
   answer = Answer.query.get(id)
   db.session.delete(answer)
   db.session.commit()
-  return ('Delete Successful')
+  return {'message': 'Delete Successful'}
