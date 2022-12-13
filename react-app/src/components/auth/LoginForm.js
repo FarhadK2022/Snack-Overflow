@@ -30,13 +30,19 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
-  function firstSet(){
-    return setEmail('demo@aa.io')
-  }
+  // function firstSet(){
+  //   return setEmail('demo@aa.io')
+  // }
 
-  function comboSet(){
-    firstSet()
+  // function comboSet(){
+  //   firstSet()
+  //   setPassword('password')
+  // }
+
+  const setDemoUser = () => {
+    setEmail('demo@aa.io')
     setPassword('password')
+    return dispatch(login(email, password))
   }
 
   return (
@@ -66,7 +72,7 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
-        <button type='submit' onClick={comboSet}>Log In as Demo User</button>
+        <button type='submit' onClick={setDemoUser}>Log In as Demo User</button>
       </div>
     </form>
   );

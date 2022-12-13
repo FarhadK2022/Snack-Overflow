@@ -20,9 +20,9 @@ const Questions = () => {
         dispatch(getAllQuestionsThunk())
     }, [dispatch])
 
-    // if(!aQuestion.length){
-    //     return null
-    // }
+    if(!aQuestion.length){
+        return null
+    }
 
 
     return (

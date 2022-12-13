@@ -15,10 +15,12 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-@answers_routes.route("", methods=["GET"])
-def get_all_answers():
-    answers = Answer.query.all(request.questionId)
-    return { answer.id: answer.to_dict() for answer in answers }
+# @answers_routes.route("/", methods=["GET"])
+# def get_all_answers():
+#   pass
+    # answers = Answer.query.all(request.questionId)
+    # print("THIS IS ANSWERS FROM BACKEND", answers)
+    # return { answer.id: answer.to_dict() for answer in answers }
 
 
 @answers_routes.route("/<int:id>", methods=["PUT"])

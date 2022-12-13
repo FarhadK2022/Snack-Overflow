@@ -28,7 +28,7 @@ class Answer(db.Model):
         __table_args__ = { "schema": SCHEMA }
 
     id = db.Column(db.Integer, primary_key=True)
-    question_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("questions.id")), nullable=False)
+    question_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("questions.id")))
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     body = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)

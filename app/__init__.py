@@ -33,7 +33,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(questions_routes, url_prefix='/api/questions')
 app.register_blueprint(ask_question_route, url_prefix='/api/ask')
-app.register_blueprint(answers_routes, url_prefix='/api/questions')
+app.register_blueprint(answers_routes, url_prefix='/api/answers')
 db.init_app(app)
 Migrate(app, db)
 
