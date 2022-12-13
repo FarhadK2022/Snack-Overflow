@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createAnswerThunk } from "../../store/answer";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { getQuestionByIdThunk } from "../../store/question";
 
-const CreateAnswerForm = ( setShowModal ) => {
+const CreateAnswerForm = (setShowModal) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user)
   const [body, setBody] = useState("");
@@ -34,24 +35,28 @@ const CreateAnswerForm = ( setShowModal ) => {
       body,
     };
 
-    return await dispatch(createAnswerThunk(newAnswer));
+    await dispatch(createAnswerThunk(newAnswer));
+    return await dispatch(getQuestionByIdThunk(questionId))
 
 
   };
 
+  // useEffect(() => {
+  //   dispatch(getQuestionByIdThunk(questionId))
+  // }, [dispatch, questionId])
 
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
-          Answer
+        Answer
         <input
-        className="inputField"
-        type="text"
-        placeholder="Please be detailed in your Answer"
-        value={body}
-        onChange={(e) => setBody(e.target.value)}
-        required
+          className="inputField"
+          type="text"
+          placeholder="Please be detailed in your Answer"
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          required
         ></input>
       </label>
 
