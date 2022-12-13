@@ -4,8 +4,8 @@ import datetime
 upvotes = db.Table(
     "upvotes",
     db.Model.metadata,
-    db.Column("user_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id"))),
-    db.Column("answer_id", db.Integer, db.ForeignKey(add_prefix_for_prod("answers.id")))
+    db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("answer_id", db.Integer, db.ForeignKey("answers.id"))
 )
 
 if environment == "production":
@@ -14,8 +14,8 @@ if environment == "production":
 downvotes = db.Table(
     "downvotes",
     db.Model.metadata,
-    db.Column("user_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id"))),
-    db.Column("answer_id", db.Integer, db.ForeignKey(add_prefix_for_prod("answers.id")))
+    db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("answer_id", db.Integer, db.ForeignKey("answers.id"))
 )
 
 if environment == "production":
