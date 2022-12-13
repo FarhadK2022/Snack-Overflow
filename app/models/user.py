@@ -13,13 +13,13 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
-    hashed_password = db.Column(db.String(255), nullable=False)
-    bio = db.Column(db.String(255), nullable=True)
-    location = db.Column(db.String(255), nullable=True)
-    full_name = db.Column(db.String(255), nullable=False)
-    title = db.Column(db.String(50), nullable=True)
+    username = db.Column(db.Text, nullable=False, unique=True)
+    email = db.Column(db.Text, nullable=False, unique=True)
+    hashed_password = db.Column(db.Text, nullable=False)
+    bio = db.Column(db.Text, nullable=True)
+    location = db.Column(db.Text, nullable=True)
+    full_name = db.Column(db.Text, nullable=False)
+    title = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
