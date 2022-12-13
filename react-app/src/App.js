@@ -11,6 +11,8 @@ import Questions from './components/questions';
 import QuestionDetails from './components/questions_details'
 import SearchResultsPage from './components/SearchBar/SearchResultsPage';
 import EditAnswerButton from './components/edit_answer';
+// import { circle-heart } from 'react-icons/fa'
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);

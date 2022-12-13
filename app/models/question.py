@@ -7,6 +7,7 @@ likes = db.Table(
     db.Model.metadata,
     db.Column("user_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id"))),
     db.Column("question_id", db.Integer, db.ForeignKey(add_prefix_for_prod("questions.id")))
+
 )
 
 if environment == "production":
@@ -40,5 +41,12 @@ class Question(db.Model):
             'tried_expected': self.tried_expected,
             'tags': self.tags,
             'likes': len(self.question_likes),
-            'answers': [answer.to_dict() for answer in self.question_answer]
+            'answers': [answer.to_dict() for answer in self.question_answer],
+            "who_liked": [likes.to_dict() for likes in self.question_likes]
         }
+
+# class Like(db.model):
+#     __tablename__ = 'likes'
+
+#     id = db.Column(db.Integer, primary_key=True)
+#     question_id = db.Column(db.Integer, db.ForeignKey('questions.id', ondelete='CASCADE'), nullable=False)

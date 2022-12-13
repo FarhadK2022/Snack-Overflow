@@ -3,6 +3,8 @@ const GET_QUESTIONS = 'get/ALL_QUESTIONS'
 const EDIT_QUESTION = 'edit/ONE_QUESTION'
 const DELETE_QUESTION = 'delete/ONE_QUESTION'
 const GET_QUESTION = 'get/ONE_QUESTION'
+const ADD_LIKE = 'add/ONE_LIKE'
+const REMOVE_LIKE = "remove/ONE_LIKE"
 
 const addQuestion = (question) => ({
     type: ADD_QUESTION,
@@ -29,6 +31,16 @@ const getQuestionById = (question) => ({
     payload: question
 })
 
+const addLike = (like) => ({
+    type: ADD_LIKE,
+    payload: like
+})
+
+const removeLike = (like) => ({
+    type: REMOVE_LIKE,
+    payload: like
+})
+
 // export const deleteQuestionThunk = (payload) => async dispatch => {
 //     const { questionId } = payload
 //     const response = await fetch(`/api/questions/${questionId}`, {
@@ -41,6 +53,28 @@ const getQuestionById = (question) => ({
 //         dispatch(deleteQuestion(question))
 //     }
 // }
+
+export const addLikeThunk = (questionId, userId) => async dispatch => {
+    // const { questionId, user_id } = payload
+    const response = await fetch(`/api/questions/${questionId}/like`)
+
+    if(response.ok){
+        const like = await response.json()
+        dispatch(addLike(like))
+    }
+}
+
+export const removeLikeThunk = (questionId, userId) => async dispatch => {
+    // const { questionId, user_id } = payload
+    const response = await fetch(`/api/questions/${questionId}/unlike`)
+
+    if(response.ok){
+        const like = await response.json()
+        dispatch(removeLike(like))
+    }
+}
+
+
 
 export const deleteQuestionThunk = (questionId) => async dispatch => {
     // questionId = +questionId

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getQuestionByIdThunk, deleteQuestionThunk } from '../../store/question';
+import { getQuestionByIdThunk, deleteQuestionThunk, addLikeThunk, removeLikeThunk } from '../../store/question';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import './questions_details.css'
 import EditQuestionButton from '../edit_question';
@@ -18,6 +18,7 @@ const QuestionDetails = () => {
         return state.questionsReducer.question[questionId]
     })
 
+    console.log(questionInfoObj)
 
 
     useEffect(() => {
@@ -31,9 +32,27 @@ const QuestionDetails = () => {
     return setTimeout(function () { history.push('/questions'); }, 10);
     }
 
+    const userId = sessionUser.id
+
+    const createLike = async (e) => {
+        e.preventDefault();
+        await dispatch(addLikeThunk(questionId, userId))
+        await dispatch(getQuestionByIdThunk(questionId))
+    }
+
+    const removeLike = async (e) => {
+        e.preventDefault();
+        await dispatch(removeLikeThunk(questionId, userId))
+        await dispatch(getQuestionByIdThunk(questionId))
+    }
+
     // if(!questionInfoObj){
     //     return null
     // }
+    const currentLike = questionInfoObj?.who_liked.filter((obj) => {
+        return sessionUser?.id === obj.id
+    })
+    // console.log("@@@@@@@@", currentLike)
 
     return (
         <div>
@@ -41,10 +60,12 @@ const QuestionDetails = () => {
             <div> Question: {questionInfoObj?.question}</div>
             <div> Tried & Expected: {questionInfoObj?.tried_expected} </div>
             <div> Tags: {questionInfoObj?.tags.split(',').join(' ')} </div>
+            <div>  Likes: {questionInfoObj?.likes}    {sessionUser && currentLike?.length === 0 ? <button onClick={createLike}><i className="fa fa-heart" /></button> : null}
+            {sessionUser && currentLike?.length >= 1 ? <button onClick={removeLike}><i className="fa fa-times" /></button> : null}</div>
             <div> Answers: {questionInfoObj?.answers.map((obj) => {
                 // {console.log("THIS IS OBJ", obj)}
-                return <li>{obj?.body} Votes: {obj?.votes}
-                <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link></li>
+                return <li key={obj.id}>{obj?.body} Votes: {obj?.votes}
+                {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link> : null)}</li>
             })}  </div>
 
             <div>
