@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 const SearchBar = () => {
   // const dispatch = useDispatch()
-  const [searchInput, setSearchInput] = useState("ceral");
+  const [searchInput, setSearchInput] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
