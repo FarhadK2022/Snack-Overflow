@@ -3,25 +3,30 @@ from app.models import db, Answer, User, environment, SCHEMA
 def seed_answers():
 
     user4 = User(
-        username="Demo2",
+        username="Alpha",
         email="demo2@aa.io",
         password="password",
         full_name="Ricky Bobby"
     )
 
     user5 = User(
-        username="Demo3",
+        username="Beta",
         email="demo3@aa.io",
         password="password",
         full_name="Monty Python"
     )
 
     user6 = User(
-        username="Demo4",
+        username="Gamma",
         email="demo4@aa.io",
         password="password",
         full_name="Ramsey Bolton"
     )
+
+    db.session.add(user4)
+    db.session.add(user5)
+    db.session.add(user6)
+    db.session.commit()
 
     answer_1 = Answer(
         question_id=1,
@@ -43,10 +48,6 @@ def seed_answers():
         user_id=2,
         body="bretheren, go with 9 to the 10th cubed"
     )
-
-    db.session.add(user4)
-    db.session.add(user5)
-    db.session.add(user6)
 
     db.session.add(answer_1)
     db.session.add(answer_2)
