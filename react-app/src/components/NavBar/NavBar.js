@@ -5,6 +5,7 @@ import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import SearchBar from '../SearchBar/SearchBar';
 // import logo from '../../../public/image/SnackoverFlow.png'
+import logo from '../../assets/SnackoverflowLogo-removebg-preview.png'
 import './NavBar.css';
 
 const NavBar = () => {
@@ -14,7 +15,7 @@ const NavBar = () => {
       <div className='left-side'>
         <NavLink exact to="/">
           <div className='left-side'>
-            <img src='image/SnackoverflowLogo-removebg-preview.png' alt='Logo' className='logo'></img>
+            <img src={logo} alt='Logo' className='logo'></img>
           </div>
         </NavLink>
       </div>
