@@ -20,9 +20,7 @@ const QuestionDetails = () => {
         return state.questionsReducer.question[questionId]
     })
 
-    // console.log(questionInfoObj.answers[4].user_id === sessionUser.id)
 
-    // console.log(sessionUser.id)
     // const answerid = questionInfoObj?.answers[0]?.id
 
 

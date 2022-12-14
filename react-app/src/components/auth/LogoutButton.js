@@ -7,12 +7,12 @@ const LogoutButton = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const onLogout = async (e) => {
-    await dispatch(logout());
-    return history.push('/')
+
+    return history.push('/logout')
   };
 
   return (
-    <button onClick={onLogout}>
+    <button onClick={onLogout} className='logout-button' >
       <i className="fa fa-arrow-right-from-bracket"></i>
     </button>
   )

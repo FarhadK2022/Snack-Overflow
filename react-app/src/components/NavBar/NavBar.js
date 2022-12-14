@@ -44,7 +44,7 @@ const NavBar = () => {
         </span> */}
 
         {sessionUser ?
-          <span>
+          <span >
             <LogoutButton />
           </span>
           : ''}

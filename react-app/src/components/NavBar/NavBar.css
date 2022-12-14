@@ -14,10 +14,16 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: .075em solid rgba(150, 149, 149, 0.308)
+    border-bottom: .075em solid rgba(150, 149, 149, 0.308);
+    border-top: .2em solid rgb(96, 47, 5);
 }
 
 .right {
     margin-top: 2em;
     box-sizing: border-box;
+}
+
+.logout-button {
+    margin-top: .25em;
+    height: 2.1em;
 }
