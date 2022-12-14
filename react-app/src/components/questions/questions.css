@@ -88,6 +88,7 @@
 
 }
 
-.question-detail-tags {
+.question-detail-tags,
+.question-tried-expected-all-questions {
     margin-bottom: .5em;
 }

@@ -60,8 +60,10 @@ const Questions = () => {
                                 <Link className='title-link' style={{ textDecoration: 'none' }} to={`/questions/${obj.id}`}>
                                     <p>{obj.title}</p>
                                 </Link>
-                                <p>{obj.question} {obj.tried_expected.substring(0, 24)}...</p>
-                                <p className='question-detail-tags'>[{obj.tags}]</p>
+                                <p className='question-tried-expected-all-questions'>{obj.question} {obj.tried_expected.substring(0, 24)}...</p>
+                                {obj.tags ?
+                                    <p className='question-detail-tags'>[{obj.tags}]</p>
+                                    : null}
                             </div>
                         </div>
                     )

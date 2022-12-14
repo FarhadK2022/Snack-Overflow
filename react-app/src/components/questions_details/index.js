@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  getQuestionByIdThunk,
-  deleteQuestionThunk,
-  addLikeThunk,
-  removeLikeThunk,
+    getQuestionByIdThunk,
+    deleteQuestionThunk,
+    addLikeThunk,
+    removeLikeThunk,
 } from "../../store/question";
 import { addUpvoteThunk, addDownvoteThunk } from "../../store/answer";
 import { useParams, useHistory, Link } from "react-router-dom";
@@ -14,19 +14,19 @@ import CreateAnswerForm from "../answer_form_Modal/CreateAnswerForm";
 import SideNavBar from "../SideNavBar";
 
 const QuestionDetails = () => {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const { questionId } = useParams();
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const { questionId } = useParams();
 
-  const sessionUser = useSelector((state) => state.session.user);
+    const sessionUser = useSelector((state) => state.session.user);
 
-  const questionInfoObj = useSelector((state) => {
-    return state.questionsReducer.question[questionId];
-  });
+    const questionInfoObj = useSelector((state) => {
+        return state.questionsReducer.question[questionId];
+    });
 
-  useEffect(() => {
-    dispatch(getQuestionByIdThunk(questionId));
-  }, [dispatch, questionId]);
+    useEffect(() => {
+        dispatch(getQuestionByIdThunk(questionId));
+    }, [dispatch, questionId]);
 
     const deleteAQuestion = (e, id) => {
         e.preventDefault();
@@ -51,8 +51,8 @@ const QuestionDetails = () => {
         await dispatch(addUpvoteThunk(answerid, sessionUser.id))
         await dispatch(getQuestionByIdThunk(questionId))
 
-    return;
-  };
+        return;
+    };
 
     const createDownvote = async (e, answerid) => {
         e.preventDefault();
@@ -66,7 +66,8 @@ const QuestionDetails = () => {
         e.preventDefault();
 
         return history.push('/login')
-      }
+    }
+
 
 
     // if(!questionInfoObj){
@@ -81,95 +82,95 @@ const QuestionDetails = () => {
     //     return sessionUser?.id === obj.id
     // })
 
-  return (
-    <div className="main-container">
-      <div>
-        <SideNavBar />
-      </div>
-      <div className="questions-info-container">
-        <h1 className="question-info-title"> {questionInfoObj?.title} </h1>
-        <div className="top-q-info-page">
-          <div className="question-info-likes">
-            {" "}
-            {questionInfoObj?.likes}{" "}
-            {sessionUser && currentLike?.length === 0 ? (
-              <button className="question-like-button" onClick={createLike}>
-                <i className="fa fa-heart" />
-              </button>
-            ) : null}
-            {sessionUser && currentLike?.length >= 1 ? (
-              <button className="question-like-button" onClick={removeLike}>
-                <i className="fa fa-times" />
-              </button>
-            ) : null}
-          </div>
-          <div className="question-info">
-            <div> {questionInfoObj?.question}</div>
-            <div> {questionInfoObj?.tried_expected} </div>
-            <div> Tags: {questionInfoObj?.tags.split(",").join(" ")} </div>
-            <div className="question-buttons">
-              <div>
-                {sessionUser &&
-                  (sessionUser.id === questionInfoObj?.user_id ? (
-                    <EditQuestionButton />
-                  ) : null)}
-              </div>
-              <div>
-                {sessionUser &&
-                  (sessionUser.id === questionInfoObj?.user_id ? (
-                    <button
-                      onClick={(event) => deleteAQuestion(event, questionId)}
-                      className="delete-button"
-                    >
-                      {" "}
-                      Delete{" "}
-                    </button>
-                  ) : null)}
-              </div>
+    return (
+        <div className="main-container">
+            <div>
+                <SideNavBar />
             </div>
-          </div>
+            <div className="questions-info-container">
+                <h1 className="question-info-title"> {questionInfoObj?.title} </h1>
+                <div className="top-q-info-page">
+                    <div className="question-info-likes">
+                        {" "}
+                        {questionInfoObj?.likes}{" "}
+                        {sessionUser && currentLike?.length === 0 ? (
+                            <button className="question-like-button" onClick={createLike}>
+                                <i className="fa fa-heart" />
+                            </button>
+                        ) : null}
+                        {sessionUser && currentLike?.length >= 1 ? (
+                            <button className="question-like-button" onClick={removeLike}>
+                                <i className="fa fa-times" />
+                            </button>
+                        ) : null}
+                    </div>
+                    <div className="question-info">
+                        <div> {questionInfoObj?.question}</div>
+                        <div> {questionInfoObj?.tried_expected} </div>
+                        <div> Tags: {questionInfoObj?.tags.split(",").join(" ")} </div>
+                        <div className="question-buttons">
+                            <div>
+                                {sessionUser &&
+                                    (sessionUser.id === questionInfoObj?.user_id ? (
+                                        <EditQuestionButton />
+                                    ) : null)}
+                            </div>
+                            <div>
+                                {sessionUser &&
+                                    (sessionUser.id === questionInfoObj?.user_id ? (
+                                        <button
+                                            onClick={(event) => deleteAQuestion(event, questionId)}
+                                            className="delete-button"
+                                        >
+                                            {" "}
+                                            Delete{" "}
+                                        </button>
+                                    ) : null)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="mid-q-info-page">
+                    <div className="question-info-answer">
+                        {" "}
+                        Answers{" "}
+                        {questionInfoObj?.answers.map((obj) => {
+                            return (
+                                <li key={obj.id}>
+                                    <div className="answer-voting">
+                                        <button onClick={(e) => createUpvote(e, obj.id)}>
+                                            {" "}
+                                            <i className="fa fa-arrow-up" />{" "}
+                                        </button>{" "}
+                                        {obj?.votes}{" "}
+                                        <button onClick={(e) => createDownvote(e, obj.id)}>
+                                            {" "}
+                                            <i className="fa fa-arrow-down" />{" "}
+                                        </button>{" "}
+                                    </div>
+                                    <div className="answer-voting-body">
+                                        {obj?.body}{" "}
+                                        {sessionUser &&
+                                            (sessionUser.id === obj?.user_id ? (
+                                                <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link>
+                                            ) : null)}
+                                    </div>
+                                </li>
+                            );
+                        })}
+                    </div>
+                </div>
+                <div className="bottom-q-info-page">
+                    <div className="question-info-answer">
+                        {sessionUser &&
+                            (sessionUser.id === questionInfoObj?.user_id ? null : (
+                                <CreateAnswerForm />
+                            ))}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="mid-q-info-page">
-          <div className="question-info-answer">
-            {" "}
-            Answers{" "}
-            {questionInfoObj?.answers.map((obj) => {
-              return (
-                <li key={obj.id}>
-                  <div className="answer-voting">
-                    <button onClick={(e) => createUpvote(e, obj.id)}>
-                      {" "}
-                      <i className="fa fa-arrow-up" />{" "}
-                    </button>{" "}
-                    {obj?.votes}{" "}
-                    <button onClick={(e) => createDownvote(e, obj.id)}>
-                      {" "}
-                      <i className="fa fa-arrow-down" />{" "}
-                    </button>{" "}
-                  </div>
-                  <div className="answer-voting-body">
-                    {obj?.body}{" "}
-                    {sessionUser &&
-                      (sessionUser.id === obj?.user_id ? (
-                        <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link>
-                      ) : null)}
-                  </div>
-                </li>
-              );
-            })}
-          </div>
-        </div>
-        <div className="bottom-q-info-page">
-          <div className="question-info-answer">
-            {sessionUser &&
-              (sessionUser.id === questionInfoObj?.user_id ? null : (
-                <CreateAnswerForm />
-              ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default QuestionDetails;
