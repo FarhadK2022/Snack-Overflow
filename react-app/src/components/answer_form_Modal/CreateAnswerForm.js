@@ -1,30 +1,20 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { createAnswerThunk } from "../../store/answer";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
 import { getQuestionByIdThunk } from "../../store/question";
 
 const CreateAnswerForm = (setShowModal) => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const sessionUser = useSelector(state => state.session.user)
   const [body, setBody] = useState("");
+  const [errors, setErrors] = useState([])
+
   const { questionId } = useParams()
 
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const newAnswer = {
-  //     body,
-  //   };
-
-  //   const createdAnswer = await dispatch(createAnswerThunk(newAnswer, questionId, sessionUser));
-
-  //   if (createdAnswer) {
-  //     setShowModal(false);
-  //   }
-  // };
+  const minLength = 20
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,30 +28,40 @@ const CreateAnswerForm = (setShowModal) => {
     await dispatch(createAnswerThunk(newAnswer));
     setBody('');
     return await dispatch(getQuestionByIdThunk(questionId))
-
-
   };
 
-  // useEffect(() => {
-  //   dispatch(getQuestionByIdThunk(questionId))
-  // }, [dispatch, questionId])
+  useEffect(() => {
+    const err = []
+
+    if(body.length < minLength){
+      err.push("The Answer field is required and must be at least 20 characters long")
+    }
+
+    setErrors(err)
+  }, [body])
+
 
 
   return (
     <form onSubmit={handleSubmit}>
+      <ul>
+        {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
+      <div>
       <label>
-        Answer
-        <input
+        Answer:
+        <br></br>
+        <textarea
           className="inputField"
           type="text"
           placeholder="Please be detailed in your Answer"
           value={body}
           onChange={(e) => setBody(e.target.value)}
           required
-        ></input>
+        ></textarea>
       </label>
-
       <button type="submit">Submit Answer</button>
+      </div>
     </form>
   );
 };

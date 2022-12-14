@@ -66,6 +66,13 @@ const QuestionDetails = () => {
         return
     }
 
+    const onSubmit = async (e) => {
+        e.preventDefault();
+
+        return history.push('/login')
+      }
+
+
     // if(!questionInfoObj){
     //     return null
     // }
@@ -105,6 +112,9 @@ const QuestionDetails = () => {
 
                 <div>
                     {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? null : <CreateAnswerForm />)}
+                </div>
+                <div>
+                    {sessionUser ? null : <button onClick={onSubmit}>Submit Answer</button>}
                 </div>
             </div>
         </div>
