@@ -20,8 +20,9 @@ const QuestionDetails = () => {
         return state.questionsReducer.question[questionId]
     })
 
-    console.log(questionInfoObj)
+    console.log(questionInfoObj.answers[4].user_id === sessionUser.id)
 
+    console.log(sessionUser.id)
     // const answerid = questionInfoObj?.answers[0]?.id
 
 
@@ -89,21 +90,21 @@ const QuestionDetails = () => {
             <div>
                 <SideNavBar />
             </div>
-        <div>
-            <div> Title: {questionInfoObj?.title} </div>
-            <div> Question: {questionInfoObj?.question}</div>
-            <div> Tried & Expected: {questionInfoObj?.tried_expected} </div>
-            <div> Tags: {questionInfoObj?.tags.split(',').join(' ')} </div>
-            <div>  Likes: {questionInfoObj?.likes}    {sessionUser && currentLike?.length === 0 ? <button onClick={createLike}><i className="fa fa-heart" /></button> : null}
-            {sessionUser && currentLike?.length >= 1 ? <button onClick={removeLike}><i className="fa fa-times" /></button> : null}</div>
-            <div> Answers: {questionInfoObj?.answers.map((obj) => {
-                // {console.log("THIS IS OBJ", obj)}
-                return <li key={obj.id}>{obj?.body} Votes: {obj?.votes} <button onClick={(e) => createUpvote(e, obj.id)}> <i className="fa fa-arrow-up" /> </button> <button onClick={(e) => createDownvote(e, obj.id)}> <i className="fa fa-arrow-down" /> </button>
-                {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link> : null)}</li>
-            })}  </div>
+            <div>
+                <div> Title: {questionInfoObj?.title} </div>
+                <div> Question: {questionInfoObj?.question}</div>
+                <div> Tried & Expected: {questionInfoObj?.tried_expected} </div>
+                <div> Tags: {questionInfoObj?.tags.split(',').join(' ')} </div>
+                <div>  Likes: {questionInfoObj?.likes}    {sessionUser && currentLike?.length === 0 ? <button onClick={createLike}><i className="fa fa-heart" /></button> : null}
+                    {sessionUser && currentLike?.length >= 1 ? <button onClick={removeLike}><i className="fa fa-times" /></button> : null}</div>
+                <div> Answers: {questionInfoObj?.answers.map((obj) => {
+                    // {console.log("THIS IS OBJ", obj)}
+                    return <li key={obj.id}>{obj?.body} Votes: {obj?.votes} <button onClick={(e) => createUpvote(e, obj.id)}> <i className="fa fa-arrow-up" /> </button> <button onClick={(e) => createDownvote(e, obj.id)}> <i className="fa fa-arrow-down" /> </button>
+                        {sessionUser && (sessionUser.id === obj?.user_id ? <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link> : null)}</li>
+                })}  </div>
 
 
-            {/* <div> */}
+                {/* <div> */}
                 {/* <div> Title: {questionInfoObj?.title} </div>
                 <div> Question: {questionInfoObj?.question}</div>
                 <div> Tried & Expected: {questionInfoObj?.tried_expected} </div>
@@ -114,7 +115,7 @@ const QuestionDetails = () => {
                     // {console.log("THIS IS OBJ", obj)}
 
                     return <li key={obj.id}>{obj?.body} Votes: {obj?.votes} */}
-{/*
+                {/*
                         {sessionUser && (sessionUser.id === obj?.user_id ? <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link> : null)}</li>
                 })}  </div> */}
 

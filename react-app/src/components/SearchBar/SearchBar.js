@@ -22,7 +22,7 @@ const SearchBar = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="search-form">
         <input
           type="search"
           placeholder="🔍Search..."
@@ -31,8 +31,8 @@ const SearchBar = () => {
           required
           className="search-bar"
         />
-        <label>
-          Filters
+        <label className="search-filter">
+
           <select
             className="queryParams"
             type="text"
@@ -40,13 +40,13 @@ const SearchBar = () => {
             onChange={(e) => setFilter(e.target.value)}
             required
           >
-            <option placeholder=""></option>
+            <option selected disabled>Filters</option>
             <option value={"title"}>By Title</option>
             <option value={"body"}>By Content</option>
             <option value={"tags"}>By Tags</option>
           </select>
         </label>
-        <button type="submit">🔍</button>
+        <button type="submit" className="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
     </div>
   );

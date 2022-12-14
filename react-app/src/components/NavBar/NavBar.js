@@ -42,11 +42,7 @@ const NavBar = () => {
             Ask Question
           </NavLink>
         </span> */}
-        <span>
-          <NavLink to='/questions' exact={true} activeClassName='active'>
-            Questions
-          </NavLink>
-        </span>
+
         {sessionUser ?
           <span>
             <LogoutButton />

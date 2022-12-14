@@ -12,6 +12,7 @@ import QuestionDetails from './components/questions_details'
 import SearchResultsPage from './components/SearchBar/SearchResultsPage';
 import EditAnswerButton from './components/edit_answer';
 import SideNavBar from './components/SideNavBar';
+import SplashPage from './components/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -55,7 +56,7 @@ function App() {
           <SearchResultsPage />
         </Route>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <SplashPage />
         </Route>
       </Switch>
     </BrowserRouter>
