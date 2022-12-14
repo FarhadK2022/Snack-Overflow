@@ -167,3 +167,17 @@ def unlike(id):
       question.question_likes.remove(user)
       db.session.commit()
       return question.to_dict()
+
+# @questions_routes.route("/<int:id>/upvote", methods=["GET"])
+# @login_required
+# def addupvote(id):
+
+#   user = User.query.get(current_user.id)
+
+#   answer = Answer.query.get(id)
+#   print("!!!!!! THHIS IS ANSWER", answer)
+
+#   answer.answer_upvote.append(user)
+#   db.session.commit()
+#   # print("@@@@@@@@@@@@@@", question)
+#   return answer.to_dict()
