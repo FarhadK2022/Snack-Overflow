@@ -51,19 +51,19 @@ def seed_answers():
 
     answer_4 = Answer(
         question_id=3,
-        user_id=8,
+        user_id=3,
         body="of course cereal is a soup, if gazpacho is a soup then cereal is a soup."
     )
 
     answer_5 = Answer(
         question_id=3,
-        user_id=9,
+        user_id=4,
         body="my brother... you spelled cereal wrong LMAO get wrecked"
     )
 
     answer_6 = Answer(
         question_id=3,
-        user_id=7,
+        user_id=5,
         body="what is the point of creating categories if we're just gonna throw them around willy nilly, I dont think cereal is a soup"
     )
 
@@ -75,7 +75,7 @@ def seed_answers():
 
     answer_8 = Answer(
         question_id=1,
-        user_id=3,
+        user_id=5,
         body="I'm fine with pineapple being on pizza people should just let other eat how they want."
     )
 
@@ -87,7 +87,7 @@ def seed_answers():
 
     answer_10 = Answer(
         question_id=2,
-        user_id=1,
+        user_id=5,
         body="personally I dont think a hotdog is a sandwich I heard from the hotdog master, Brad Simpson that a sandwich is 2 pieces of bread and a hotdog bun is technically 1 piece."
     )
 
