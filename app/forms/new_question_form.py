@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired, ValidationError, Length
 from app.models import Question
 
 
@@ -9,3 +9,9 @@ class QuestionForm(FlaskForm):
     question = TextAreaField("Question", validators=[DataRequired()])
     tried_expected = TextAreaField("Tried_Expected", validators=[DataRequired()])
     tags = StringField("Tags")
+
+
+
+
+# , Length(min=20)
+# , Length(min=20)
