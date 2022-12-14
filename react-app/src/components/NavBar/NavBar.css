@@ -27,3 +27,49 @@
     margin-top: .25em;
     height: 2.1em;
 }
+
+
+
+.login-button-navbar {
+    box-sizing: border-box;
+    height: 2.5em;
+    width: 5.13em;
+    background-color: rgba(217, 240, 255, 0.634);
+    color: rgb(79, 124, 182);
+    border-radius: .3em;
+    border: .1em solid rgba(88, 121, 156, 0.815);
+    font-size: small;
+    padding-left: .75em;
+    padding-right: .75em;
+    margin-top: .4em;
+    margin-left: .5em;
+}
+
+.sign-up-button-navbar {
+    box-sizing: border-box;
+    height: 2.5em;
+    width: 5.13em;
+    background-color: rgb(0, 149, 255);
+    color: white;
+    border-radius: .3em;
+    border: .1em solid rgb(0, 124, 247);
+    font-size: small;
+    padding-left: .75em;
+    padding-right: .75em;
+    margin-top: .4em;
+
+}
+
+.sign-up-button-navbar:hover {
+    background-color: rgb(16, 128, 208);
+}
+
+.login-button-navbar:hover {
+    background-color: rgba(132, 179, 210, 0.634);
+}
+
+.login-and-sign-up {
+    display: flex;
+    flex-direction: row;
+    gap: .5em;
+}

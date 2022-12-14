@@ -61,7 +61,7 @@ const Questions = () => {
                                     <p>{obj.title}</p>
                                 </Link>
                                 <p>{obj.question} {obj.tried_expected.substring(0, 24)}...</p>
-                                <p>[{obj.tags}]</p>
+                                <p className='question-detail-tags'>[{obj.tags}]</p>
                             </div>
                         </div>
                     )

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import SearchBar from '../SearchBar/SearchBar';
@@ -9,6 +9,18 @@ import logo from '../../assets/SnackoverflowLogo-removebg-preview.png'
 import './NavBar.css';
 
 const NavBar = () => {
+  const history = useHistory();
+
+  const loginButton = (e) => {
+    e.preventDefault()
+    return history.push('/login')
+  }
+
+  const signUpButton = (e) => {
+    e.preventDefault()
+    return history.push('/sign-up')
+  }
+
   const sessionUser = useSelector(state => state.session.user);
   return (
     <nav className='navbar'>
@@ -25,16 +37,11 @@ const NavBar = () => {
       <div className='right'>
         {!sessionUser ?
           <>
-            <span>
-              <NavLink to='/login' exact={true} activeClassName='active'>
-                Login
-              </NavLink>
-            </span>
-            <span>
-              <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                Sign Up
-              </NavLink>
-            </span>
+            <div className='login-and-sign-up'>
+              <button onClick={event => loginButton(event)} className='login-button-navbar'>Log in</button>
+              <button onClick={event => signUpButton(event)} className='sign-up-button-navbar'>Sign up</button>
+            </div>
+
           </>
           : ""}
         {/* <span>
