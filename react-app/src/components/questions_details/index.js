@@ -15,7 +15,6 @@ const QuestionDetails = () => {
 
     const sessionUser = useSelector(state => state.session.user)
 
-
     const questionInfoObj = useSelector(state => {
         return state.questionsReducer.question[questionId]
     })
@@ -26,6 +25,7 @@ const QuestionDetails = () => {
 
 
 
+    // console.log(questionInfoObj)
 
     useEffect(() => {
         dispatch(getQuestionByIdThunk(questionId))
@@ -37,8 +37,6 @@ const QuestionDetails = () => {
         dispatch(deleteQuestionThunk(id))
         return setTimeout(function () { history.push('/questions'); }, 10);
     }
-
-    // const userId = sessionUser.id
 
     const createLike = async (e) => {
         e.preventDefault();
@@ -68,20 +66,17 @@ const QuestionDetails = () => {
         return
     }
 
-
-
     // if(!questionInfoObj){
     //     return null
     // }
+
     const currentLike = questionInfoObj?.who_liked.filter((obj) => {
         return sessionUser?.id === obj.id
     })
-    // console.log("@@@@@@@@", currentLike)
-    const currentVote = questionInfoObj?.answers.filter((obj) => {
-        return sessionUser?.id === obj.id
-    })
 
-    // console.log("@@@@@@@@", currentVote)
+    // const currentVote = questionInfoObj?.answers.filter((obj) => {
+    //     return sessionUser?.id === obj.id
+    // })
 
     return (
         <div className='main-container'>
@@ -93,30 +88,14 @@ const QuestionDetails = () => {
                 <div> Question: {questionInfoObj?.question}</div>
                 <div> Tried & Expected: {questionInfoObj?.tried_expected} </div>
                 <div> Tags: {questionInfoObj?.tags.split(',').join(' ')} </div>
-                <div>  Likes: {questionInfoObj?.likes}    {sessionUser && currentLike?.length === 0 ? <button onClick={createLike}><i className="fa fa-heart" /></button> : null}
+                <div>  Likes: {questionInfoObj?.likes}    {(sessionUser && currentLike?.length === 0) && sessionUser.id !== questionInfoObj.user_id ? <button onClick={createLike}><i className="fa fa-heart" /></button> : null}
                     {sessionUser && currentLike?.length >= 1 ? <button onClick={removeLike}><i className="fa fa-times" /></button> : null}</div>
                 <div> Answers: {questionInfoObj?.answers.map((obj) => {
                     // {console.log("THIS IS OBJ", obj)}
-                    return <li key={obj.id}>{obj?.body} Votes: {obj?.votes} <button onClick={(e) => createUpvote(e, obj.id)}> <i className="fa fa-arrow-up" /> </button> <button onClick={(e) => createDownvote(e, obj.id)}> <i className="fa fa-arrow-down" /> </button>
+                    return <li key={obj.id}>{obj?.body} Votes: {obj?.votes} {sessionUser && sessionUser.id !== obj.user_id ? <button onClick={(e) => createUpvote(e, obj.id)}> <i className="fa fa-arrow-up" /> </button> : null}
+                    {sessionUser && sessionUser.id !== obj.user_id ? <button onClick={(e) => createDownvote(e, obj.id)}> <i className="fa fa-arrow-down" /> </button> : null}
                         {sessionUser && (sessionUser.id === obj?.user_id ? <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link> : null)}</li>
                 })}  </div>
-
-
-                {/* <div> */}
-                {/* <div> Title: {questionInfoObj?.title} </div>
-                <div> Question: {questionInfoObj?.question}</div>
-                <div> Tried & Expected: {questionInfoObj?.tried_expected} </div>
-                <div> Tags: {questionInfoObj?.tags.split(',').join(' ')} </div>
-                <div>  Likes: {questionInfoObj?.likes}    {sessionUser && currentLike?.length === 0 ? <button onClick={createLike}><i className="fa fa-heart" /></button> : null}
-                    {sessionUser && currentLike?.length >= 1 ? <button onClick={removeLike}><i className="fa fa-times" /></button> : null}</div>
-                <div> Answers: {questionInfoObj?.answers.map((obj) => {
-                    // {console.log("THIS IS OBJ", obj)}
-
-                    return <li key={obj.id}>{obj?.body} Votes: {obj?.votes} */}
-                {/*
-                        {sessionUser && (sessionUser.id === obj?.user_id ? <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link> : null)}</li>
-                })}  </div> */}
-
                 <div>
                     {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? <button onClick={(event) => deleteAQuestion(event, questionId)} className='delete-button'> Delete Question </button> : null)}
                 </div>
@@ -131,7 +110,6 @@ const QuestionDetails = () => {
         </div>
 
     )
-
 }
 
 export default QuestionDetails
