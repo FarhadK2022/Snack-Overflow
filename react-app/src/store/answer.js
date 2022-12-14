@@ -26,12 +26,12 @@ const deleteAnswer = (answer) => ({
 })
 
 const addAnswerUpvote = (vote) => ({
-    type: ADD_DOWN,
+    type: ADD_UP,
     payload: vote
 })
 
 const addAnswerDownvote = (vote) => ({
-    type: ADD_UP,
+    type: ADD_DOWN,
     payload: vote
 })
 
@@ -51,6 +51,7 @@ export const addDownvoteThunk = (answerid, userId) => async dispatch => {
     if(response.ok){
         const downvote = await response.json()
         dispatch(addAnswerDownvote(downvote))
+        return downvote
     }
 }
 

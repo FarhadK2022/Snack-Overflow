@@ -20,9 +20,9 @@ const QuestionDetails = () => {
         return state.questionsReducer.question[questionId]
     })
 
-    console.log(questionInfoObj.answers[4].user_id === sessionUser.id)
+    // console.log(questionInfoObj.answers[4].user_id === sessionUser.id)
 
-    console.log(sessionUser.id)
+    // console.log(sessionUser.id)
     // const answerid = questionInfoObj?.answers[0]?.id
 
 
@@ -56,7 +56,7 @@ const QuestionDetails = () => {
 
     const createUpvote = async (e, answerid) => {
         e.preventDefault();
-        await dispatch(addUpvoteThunk(answerid, userId))
+        await dispatch(addUpvoteThunk(answerid, sessionUser.id))
         await dispatch(getQuestionByIdThunk(questionId))
 
         return
@@ -64,7 +64,7 @@ const QuestionDetails = () => {
 
     const createDownvote = async (e, answerid) => {
         e.preventDefault();
-        await dispatch(addDownvoteThunk(answerid, userId))
+        await dispatch(addDownvoteThunk(answerid, sessionUser.id))
         await dispatch(getQuestionByIdThunk(questionId))
 
         return

@@ -100,6 +100,11 @@ def addupvote(id):
       db.session.commit()
       return answer.to_dict()
 
+  for y in answer.answer_upvote:
+    if user.id == y.id:
+      answer.answer_upvote.remove(user)
+      db.session.commit()
+      return answer.to_dict()
 
   answer.answer_upvote.append(user)
   db.session.commit()
@@ -116,10 +121,17 @@ def adddownvote(id):
 
   for x in answer.answer_upvote:
     if user.id == x.id:
+      answer.answer_upvote.remove(user)
       answer.answer_downvote.append(user)
+
       db.session.commit()
       return answer.to_dict()
 
+  for y in answer.answer_downvote:
+    if user.id == y.id:
+      answer.answer_downvote.remove(user)
+      db.session.commit()
+      return answer.to_dict()
 
   answer.answer_downvote.append(user)
   db.session.commit()
