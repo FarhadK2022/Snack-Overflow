@@ -12,7 +12,10 @@ const SearchBar = () => {
   const  handleSubmit = async (e) => {
     e.preventDefault();
     const searchResults = await dispatch(getResultsThunk(filter, searchInput));
-    if(searchResults) return;
+    if(searchResults){
+      setFilter("title")
+      return setSearchInput("")
+    }
   };
 
   return (
@@ -23,7 +26,6 @@ const SearchBar = () => {
         placeholder="Search..."
         defaultValue={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
-        value={searchInput}
         required
         className="search-bar"
       />
@@ -32,7 +34,7 @@ const SearchBar = () => {
       <select
           className="queryParams"
           type="text"
-          value={filter}
+          defaultValue={filter}
           onChange={(e) => setFilter(e.target.value)}
         >
           <option value={'title'}>By Title</option>
