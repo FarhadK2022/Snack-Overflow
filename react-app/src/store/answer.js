@@ -2,6 +2,8 @@ const ADD_ANSWER = 'ask/NEW_ANSWER'
 const GET_ANSWERS = 'get/ALL_ANSWERS'
 const EDIT_ANSWER = 'edit/ONE_ANSWER'
 const DELETE_ANSWER = 'delete/ONE_ANSWER'
+const ADD_UP = 'add/UPVOTE'
+const ADD_DOWN = 'add/DOWNVOTE'
 
 const addAnswer = (answer) => ({
     type: ADD_ANSWER,
@@ -22,6 +24,35 @@ const deleteAnswer = (answer) => ({
     type: DELETE_ANSWER,
     payload: answer
 })
+
+const addAnswerUpvote = (vote) => ({
+    type: ADD_DOWN,
+    payload: vote
+})
+
+const addAnswerDownvote = (vote) => ({
+    type: ADD_UP,
+    payload: vote
+})
+
+export const addUpvoteThunk = (answerid, userId) => async dispatch => {
+    const response = await fetch(`/api/answers/${answerid}/upvote`)
+
+    if(response.ok){
+        const upvote = await response.json()
+        dispatch(addAnswerUpvote(upvote))
+        return upvote
+    }
+}
+
+export const addDownvoteThunk = (answerid, userId) => async dispatch => {
+    const response = await fetch(`/api/answers/${answerid}/downvote`)
+
+    if(response.ok){
+        const downvote = await response.json()
+        dispatch(addAnswerDownvote(downvote))
+    }
+}
 
 
 export const deleteAnswerThunk = (answerid) => async dispatch => {
