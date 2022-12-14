@@ -20,7 +20,12 @@ const QuestionDetails = () => {
     })
 
     console.log(questionInfoObj)
-    const answerid = questionInfoObj?.answers[0]?.id
+
+    // const answerid = questionInfoObj?.answers[0]?.id
+
+
+
+
 
     useEffect(() => {
         dispatch(getQuestionByIdThunk(questionId))
@@ -47,16 +52,20 @@ const QuestionDetails = () => {
         await dispatch(getQuestionByIdThunk(questionId))
     }
 
-    const createUpvote = async (e) => {
+    const createUpvote = async (e, answerid) => {
         e.preventDefault();
         await dispatch(addUpvoteThunk(answerid, userId))
         await dispatch(getQuestionByIdThunk(questionId))
+
+        return
     }
 
-    const createDownvote = async (e) => {
+    const createDownvote = async (e, answerid) => {
         e.preventDefault();
         await dispatch(addDownvoteThunk(answerid, userId))
         await dispatch(getQuestionByIdThunk(questionId))
+
+        return
     }
 
 
@@ -84,7 +93,7 @@ const QuestionDetails = () => {
             {sessionUser && currentLike?.length >= 1 ? <button onClick={removeLike}><i className="fa fa-times" /></button> : null}</div>
             <div> Answers: {questionInfoObj?.answers.map((obj) => {
                 // {console.log("THIS IS OBJ", obj)}
-                return <li key={obj.id}>{obj?.body} Votes: {obj?.votes} <button onClick={createUpvote}> <i className="fa fa-arrow-up" /> </button> <button onClick={createDownvote}> <i className="fa fa-arrow-down" /> </button>
+                return <li key={obj.id}>{obj?.body} Votes: {obj?.votes} <button onClick={(e) => createUpvote(e, obj.id)}> <i className="fa fa-arrow-up" /> </button> <button onClick={(e) => createDownvote(e, obj.id)}> <i className="fa fa-arrow-down" /> </button>
                 {sessionUser && (sessionUser.id === questionInfoObj?.user_id ? <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link> : null)}</li>
             })}  </div>
 
