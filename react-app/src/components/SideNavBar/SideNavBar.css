@@ -2,11 +2,13 @@
     display: flex;
     flex-direction: column;
     padding-right: 5em;
+    padding-left: 1em;
     /* background-color: aqua; */
     border-right: .075em solid rgba(150, 149, 149, 0.308);
 
     width: 6em;
     height: 100%;
+
 }
 
 .all-questions-link,

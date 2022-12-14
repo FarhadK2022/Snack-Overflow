@@ -43,7 +43,11 @@
 }
 
 .question-detail-container {
+    display: flex;
+    flex-direction: column;
     margin-left: .5em;
+    /* margin: 1em; */
+    gap: 1em;
 }
 
 .ask-question-button {
@@ -82,4 +86,8 @@
     border-bottom: .075em solid rgba(150, 149, 149, 0.308);
     border-width: 100%;
 
+}
+
+.question-detail-tags {
+    margin-bottom: .5em;
 }
