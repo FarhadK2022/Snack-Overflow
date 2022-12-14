@@ -33,17 +33,17 @@ const QuestionDetails = () => {
         return setTimeout(function () { history.push('/questions'); }, 10);
     }
 
-    const userId = sessionUser.id
+    // const userId = sessionUser.id
 
     const createLike = async (e) => {
         e.preventDefault();
-        await dispatch(addLikeThunk(questionId, userId))
+        await dispatch(addLikeThunk(questionId, sessionUser.id))
         await dispatch(getQuestionByIdThunk(questionId))
     }
 
     const removeLike = async (e) => {
         e.preventDefault();
-        await dispatch(removeLikeThunk(questionId, userId))
+        await dispatch(removeLikeThunk(questionId, sessionUser.id))
         await dispatch(getQuestionByIdThunk(questionId))
     }
 

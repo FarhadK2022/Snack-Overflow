@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createAnswerThunk } from "../../store/answer";
 import { useParams } from "react-router-dom";
