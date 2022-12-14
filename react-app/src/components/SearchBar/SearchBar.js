@@ -7,7 +7,7 @@ import "./SearchBar.css";
 const SearchBar = () => {
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState("");
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState("title");
   const history = useHistory();
 
   const handleSubmit = async (e) => {
@@ -40,13 +40,13 @@ const SearchBar = () => {
             onChange={(e) => setFilter(e.target.value)}
             required
           >
-            <option selected disabled>Filters</option>
+            <option disabled>Filters</option>
             <option value={"title"}>By Title</option>
             <option value={"body"}>By Content</option>
             <option value={"tags"}>By Tags</option>
           </select>
         </label>
-        <button type="submit" className="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button type="submit" className="search-button"><i className="fa-solid fa-magnifying-glass"></i></button>
       </form>
     </div>
   );
