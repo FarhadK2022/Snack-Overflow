@@ -1,34 +1,51 @@
 import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
-
+import { useDispatch } from "react-redux";
+import {  Redirect } from "react-router-dom";
+import { getResultsThunk } from "../../store/search";
+import './SearchBar.css'
 
 const SearchBar = () => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const [searchInput, setSearchInput] = useState("");
+  const [filter, setFilter] = useState("title");
 
-  const handleSubmit = async (e) => {
+  const  handleSubmit = async (e) => {
     e.preventDefault();
-    setSearchInput(e.target.value);
-
-    const searchResults = await fetch(`/api/search?question=${searchInput}`)
-    return searchResults
+    const searchResults = await dispatch(getResultsThunk(filter, searchInput));
+    if(searchResults){
+      setFilter("title")
+      return setSearchInput("")
+    }
   };
-  console.log(searchInput)
 
   return (
+    <div>
     <form onSubmit={handleSubmit}>
-
       <input
         type="search"
         placeholder="Search..."
-        value={searchInput}
+        defaultValue={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
         required
+        className="search-bar"
       />
-
-    <button type="submit">Search</button>
-
+      <label>
+        Filters
+      <select
+          className="queryParams"
+          type="text"
+          defaultValue={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        >
+          <option value={'title'}>By Title</option>
+          <option value={'body'}>By Content</option>
+          <option value={'tags'}>By Tags</option>
+        </select>
+      </label>
+       <button type="submit">Search</button>
     </form>
+    <Redirect to={`/search/?question=${searchInput}&filter=${filter}`}/>
+  </div>
   );
 };
 

@@ -1,0 +1,15 @@
+.search-bar {
+    width: 40em;
+    margin-top: 2.5em;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.search-button {
+    height: 2em;
+    margin-top: 2.5em;
+    margin-left: 1em;
+}

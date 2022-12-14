@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import SearchBar from '../SearchBar/SearchBar';
+// import logo from '../../../public/image/SnackoverFlow.png'
 import './NavBar.css';
 
 const NavBar = () => {
@@ -16,11 +17,11 @@ const NavBar = () => {
             <img src='image/SnackoverflowLogo-removebg-preview.png' alt='Logo' className='logo'></img>
           </div>
         </NavLink>
-        <div className='middle'>
-          <SearchBar/>
-        </div>
       </div>
-      <ul>
+      <div className='middle'>
+        <SearchBar />
+      </div>
+      <div className='right'>
         {!sessionUser ?
           <>
             <span>
@@ -35,11 +36,11 @@ const NavBar = () => {
             </span>
           </>
           : ""}
-        <span>
+        {/* <span>
           <NavLink to='/ask' exact={true} activeClassName='active'>
             Ask Question
           </NavLink>
-        </span>
+        </span> */}
         <span>
           <NavLink to='/questions' exact={true} activeClassName='active'>
             Questions
@@ -50,7 +51,7 @@ const NavBar = () => {
             <LogoutButton />
           </span>
           : ''}
-      </ul>
+      </div>
     </nav>
   );
 }

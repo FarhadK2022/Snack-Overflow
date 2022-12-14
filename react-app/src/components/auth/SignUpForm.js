@@ -23,6 +23,11 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else{
+
+      return setErrors([
+        "Confirm Password field must be the same as the Password field",
+      ]);
     }
   };
 
@@ -80,6 +85,7 @@ const SignUpForm = () => {
           name='username'
           onChange={updateUsername}
           value={username}
+          required
         ></input>
       </div>
       <div>
@@ -89,9 +95,9 @@ const SignUpForm = () => {
           name='email'
           onChange={updateEmail}
           value={email}
+          required
         ></input>
       </div>
-
       <div>
         <label>Biography</label>
         <textarea
@@ -117,6 +123,7 @@ const SignUpForm = () => {
           name='full_name'
           onChange={updateFullName}
           value={full_name}
+          required
         ></input>
       </div>
       <div>
@@ -135,6 +142,7 @@ const SignUpForm = () => {
           name='password'
           onChange={updatePassword}
           value={password}
+          required
         ></input>
       </div>
       <div>

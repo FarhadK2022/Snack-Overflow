@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_required
-from app.models import Question, db, Answer
+from app.models import Question, db, Answer, User
 from app.forms import QuestionForm, AnswerForm
+
 
 
 questions_routes = Blueprint("questions", __name__)
@@ -127,3 +128,42 @@ def add_answer_to_question(id):
     db.session.commit()
     return answer.to_dict()
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@questions_routes.route("/<int:id>/like", methods=["GET"])
+@login_required
+def addlike(id):
+
+  user = User.query.get(current_user.id)
+
+  question = Question.query.get(id)
+
+  # print("!!!!!!!!!!!", question.question_likes)
+  # for x in question.question_likes:
+  #   print(x.id)
+  #   if x.id == current_user.id:
+  #     question.question_likes.remove(user)
+  #     db.session.commit()
+  #     return question.to_dict()
+
+
+  question.question_likes.append(user)
+  db.session.commit()
+  # print("@@@@@@@@@@@@@@", question)
+  return question.to_dict()
+
+@questions_routes.route("/<int:id>/unlike", methods=["GET"])
+@login_required
+def unlike(id):
+
+  user = User.query.get(current_user.id)
+
+  question = Question.query.get(id)
+
+  # print("!!!!!!!!!!!", question.question_likes)
+  for x in question.question_likes:
+    # print(x.id)
+    if x.id == current_user.id:
+      question.question_likes.remove(user)
+      db.session.commit()
+      return question.to_dict()
