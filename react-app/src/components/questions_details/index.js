@@ -93,7 +93,7 @@ const QuestionDetails = () => {
                     <div className="question-info-likes">
                         {" "}
                         {questionInfoObj?.likes}{" "}
-                        {sessionUser && currentLike?.length === 0 ? (
+                        {sessionUser && sessionUser?.id != questionInfoObj?.user_id && currentLike?.length === 0 ? (
                             <button className="question-like-button" onClick={createLike}>
                                 <i className="fa fa-heart" />
                             </button>
@@ -138,15 +138,23 @@ const QuestionDetails = () => {
                             return (
                                 <li key={obj.id}>
                                     <div className="answer-voting">
-                                        <button onClick={(e) => createUpvote(e, obj.id)}>
-                                            {" "}
-                                            <i className="fa fa-arrow-up" />{" "}
-                                        </button>{" "}
+                                        {sessionUser && sessionUser.id != obj.user_id ?
+                                            <>
+                                                <button onClick={(e) => createUpvote(e, obj.id)}>
+                                                    {" "}
+                                                    <i className="fa fa-arrow-up" />{" "}
+                                                </button>{" "}
+                                            </>
+                                            : ''}
                                         {obj?.votes}{" "}
-                                        <button onClick={(e) => createDownvote(e, obj.id)}>
-                                            {" "}
-                                            <i className="fa fa-arrow-down" />{" "}
-                                        </button>{" "}
+                                        {sessionUser && sessionUser.id != obj.user_id ?
+                                            <>
+                                                <button onClick={(e) => createDownvote(e, obj.id)}>
+                                                    {" "}
+                                                    <i className="fa fa-arrow-down" />{" "}
+                                                </button>{" "}
+                                            </>
+                                            : ''}
                                     </div>
                                     <div className="answer-voting-body">
                                         {obj?.body}{" "}
