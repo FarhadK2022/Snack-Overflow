@@ -63,10 +63,10 @@
 }
 
 .question-delete-button {
-  background-color: rgb(0, 149, 255);
+  background-color: rgb(96, 47, 5);
   color: white;
   border-radius: .3em;
-  border: .1em solid rgb(0, 124, 247);
+  border: .1em solid rgb(77, 37, 3);
 }
 
 .mid-q-info-page {
@@ -152,18 +152,18 @@
 }
 
 .question-delete-button:hover {
-  box-shadow: 0 1px black;
+  background-color: rgb(64, 31, 3);
 }
 
 .edit-question-button {
-  background-color: rgb(0, 149, 255);
+  background-color: rgb(96, 47, 5);
   color: white;
   border-radius: .3em;
-  border: .1em solid rgb(0, 124, 247);
+  border: .1em solid rgb(77, 37, 3);
 }
 
 .edit-question-button:hover {
-  box-shadow: 0 1px black;
+  background-color: rgb(64, 31, 3);
 }
 
 .bottom-q-info-page {
