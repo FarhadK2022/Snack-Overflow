@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import SearchBar from '../SearchBar/SearchBar';
@@ -11,9 +11,10 @@ import './NavBar.css';
 const NavBar = () => {
   const history = useHistory();
 
+
   const loginButton = (e) => {
     e.preventDefault()
-    return history.push('/login')
+    return history.push(`/login`)
   }
 
   const signUpButton = (e) => {
