@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import * as questionActions from '../../store/question'
 import { useParams, useHistory } from 'react-router-dom';
 import { deleteAnswerThunk, editAnswerThunk } from "../../store/answer";
+import './edit_answer.css'
 
 function EditAnswerButton() {
   const history = useHistory()
@@ -15,14 +15,14 @@ function EditAnswerButton() {
     return state.questionsReducer.question
   })
 
-  const currAnswer = Object.values(currQuestion)[0].answers
+  const currAnswer = Object.values(currQuestion)[0]?.answers
 
-  const answerFilter = currAnswer.filter(obj => {
+  const answerFilter = currAnswer?.filter(obj => {
     return obj.id === +answerid
   })
 
 
-  const [body, setBody] = useState(answerFilter[0]?.body)
+  const [body, setBody] = useState(answerFilter ? answerFilter[0]?.body : 'Loading')
 
   const answerSet = (e) => {
     setBody(e.target.value);
@@ -54,26 +54,26 @@ function EditAnswerButton() {
 
 
   return (
-    <>
-
+    <div className="edit-answer-container-div">
       <form onSubmit={editCurrentAnswer} className="edit-answer-form">
         <div>
-          <label>Answer:</label>
+          <label className="edit-answer-label">Answer:</label>
+          <div className="edit-answer-text-area-div">
           <textarea
+            className="edit-answer-text-area"
             type='text'
             name='answer-body'
             value={body}
             onChange={answerSet}
           ></textarea>
+          </div>
         </div>
-        <button type='submit'>Submit Edited Answer</button>
-        <button onClick={deleteCurrentAnswer} className='delete-button'> Delete Answer </button>
-        {/* <button onClick={() => setShowForm(false)} className='close-edit-answer-button'>Close</button> */}
+        <div className="edit-answer-button-duo">
+        <button type='submit' className="submit-edited-answer-button">Submit Edited Answer</button>
+        <button onClick={deleteCurrentAnswer} className='delete-edited-answer-button'> Delete Answer </button>
+        </div>
       </form>
-      {/* : (<button onClick={() => setShowForm(true)} className='edit-answer-button'> Edit Answer</button>
-        ) */}
-
-    </>
+    </div>
   )
 }
 
