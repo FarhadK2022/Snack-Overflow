@@ -7,7 +7,6 @@ import SideNavBar from '../SideNavBar';
 
 const Questions = () => {
     const dispatch = useDispatch()
-    // const [users, setUsers] = useState([]);
 
     const questionsObj = useSelector(state => {
         return state

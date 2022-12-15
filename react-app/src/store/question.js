@@ -140,14 +140,6 @@ export const getQuestionByIdThunk = (questionId) => async dispatch => {
     }
 }
 
-// const normalizeData = (data) => {
-//     const res = {}
-//     for (let key in data) {
-//         res[data[key].id] = data[key]
-//     }
-//     return res
-// }
-
 const initialState = { question: {}, allQuestions: {} }
 const questionsReducer = (state = initialState, action) => {
 
@@ -155,8 +147,8 @@ const questionsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_QUESTION:
 
-            // console.log("THIS IS ACTION", action)
-            console.log("THIS IS STATE", state)
+
+
             if (!state[action.id]) {
                 const newState = {
                     ...state,
@@ -168,20 +160,14 @@ const questionsReducer = (state = initialState, action) => {
                         tags: action.payload.tags
                     }
                 };
-                // console.log("THIS IS NEW STATE", newState)
+
                 return newState
             }
 
 
 
         case GET_QUESTIONS: {
-            // // const newState = { ...state, allQuestions: { ...state.allQuestions } }
-            // const newState = { ...action }
-            // console.log("THIS IS NEW STATE", newState)
-            // // console.log("THIS IS ACTION.QUESTIONS", action)
-            // newState.allQuestions = newState.payload
-            // console.log("After change", newState)
-            // return newState
+
             const newState = Object.assign({}, state)
             newState.allQuestions = {}
             const question = (action.payload)
@@ -197,11 +183,7 @@ const questionsReducer = (state = initialState, action) => {
             return newState
 
 
-        // case DELETE_QUESTION:{
-        //     const newState = {...state, allQuestions:{...state.allQuestions}, question:{}}
-        //     delete newState.allQuestions[action.payload];
-        //     return newState;
-        //     }
+        
 
         case DELETE_QUESTION: {
             const newState = { ...state }

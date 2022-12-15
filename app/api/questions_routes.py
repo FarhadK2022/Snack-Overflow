@@ -138,18 +138,9 @@ def addlike(id):
 
   question = Question.query.get(id)
 
-  # print("!!!!!!!!!!!", question.question_likes)
-  # for x in question.question_likes:
-  #   print(x.id)
-  #   if x.id == current_user.id:
-  #     question.question_likes.remove(user)
-  #     db.session.commit()
-  #     return question.to_dict()
-
 
   question.question_likes.append(user)
   db.session.commit()
-  # print("@@@@@@@@@@@@@@", question)
   return question.to_dict()
 
 @questions_routes.route("/<int:id>/unlike", methods=["GET"])
@@ -160,24 +151,9 @@ def unlike(id):
 
   question = Question.query.get(id)
 
-  # print("!!!!!!!!!!!", question.question_likes)
   for x in question.question_likes:
-    # print(x.id)
+
     if x.id == current_user.id:
       question.question_likes.remove(user)
       db.session.commit()
       return question.to_dict()
-
-# @questions_routes.route("/<int:id>/upvote", methods=["GET"])
-# @login_required
-# def addupvote(id):
-
-#   user = User.query.get(current_user.id)
-
-#   answer = Answer.query.get(id)
-#   print("!!!!!! THHIS IS ANSWER", answer)
-
-#   answer.answer_upvote.append(user)
-#   db.session.commit()
-#   # print("@@@@@@@@@@@@@@", question)
-#   return answer.to_dict()

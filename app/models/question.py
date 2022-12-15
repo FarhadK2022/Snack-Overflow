@@ -46,8 +46,4 @@ class Question(db.Model):
             "user_questions": self.question_user.to_dict()
         }
 
-# class Like(db.model):
-#     __tablename__ = 'likes'
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     question_id = db.Column(db.Integer, db.ForeignKey('questions.id', ondelete='CASCADE'), nullable=False)
