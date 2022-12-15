@@ -31,15 +31,6 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
-  // function firstSet(){
-  //   return setEmail('demo@aa.io')
-  // }
-
-  // function comboSet(){
-  //   firstSet()
-  //   setPassword('password')
-  // }
-
   const setDemoUser = () => {
     setEmail('demo@aa.io')
     setPassword('password')

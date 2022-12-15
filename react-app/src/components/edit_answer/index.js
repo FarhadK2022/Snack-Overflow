@@ -40,9 +40,6 @@ function EditAnswerButton() {
     await dispatch(editAnswerThunk(editedAnswer))
 
 
-    // await dispatch(getAllAnswersThunk)
-
-    // await setShowForm(false)
 
     return history.push(`/questions/${questionId}`)
   }

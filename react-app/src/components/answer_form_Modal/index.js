@@ -13,7 +13,6 @@ function CreateAnswerFormModal() {
   return (
     <>
       <button className="button" onClick={(event) => openModal(event)}>Create Answer</button>
-      {console.log(CreateAnswerForm)}
       {showModal ?
         <Modal onClose={() => setShowModal(false)}>
           <CreateAnswerForm setShowModal={setShowModal} />

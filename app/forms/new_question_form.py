@@ -13,5 +13,4 @@ class QuestionForm(FlaskForm):
 
 
 
-# , Length(min=20)
-# , Length(min=20)
+
