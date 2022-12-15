@@ -32,7 +32,7 @@
 
 .splash-page-main-container-content {
     color: white;
-    margin-top: 20em;
+    margin-top: 5em;
 }
 
 .splash-page-main-container-community {
@@ -45,17 +45,13 @@
     margin-top: 1em;
 }
 
-.github-link-splash-page  {
+.github-link-splash-page {
     color: rgb(96, 47, 5);
     text-decoration: none;
 }
 
-.github-link-splash-page:hover{
+.github-link-splash-page:hover {
     color: rgb(142, 70, 8);
-}
-
-.github-link-splash-page:visited {
-    color: inherit;
 }
 
 .splash-page-main-container-content-here {
@@ -68,11 +64,11 @@
     text-decoration: none;
 }
 
-.splash-page-main-container-community-here:hover{
+.splash-page-main-container-community-here:hover {
     color: rgb(142, 70, 8);
 }
 
-.splash-page-main-container-content-here:hover{
+.splash-page-main-container-content-here:hover {
     color: rgb(142, 70, 8);
 }
 
