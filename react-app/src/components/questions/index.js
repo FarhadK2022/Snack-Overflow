@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom'
 import { getAllQuestionsThunk } from '../../store/question';
@@ -7,6 +7,7 @@ import SideNavBar from '../SideNavBar';
 
 const Questions = () => {
     const dispatch = useDispatch()
+    const [users, setUsers] = useState([]);
 
     const questionsObj = useSelector(state => {
         return state
@@ -22,6 +23,7 @@ const Questions = () => {
         e.preventDefault()
         return history.push('/ask')
     }
+
 
     useEffect(() => {
         dispatch(getAllQuestionsThunk())
@@ -56,7 +58,6 @@ const Questions = () => {
                                 <div className='likes-answers'>
                                     <span className='likes-count-question'>{obj.likes} likes</span>
                                     <span className='answer-count'>{obj.answers.length} answers</span>
-
                                 </div>
                                 <Link className='title-link' style={{ textDecoration: 'none' }} to={`/questions/${obj.id}`}>
                                     <p>{obj.title}</p>
@@ -65,6 +66,7 @@ const Questions = () => {
                                 {obj.tags ?
                                     <p className='question-detail-tags'>[{obj.tags}]</p>
                                     : null}
+                                    <span>{obj.user_questions.username}</span>
                             </div>
                         </div>
                     )

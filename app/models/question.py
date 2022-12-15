@@ -42,7 +42,8 @@ class Question(db.Model):
             'tags': self.tags,
             'likes': len(self.question_likes),
             'answers': [answer.to_dict() for answer in self.question_answer],
-            "who_liked": [likes.to_dict() for likes in self.question_likes]
+            "who_liked": [likes.to_dict() for likes in self.question_likes],
+            "user_questions": self.question_user.to_dict()
         }
 
 # class Like(db.model):
