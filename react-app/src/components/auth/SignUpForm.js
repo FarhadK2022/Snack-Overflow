@@ -83,7 +83,7 @@ const SignUpForm = () => {
             <span className='list-of-things-offered'><i className="fa-solid fa-sort" style={{ color: "rgb(96, 47, 5)" }}></i> Unlock new privileges like voting and answering</span>
             <div className='sign-up-team-advertisement'>
               <span>Collaborate and share knowledge with a private group for FREE.</span>
-              <Link className='title-link' style={{ textDecoration: 'none' }} to='/work-in-progress'>Get Stack Overflow for Teams free for up to 50 users.</Link>
+              <Link className='title-link' style={{ textDecoration: 'none' }} to='/work-in-progress'>Get Snack Overflow for Teams free for up to 50 users.</Link>
             </div>
           </div>
         </div>
