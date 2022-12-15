@@ -13,15 +13,17 @@
 .search-button {
     height: 2.5em;
     margin-top: 2.75em;
-
+    cursor: pointer;
 }
 
 .search-filter {
     margin-top: 2em;
     padding: .25em;
+    cursor: pointer;
 }
 
 .queryParams {
     /* background-color: aqua; */
     height: 2.5em;
+    cursor: pointer;
 }

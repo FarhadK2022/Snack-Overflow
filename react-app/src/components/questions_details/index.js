@@ -95,19 +95,19 @@ const QuestionDetails = () => {
                         {questionInfoObj?.likes}{" "}
                         {sessionUser && sessionUser?.id != questionInfoObj?.user_id && currentLike?.length === 0 ? (
                             <button className="question-like-button" onClick={createLike}>
-                                <i className="fa fa-heart" />
+                                <i className="fa fa-heart fa-2x" />
                             </button>
                         ) : null}
                         {sessionUser && currentLike?.length >= 1 ? (
                             <button className="question-like-button" onClick={removeLike}>
-                                <i className="fa fa-times" />
+                                <i className="fa fa-times fa-2x" />
                             </button>
                         ) : null}
                     </div>
                     <div className="question-info">
                         <div> {questionInfoObj?.question}</div>
                         <div> {questionInfoObj?.tried_expected} </div>
-                        <div> Tags: {questionInfoObj?.tags.split(",").join(" ")} </div>
+                        <div> Tags: [{questionInfoObj?.tags.split(",").join(" ")}] </div>
                         <div className="question-buttons">
                             <div>
                                 {sessionUser &&
@@ -136,22 +136,22 @@ const QuestionDetails = () => {
                         Answers{" "}
                         {questionInfoObj?.answers.map((obj) => {
                             return (
-                                <li key={obj.id}>
+                                <li className='specific-answer' key={obj.id}>
                                     <div className="answer-voting">
                                         {sessionUser && sessionUser.id != obj.user_id ?
                                             <>
-                                                <button onClick={(e) => createUpvote(e, obj.id)}>
+                                                <button className="answer-vote-button-up" onClick={(e) => createUpvote(e, obj.id)}>
                                                     {" "}
-                                                    <i className="fa fa-arrow-up" />{" "}
+                                                    <i className="fa fa-arrow-up fa-2x" />{" "}
                                                 </button>{" "}
                                             </>
                                             : ''}
                                         {obj?.votes}{" "}
                                         {sessionUser && sessionUser.id != obj.user_id ?
                                             <>
-                                                <button onClick={(e) => createDownvote(e, obj.id)}>
+                                                <button className="answer-vote-button-down" onClick={(e) => createDownvote(e, obj.id)}>
                                                     {" "}
-                                                    <i className="fa fa-arrow-down" />{" "}
+                                                    <i className="fa fa-arrow-down fa-2x" />{" "}
                                                 </button>{" "}
                                             </>
                                             : ''}
@@ -168,17 +168,17 @@ const QuestionDetails = () => {
                         })}
                     </div>
                 </div>
-                <div className="bottom-q-info-page">
-                    <div className="question-info-answer">
+                <footer className="bottom-q-info-page">
+                    <div className="question-info-answer-bottom">
                         {sessionUser &&
                             (sessionUser.id === questionInfoObj?.user_id ? null : (
                                 <CreateAnswerForm />
                             ))}
                     </div>
-                    <div>
+                    <div className="question-info-answer-bottom">
                         {!sessionUser ? <button onClick={onSubmit}>Login to answer</button> : null}
                     </div>
-                </div>
+                </footer>
             </div>
         </div>
   );

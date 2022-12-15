@@ -62,6 +62,7 @@
     font-size: small;
     padding-left: .75em;
     padding-right: .75em;
+    cursor: pointer;
 }
 
 .ask-question-button:hover {
