@@ -93,9 +93,9 @@ const QuestionDetails = () => {
             {" "}
             {questionInfoObj?.likes}{" "}
             {sessionUser && currentLike?.length === 0 ? (
-              <button className="question-like-button" onClick={createLike}>
+            <button className="question-like-button" onClick={createLike}>
                 <i className="fa fa-heart" />
-              </button>
+            </button>
             ) : null}
             {sessionUser && currentLike?.length >= 1 ? (
               <button className="question-like-button" onClick={removeLike}>
@@ -119,7 +119,7 @@ const QuestionDetails = () => {
                   (sessionUser.id === questionInfoObj?.user_id ? (
                     <button
                       onClick={(event) => deleteAQuestion(event, questionId)}
-                      className="delete-button"
+                      className="question-delete-button"
                     >
                       {" "}
                       Delete{" "}
@@ -135,14 +135,14 @@ const QuestionDetails = () => {
             Answers{" "}
             {questionInfoObj?.answers.map((obj) => {
               return (
-                <li key={obj.id}>
+                <li className="specific-answer" key={obj.id}>
                   <div className="answer-voting">
-                    <button onClick={(e) => createUpvote(e, obj.id)}>
+                    <button className="answer-vote-button-up" onClick={(e) => createUpvote(e, obj.id)}>
                       {" "}
                       <i className="fa fa-arrow-up" />{" "}
                     </button>{" "}
-                    {obj?.votes}{" "}
-                    <button onClick={(e) => createDownvote(e, obj.id)}>
+                    {obj?.votes}
+                    <button className="answer-vote-button-down" onClick={(e) => createDownvote(e, obj.id)}>
                       {" "}
                       <i className="fa fa-arrow-down" />{" "}
                     </button>{" "}
