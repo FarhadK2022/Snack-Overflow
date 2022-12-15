@@ -79,8 +79,8 @@ const SignUpForm = () => {
         <div className='join-site-container'>
           <h1 className='join-site-text'>Join the Stack Overflow community</h1>
           <div className='advertisement-to-sign-up'>
-            <span className='list-of-things-offered'><i class="fa-solid fa-clipboard-question" style={{ color: "rgb(96, 47, 5)" }}></i> Get unstuck — ask a question</span>
-            <span className='list-of-things-offered'><i class="fa-solid fa-sort" style={{ color: "rgb(96, 47, 5)" }}></i> Unlock new privileges like voting and answering</span>
+            <span className='list-of-things-offered'><i className="fa-solid fa-clipboard-question" style={{ color: "rgb(96, 47, 5)" }}></i> Get unstuck — ask a question</span>
+            <span className='list-of-things-offered'><i className="fa-solid fa-sort" style={{ color: "rgb(96, 47, 5)" }}></i> Unlock new privileges like voting and answering</span>
             <div className='sign-up-team-advertisement'>
               <span>Collaborate and share knowledge with a private group for FREE.</span>
               <Link className='title-link' style={{ textDecoration: 'none' }} to='/work-in-progress'>Get Stack Overflow for Teams free for up to 50 users.</Link>

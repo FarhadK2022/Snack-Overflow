@@ -100,3 +100,13 @@
 .question-tried-expected-all-questions {
     margin-bottom: .5em;
 }
+
+.tags-username-all-questions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.username-all-questions {
+    padding-right: 1em;
+}

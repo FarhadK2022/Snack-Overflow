@@ -63,12 +63,14 @@ const Questions = () => {
                                     <p>{obj.title}</p>
                                 </Link>
                                 <p className='question-tried-expected-all-questions'>{obj.question} {obj.tried_expected.substring(0, 24)}...</p>
-                                {obj.tags ?
-                                    <p className='question-detail-tags'>[{obj.tags}]</p>
-                                    : null}
-                                    <span>{" "}
-                                    <i className="fa-solid fa-circle-user"/>{" "}
-                                     {obj.user_questions.username}</span>
+                                <div className='tags-username-all-questions'>
+                                    {obj.tags ?
+                                        <p className='question-detail-tags'>[{obj.tags}]</p>
+                                        : null}
+                                    <span className='username-all-questions'>{" "}
+                                        <i className="fa-solid fa-circle-user" />{" "}
+                                        {obj.user_questions.username}</span>
+                                </div>
                             </div>
                         </div>
                     )
