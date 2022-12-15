@@ -5,10 +5,14 @@
     margin-left: auto;
     margin-right: auto;
     /* margin-top: 10em; */
-    width: 50em;
+    /* width: 50em; */
     box-sizing: border-box;
     padding-top: 15em;
     gap: 5em;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(245, 242, 242);
+    box-shadow: inset 0em 0 .2em rgba(17, 17, 17, 0.377);
 }
 
 .join-site-text {
