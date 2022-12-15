@@ -28,7 +28,7 @@ const SplashPage = () => {
             {sessionUser ? <Redirect to='/questions' />
                 :
                 <div className='splash-page-main-container'>
-                    <h1 className='splash-page-main-container-h1'>WELCOME TO SnackOverflow</h1>
+                    <h1 className='splash-page-main-container-h1'>Welcome to SnackOverflow</h1>
                         <br></br>
                     <h2 className='splash-page-main-container-first-h2'>The #1 website to ask questions about food, recipes, read opinions from around the world and much more!</h2>
                         <br></br>
@@ -45,16 +45,12 @@ const SplashPage = () => {
                             <div>
                             <a className='github-link-splash-page' href='https://github.com/FarhadK2022' target="_blank">Farhad Koushan</a>
                             </div>
-
-                            {/* <br></br> */}
                             <div>
                             <a className='github-link-splash-page' href='https://github.com/zswanson92' target="_blank">Zack Swanson</a>
                             </div>
-                            {/* <br></br> */}
                             <div>
                             <a className='github-link-splash-page' href='https://github.com/ricalope' target="_blank">Ricardo Lopez</a>
                             </div>
-                            {/* <br></br> */}
                             <div>
                             <a className='github-link-splash-page' href='https://github.com/ChangeDL' target="_blank">Douglas Loizzo</a>
                             </div>

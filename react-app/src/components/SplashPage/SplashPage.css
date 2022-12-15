@@ -50,6 +50,10 @@
     text-decoration: none;
 }
 
+.github-link-splash-page:hover{
+    color: rgb(142, 70, 8);
+}
+
 .github-link-splash-page:visited {
     color: inherit;
 }
@@ -62,6 +66,14 @@
 .splash-page-main-container-community-here {
     color: rgb(96, 47, 5);
     text-decoration: none;
+}
+
+.splash-page-main-container-community-here:hover{
+    color: rgb(142, 70, 8);
+}
+
+.splash-page-main-container-content-here:hover{
+    color: rgb(142, 70, 8);
 }
 
 .splash-page-links-div {

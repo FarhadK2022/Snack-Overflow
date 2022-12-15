@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createAnswerThunk } from "../../store/answer";
 import { useParams, useHistory } from "react-router-dom";
 import { getQuestionByIdThunk } from "../../store/question";
+import './answer_form.css'
 
 const CreateAnswerForm = (setShowModal) => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const CreateAnswerForm = (setShowModal) => {
 
 
   return (
+    <div className="create-answer-div">
     <form onSubmit={handleSubmit}>
       <ul>
         {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -52,7 +54,7 @@ const CreateAnswerForm = (setShowModal) => {
         Answer:
         <br></br>
         <textarea
-          className="inputField"
+          className="create-answer-inputField"
           type="text"
           placeholder="Please be detailed in your Answer"
           value={body}
@@ -60,9 +62,10 @@ const CreateAnswerForm = (setShowModal) => {
           required
         ></textarea>
       </label>
-      <button type="submit">Submit Answer</button>
+      <button type="submit" className="submit-answer-button">Submit Answer</button>
       </div>
     </form>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
     getQuestionByIdThunk,
@@ -17,6 +17,7 @@ const QuestionDetails = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { questionId } = useParams();
+
 
     const sessionUser = useSelector((state) => state.session.user);
 
@@ -72,6 +73,9 @@ const QuestionDetails = () => {
     const currentLike = questionInfoObj?.who_liked.filter((obj) => {
         return sessionUser?.id === obj.id
     })
+
+
+
 
 
     return (
@@ -156,16 +160,13 @@ const QuestionDetails = () => {
                                         {obj?.body}{" "}
                                         {sessionUser &&
                                             (sessionUser.id === obj?.user_id ? (
-                                                <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link>
+                                                <Link to={`/edit/answers/${obj.id}`} className='question-details-edit-answer-link'>Edit Answer</Link>
                                             ) : null)}
                                     </div>
                                 </li>
                             );
                         })}
-                    </div>
-                </div>
-                <footer className="bottom-q-info-page">
-                    <div className="question-info-answer-bottom">
+                        <div className="question-info-answer-bottom">
                         {sessionUser &&
                             (sessionUser.id === questionInfoObj?.user_id ? null : (
                                 <CreateAnswerForm />
@@ -174,7 +175,8 @@ const QuestionDetails = () => {
                     <div className="question-info-answer-bottom">
                         {!sessionUser ? <button onClick={onSubmit}>Login to answer</button> : null}
                     </div>
-                </footer>
+                    </div>
+                </div>
             </div>
         </div>
   );
