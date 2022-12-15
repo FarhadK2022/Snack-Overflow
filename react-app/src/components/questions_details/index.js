@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
     getQuestionByIdThunk,
@@ -89,7 +89,7 @@ const QuestionDetails = () => {
                     <div className="question-info-likes">
                         {" "}
                         {questionInfoObj?.likes}{" "}
-                        {sessionUser && sessionUser?.id != questionInfoObj?.user_id && currentLike?.length === 0 ? (
+                        {sessionUser && sessionUser?.id !== questionInfoObj?.user_id && currentLike?.length === 0 ? (
                             <button className="question-like-button" onClick={createLike}>
                                 <i className="fa fa-heart fa-2x" />
                             </button>
@@ -138,7 +138,7 @@ const QuestionDetails = () => {
                             return (
                                 <li className='specific-answer' key={obj.id}>
                                     <div className="answer-voting">
-                                        {sessionUser && sessionUser.id != obj.user_id ?
+                                        {sessionUser && sessionUser.id !== obj.user_id ?
                                             <>
                                                 <button className="answer-vote-button-up" onClick={(e) => createUpvote(e, obj.id)}>
                                                     {" "}
@@ -147,7 +147,7 @@ const QuestionDetails = () => {
                                             </>
                                             : ''}
                                         {obj?.votes}{" "}
-                                        {sessionUser && sessionUser.id != obj.user_id ?
+                                        {sessionUser && sessionUser.id !== obj.user_id ?
                                             <>
                                                 <button className="answer-vote-button-down" onClick={(e) => createDownvote(e, obj.id)}>
                                                     {" "}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom'
 import { getAllQuestionsThunk } from '../../store/question';
@@ -7,7 +7,7 @@ import SideNavBar from '../SideNavBar';
 
 const Questions = () => {
     const dispatch = useDispatch()
-    const [users, setUsers] = useState([]);
+    // const [users, setUsers] = useState([]);
 
     const questionsObj = useSelector(state => {
         return state

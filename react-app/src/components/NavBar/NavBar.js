@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import SearchBar from '../SearchBar/SearchBar';

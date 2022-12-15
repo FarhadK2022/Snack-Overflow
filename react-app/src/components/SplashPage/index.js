@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory, Redirect } from 'react-router-dom'
-import { getAllQuestionsThunk } from '../../store/question';
+import { useSelector } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom'
 import './SplashPage.css'
 
 
