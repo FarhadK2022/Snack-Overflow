@@ -17,17 +17,22 @@
 .splash-page-main-container-h1 {
     color: white;
     font-size: 50px;
+    padding-top: 1em;
 }
 
 .splash-page-main-container-first-h2 {
     color: white;
-    font-size: 35px;
+    font-size: 2em;
+    padding-left: 2em;
+
 }
 
 .splash-page-main-container-second-h2 {
     color: white;
     margin-top: 2em;
     font-size: 35px;
+
+
 }
 
 .splash-page-main-container-content {
