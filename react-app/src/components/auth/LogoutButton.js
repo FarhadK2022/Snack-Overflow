@@ -1,10 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-<<<<<<< HEAD
-=======
 // import { logout } from '../../store/session';
 import './LogoutButton.css'
->>>>>>> zack_thurs_edits
 
 const LogoutButton = () => {
   const history = useHistory()
