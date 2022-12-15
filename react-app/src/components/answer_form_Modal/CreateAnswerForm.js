@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createAnswerThunk } from "../../store/answer";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getQuestionByIdThunk } from "../../store/question";
 import './answer_form.css'
 
 const CreateAnswerForm = (setShowModal) => {
   const dispatch = useDispatch();
-  const history = useHistory()
   const sessionUser = useSelector(state => state.session.user)
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState([])
