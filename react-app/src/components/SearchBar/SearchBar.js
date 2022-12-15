@@ -25,7 +25,7 @@ const SearchBar = () => {
       <form onSubmit={handleSubmit} className="search-form">
         <input
           type="search"
-          placeholder="🔍Search..."
+          placeholder="Search..."
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           required

@@ -1,8 +1,9 @@
 .questions-info-container{
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
+  /* flex-wrap: wrap; */
+  width: 80%;
+  height: 100vh;
 }
 .question-info-title{
   display: flex;
@@ -15,7 +16,8 @@
 .top-q-info-page{
   display: flex;
   flex-direction: row;
-  height: 400px;
+  justify-content: end;
+  height: 25vh;
 }
 .question-info-likes{
   display: flex;
@@ -25,22 +27,41 @@
   align-content: center;
   align-items: center;
 }
+.question-like-button{
+  border: none;
+  cursor: pointer;
+  background-color: white;
+}
+.question-like-button:hover{
+  cursor: pointer;
+  background-color: pink;
+  box-shadow: 0 1px black;
+}
+.question-like-button:active{
+  cursor: pointer;
+  background-color: white;
+}
 .question-info{
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  justify-content: space-evenly;
-  align-content: center;
+  justify-content: space-around;
   align-items: flex-start;
 }
 .question-buttons{
   display: flex;
   flex-direction: row;
 }
+.question-delete-button{
+  background-color: rgb(0, 149, 255);
+  color: white;
+  border-radius: .3em;
+  border: .1em solid rgb(0, 124, 247);
+}
 .mid-q-info-page{
   display: flex;
-  height: 400px;
+  height: 25vh;
 }
 .question-info-answer{
   display: flex;
@@ -53,8 +74,9 @@
 .specific-answer{
   display: flex;
   flex-direction: row;
-  gap: 20px;
-  border-bottom: .075em solid rgba(150, 149, 149, 0.308)
+  gap: 10px;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
 }
 .answer-voting{
   display: flex;
@@ -63,7 +85,9 @@
 }
 .answer-voting-body{
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
+
 }
 .answer-vote-button-up{
   border: none;
@@ -92,27 +116,8 @@
   background-color: red;
   box-shadow: 0 2px gray;
 }
-.question-like-button{
-  border: none;
-  cursor: pointer;
-}
-.question-like-button:hover{
-  cursor: pointer;
-  background-color: pink;
-  box-shadow: 0 2px gray;
-}
-.question-like-button:active{
-  cursor: pointer;
-  background-color: white;
-}
-.question-delete-button{
-  background-color: rgb(0, 149, 255);
-  color: white;
-  border-radius: .3em;
-  border: .1em solid rgb(0, 124, 247);
-}
 .question-delete-button:hover{
-  box-shadow: 0 2px gray;
+  box-shadow: 0 1px black;
 }
 .edit-question-button{
   background-color: rgb(0, 149, 255);
@@ -121,5 +126,10 @@
   border: .1em solid rgb(0, 124, 247);
 }
 .edit-question-button:hover{
-  box-shadow: 0 2px gray;
+  box-shadow: 0 1px black;
+}
+.bottom-q-info-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
