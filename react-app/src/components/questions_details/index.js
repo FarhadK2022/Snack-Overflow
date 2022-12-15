@@ -175,6 +175,9 @@ const QuestionDetails = () => {
                                 <CreateAnswerForm />
                             ))}
                     </div>
+                    <div>
+                        {!sessionUser ? <button onClick={onSubmit}>Login to answer</button> : null}
+                    </div>
                 </div>
             </div>
         </div>
