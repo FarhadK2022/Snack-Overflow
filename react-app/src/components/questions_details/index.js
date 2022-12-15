@@ -69,18 +69,10 @@ const QuestionDetails = () => {
     }
 
 
-
-    // if(!questionInfoObj){
-    //     return null
-    // }
-
     const currentLike = questionInfoObj?.who_liked.filter((obj) => {
         return sessionUser?.id === obj.id
     })
 
-    // const currentVote = questionInfoObj?.answers.filter((obj) => {
-    //     return sessionUser?.id === obj.id
-    // })
 
     return (
         <div className="main-container">
@@ -108,6 +100,7 @@ const QuestionDetails = () => {
                         <div> {questionInfoObj?.question}</div>
                         <div> {questionInfoObj?.tried_expected} </div>
                         <div> Tags: [{questionInfoObj?.tags.split(",").join(" ")}] </div>
+                        <span>{questionInfoObj?.user_questions.username}</span>
                         <div className="question-buttons">
                             <div>
                                 {sessionUser &&
