@@ -3,10 +3,10 @@
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    background-color: gray;
+    background-color: rgb(182, 179, 179);
     height: 100%;
-    margin-left: 40px;
-    margin-right: 40px;
+    /* margin-left: 40px; */
+    /* margin-right: 40px; */
 }
 
 .arrTitles-span {
