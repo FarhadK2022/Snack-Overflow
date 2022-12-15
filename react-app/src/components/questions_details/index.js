@@ -178,47 +178,6 @@ const QuestionDetails = () => {
                 </div>
             </div>
         </div>
-        </div >
-        <div className="mid-q-info-page">
-          <div className="question-info-answer">
-            {" "}
-            Answers{" "}
-            {questionInfoObj?.answers.map((obj) => {
-              return (
-                <li className="specific-answer" key={obj.id}>
-                  <div className="answer-voting">
-                    <button className="answer-vote-button-up" onClick={(e) => createUpvote(e, obj.id)}>
-                      {" "}
-                      <i className="fa fa-arrow-up" />{" "}
-                    </button>{" "}
-                    {obj?.votes}
-                    <button className="answer-vote-button-down" onClick={(e) => createDownvote(e, obj.id)}>
-                      {" "}
-                      <i className="fa fa-arrow-down" />{" "}
-                    </button>{" "}
-                  </div>
-                  <div className="answer-voting-body">
-                    {obj?.body}{" "}
-                    {sessionUser &&
-                      (sessionUser.id === obj?.user_id ? (
-                        <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link>
-                      ) : null)}
-                  </div>
-                </li>
-              );
-            })}
-          </div>
-        </div>
-        <div className="bottom-q-info-page">
-          <div className="question-info-answer">
-            {sessionUser &&
-              (sessionUser.id === questionInfoObj?.user_id ? null : (
-                <CreateAnswerForm />
-              ))}
-          </div>
-        </div>
-      </div >
-    </div >
   );
 };
 

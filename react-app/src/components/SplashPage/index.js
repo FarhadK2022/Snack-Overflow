@@ -28,16 +28,17 @@ const SplashPage = () => {
             {sessionUser ? <Redirect to='/questions' />
                 :
                 <div className='splash-page-main-container'>
-                <h1>WELCOME TO SnackOverflow</h1>
+                <h1 className='splash-page-main-container-h1'>WELCOME TO SnackOverflow</h1>
                 <br></br>
-                <h2>The #1 website to ask questions about food, recipes, read opinions from around the world and much more!</h2>
+                <h2 className='splash-page-main-container-first-h2'>The #1 website to ask questions about food, recipes, read opinions from around the world and much more!</h2>
                 <br></br>
-                <h2>Every <span className='arrTitles-span'>{arrTitles}</span> has a tab open to Snack Overflow</h2>
+                <h2 className='splash-page-main-container-second-h2'>Every <span className='arrTitles-span'>{arrTitles}</span> has a tab open to Snack Overflow</h2>
                 <br></br>
-                <div>Feel free to check out our content by clicking <Link to='/questions' exact='true'>here</Link>.</div>
-                <div>If you are interested in joining our community, click <Link to='/signup' exact='true'>here</Link>.</div>
+                <div className='splash-page-main-container-content'>Feel free to check out our content by clicking <Link to='/questions' exact='true' className='splash-page-main-container-content-here'>here</Link>.</div>
                 <br></br>
-                <div>Here are the links to the creators of Snack Overflow
+                <div className='splash-page-main-container-community'>If you are interested in joining our community, click <Link to='/sign-up' exact='true' className='splash-page-main-container-community-here'>here</Link>.</div>
+                <br></br>
+                <div className='splash-page-main-container-creators'>Here are the links to the creators of Snack Overflow:
                 <br></br>
                 <a className='github-link' href='https://github.com/FarhadK2022' target="_blank">Farhad Koushan</a>
                 <br></br>
