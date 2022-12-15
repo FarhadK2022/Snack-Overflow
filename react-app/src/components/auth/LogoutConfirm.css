@@ -7,6 +7,7 @@
     /* margin-top: 10em; */
     width: 20em;
     box-sizing: border-box;
+    height: 100%;
 
 }
 
@@ -18,12 +19,13 @@
     padding: 1em;
     box-sizing: border-box;
     background-color: white;
+
 }
 
 .logout-message {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1em;
+    padding-bottom: 1em;
     box-sizing: border-box;
 
 }
@@ -36,7 +38,7 @@
 .creator-links-logout {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1em;
+    padding-bottom: 1em;
     gap: 1em;
 }
 
@@ -44,7 +46,7 @@
 .github-link,
 .cancel-link {
     text-decoration: none;
-    color: rgb(33, 126, 189);
+    color: rgb(96, 47, 5);
 }
 
 .cancel-link {
@@ -55,11 +57,12 @@
 
 
 .github-link:hover {
-    color: rgb(8, 156, 255);
+    color: rgb(142, 70, 8);
+
 }
 
 .cancel-link:hover {
-    background-color: rgba(195, 228, 255, 0.5);
+    background-color: rgba(255, 234, 195, 0.5);
 
 }
 
@@ -74,17 +77,18 @@
     height: 2.75em;
     cursor: pointer;
     margin-right: 1em;
-    background-color: rgb(0, 149, 255);
+    background-color: rgb(96, 47, 5);
     color: white;
     border-radius: .3em;
-    border: .1em solid rgb(0, 124, 247);
+    border: .1em solid rgb(77, 37, 3);
     font-size: small;
     padding-left: .75em;
     padding-right: .75em;
 }
 
 .logout-button-confirm:hover {
-    background-color: rgb(16, 128, 208);
+    background-color: rgb(64, 31, 3);
+
 }
 
 
@@ -97,4 +101,6 @@
     box-sizing: border-box;
     /* border-top: .02em solid black; */
     box-shadow: inset 0em 0 .2em rgba(17, 17, 17, 0.377);
+
+
 }

@@ -42,11 +42,12 @@ const Questions = () => {
                 <div className='top-container'>
 
                     <div className='all-questions-and-button'>
-                        <h1 className='all-questions-header'>All Questions</h1>
+                        <span className='all-questions-header'>All Questions</span>
                         <button className='ask-question-button' onClick={(event => askQuestionButton(event))}>Ask Question</button>
                     </div>
-
-                    <span className='question-count'>{aQuestion.length} questions</span>
+                    <div className='question-count'>
+                        <span>{aQuestion.length} questions</span>
+                    </div>
                 </div>
                 {aQuestion.map((obj) => {
                     return (

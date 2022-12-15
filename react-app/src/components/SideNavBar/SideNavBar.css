@@ -1,8 +1,9 @@
-.test {
+.side-bar-container {
     display: flex;
     flex-direction: column;
     padding-right: 5em;
-    padding-left: 1em;
+    padding-left: .45em;
+    padding-top: 2em;
     /* background-color: aqua; */
     border-right: .075em solid rgba(150, 149, 149, 0.308);
 
@@ -13,13 +14,15 @@
 
 .all-questions-link,
 .home-link,
-.public-text {
+.public-text,
+.explore-collectives-link {
     color: gray;
 
 }
 
 .all-questions-link:hover,
-.home-link:hover {
+.home-link:hover,
+.explore-collectives-link:hover {
     color: black;
 
 }
@@ -35,4 +38,42 @@
 
 .public-text {
     font-size: x-small;
+}
+
+.public-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25em;
+    padding-top: 1.225em;
+    /* background-color: aqua; */
+
+    width: 100%;
+    font-size: small;
+}
+
+.sidebar-links-not-question {
+    padding-left: 1.3em;
+}
+
+.collectives-container {
+    padding-top: 1.75em;
+}
+
+.explore-collectives-link {
+    font-size: small;
+}
+
+.explore-collectives-text {
+    display: flex;
+    flex-direction: row;
+    gap: .25em;
+    justify-content: flex-start;
+}
+
+.the-word-collective {
+    padding-top: .19em;
+}
+
+.public-links-container {
+    padding-top: .75em;
 }
