@@ -23,6 +23,7 @@ const Questions = () => {
         return history.push('/ask')
     }
 
+
     useEffect(() => {
         dispatch(getAllQuestionsThunk())
     }, [dispatch])
@@ -42,11 +43,12 @@ const Questions = () => {
                 <div className='top-container'>
 
                     <div className='all-questions-and-button'>
-                        <h1 className='all-questions-header'>All Questions</h1>
+                        <span className='all-questions-header'>All Questions</span>
                         <button className='ask-question-button' onClick={(event => askQuestionButton(event))}>Ask Question</button>
                     </div>
-
-                    <span className='question-count'>{aQuestion.length} questions</span>
+                    <div className='question-count'>
+                        <span>{aQuestion.length} questions</span>
+                    </div>
                 </div>
                 {aQuestion.map((obj) => {
                     return (
@@ -55,15 +57,19 @@ const Questions = () => {
                                 <div className='likes-answers'>
                                     <span className='likes-count-question'>{obj.likes} likes</span>
                                     <span className='answer-count'>{obj.answers.length} answers</span>
-
                                 </div>
                                 <Link className='title-link' style={{ textDecoration: 'none' }} to={`/questions/${obj.id}`}>
                                     <p>{obj.title}</p>
                                 </Link>
                                 <p className='question-tried-expected-all-questions'>{obj.question} {obj.tried_expected.substring(0, 24)}...</p>
-                                {obj.tags ?
-                                    <p className='question-detail-tags'>[{obj.tags}]</p>
-                                    : null}
+                                <div className='tags-username-all-questions'>
+                                    {obj.tags ?
+                                        <p className='question-detail-tags'>[{obj.tags}]</p>
+                                        : null}
+                                    <span className='username-all-questions'>{" "}
+                                        <i className="fa-solid fa-circle-user" />{" "}
+                                        {obj.user_questions.username}</span>
+                                </div>
                             </div>
                         </div>
                     )

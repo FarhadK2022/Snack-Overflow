@@ -100,13 +100,9 @@ def not_found(e):
 @app.route('/api/search', methods=['GET'])
 def search():
     arg = request.args
-    # print("aaaaaaaaaaaaaaaaaa", arg)
     args = arg.to_dict()
-    # print("bbbbbbbbbbbbbbbbbbb", args)
     params1 = args['question']
-    # print("ccccccccccccccccc", params1)
     params2 = args[' filter']
-    # print("ddddddddddddddd", params2)
     if params2 == 'title':
         question_query = Question.query.filter(Question.title.like(f"%{params1}%"))
         search_results={}

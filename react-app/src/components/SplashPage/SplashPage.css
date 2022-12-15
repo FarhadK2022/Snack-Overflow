@@ -1,51 +1,90 @@
 .splash-page-main-container {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    /* justify-content: space-between; */
     align-items: center;
-    background-color: gray;
+    background-color: rgb(182, 179, 179);
+    background-color: rgb(143, 136, 136);
     height: 100%;
-    margin-left: 40px;
-    margin-right: 40px;
+    /* margin-left: 40px; */
+    /* margin-right: 40px; */
 }
 
 .arrTitles-span {
-    color: red;
+    color: rgb(96, 47, 5);
 }
 
 .splash-page-main-container-h1 {
     color: white;
     font-size: 50px;
+    padding-top: 1em;
 }
 
 .splash-page-main-container-first-h2 {
     color: white;
+    font-size: 2em;
+    padding-left: 2em;
+
 }
 
 .splash-page-main-container-second-h2 {
     color: white;
+    margin-top: 2em;
+    font-size: 35px;
+
+
 }
 
 .splash-page-main-container-content {
     color: white;
+    margin-top: 5em;
 }
 
 .splash-page-main-container-community {
     color: white;
+    margin-top: 1em;
 }
 
 .splash-page-main-container-creators {
     color: white;
+    margin-top: 1em;
 }
 
-.github-link {
-    color: darkblue;
+.github-link-splash-page {
+    color: rgb(96, 47, 5);
+    text-decoration: none;
+}
+
+.github-link-splash-page:hover {
+    color: rgb(142, 70, 8);
 }
 
 .splash-page-main-container-content-here {
-    color: darkblue;
+    color: rgb(96, 47, 5);
+    text-decoration: none;
 }
 
 .splash-page-main-container-community-here {
-    color: darkblue
+    color: rgb(96, 47, 5);
+    text-decoration: none;
+}
+
+.splash-page-main-container-community-here:hover {
+    color: rgb(142, 70, 8);
+}
+
+.splash-page-main-container-content-here:hover {
+    color: rgb(142, 70, 8);
+}
+
+.splash-page-links-div {
+    display: flex;
+    /* flex-direction: row; */
+    /* align-items: space-between; */
+    /* justify-content: space-between; */
+    gap: 3em;
+}
+
+.splash-page-creators-text {
+    margin-left: 6em;
 }

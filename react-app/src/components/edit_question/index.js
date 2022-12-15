@@ -4,7 +4,6 @@ import * as questionActions from '../../store/question'
 import { useParams, useHistory } from 'react-router-dom';
 import { getQuestionByIdThunk } from "../../store/question";
 
-// import { useHistory } from 'react'
 
 
 

@@ -13,6 +13,7 @@ import SearchResultsPage from './components/SearchBar/SearchResultsPage';
 import EditAnswerButton from './components/edit_answer';
 import SplashPage from './components/SplashPage';
 import LogoutConfirm from './components/auth/LogoutConfirm';
+import WorkInProgress from './components/WorkInProgress/WorkInProgress';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -60,6 +61,9 @@ function App() {
         </Route>
         <Route path='/logout' exact={true}>
           <LogoutConfirm />
+        </Route>
+        <Route path='/work-in-progress'>
+          <WorkInProgress />
         </Route>
       </Switch>
     </BrowserRouter>

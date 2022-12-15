@@ -4,16 +4,16 @@ import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux';
 import SearchBar from '../SearchBar/SearchBar';
-// import logo from '../../../public/image/SnackoverFlow.png'
 import logo from '../../assets/SnackoverflowLogo-removebg-preview.png'
 import './NavBar.css';
 
 const NavBar = () => {
   const history = useHistory();
 
+
   const loginButton = (e) => {
     e.preventDefault()
-    return history.push('/login')
+    return history.push(`/login`)
   }
 
   const signUpButton = (e) => {

@@ -57,8 +57,7 @@ export const addDownvoteThunk = (answerid, userId) => async dispatch => {
 
 
 export const deleteAnswerThunk = (answerid) => async dispatch => {
-    // const { answerid } = payload
-    // console.log()
+
     const response = await fetch(`/api/answers/${answerid}`, {
         method: 'DELETE'
     })
@@ -73,8 +72,7 @@ export const deleteAnswerThunk = (answerid) => async dispatch => {
 export const editAnswerThunk = (payload) => async dispatch => {
 
     const { body, answerid  } = payload
-    // console.log("THIS IS ANSWER ID", answerid)
-    // console.log("THIS IS BODY", body)
+
     const response = await fetch(`/api/answers/${answerid}`, {
         method: 'PUT',
         headers:{
@@ -90,25 +88,10 @@ export const editAnswerThunk = (payload) => async dispatch => {
     }
 }
 
-// export const createAnswerThunk = (payload) => async dispatch => {
-//     const { question_id, user_id, body } = payload
-//     const response = await fetch(`/api/answers`, {
-//         method: 'POST',
-//         headers:{
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({ question_id, user_id, body })
-//     })
 
-//     if(response.ok){
-//         const answer = await response.json()
-
-//         dispatch(addAnswer(answer))
-//     }
-// }
 export const createAnswerThunk = (payload) => async dispatch => {
     const { questionId, user_id, body } = payload
-    console.log("*****************", payload)
+
     const response = await fetch(`/api/ask/${questionId}/answers`, {
         method: 'POST',
         headers: {

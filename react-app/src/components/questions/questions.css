@@ -29,6 +29,7 @@
 .questions-div {
     /* margin-left: 1em; */
     width: 100%;
+
 }
 
 .all-questions-and-button {
@@ -36,10 +37,15 @@
     flex-direction: row;
     justify-content: space-between;
     margin-left: .5em;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 .question-count {
     margin-left: .5em;
+
+    margin-bottom: 1em;
+
 }
 
 .question-detail-container {
@@ -53,12 +59,12 @@
 .ask-question-button {
     box-sizing: border-box;
     height: 2.75em;
-    margin-top: 2em;
+    /* margin-top: 2em; */
     margin-right: 1em;
-    background-color: rgb(0, 149, 255);
+    background-color: rgb(96, 47, 5);
     color: white;
     border-radius: .3em;
-    border: .1em solid rgb(0, 124, 247);
+    border: .1em solid rgb(77, 37, 3);
     font-size: small;
     padding-left: .75em;
     padding-right: .75em;
@@ -66,7 +72,7 @@
 }
 
 .ask-question-button:hover {
-    background-color: rgb(16, 128, 208);
+    background-color: rgb(64, 31, 3);
 }
 
 .all-questions-header {
@@ -76,20 +82,31 @@
 }
 
 .title-link {
-    color: rgb(26, 139, 213);
+    color: rgb(96, 47, 5);
 }
 
 .title-link:hover {
-    color: rgb(8, 156, 255);
+    color: rgb(142, 70, 8);
 }
 
 .top-container {
     border-bottom: .075em solid rgba(150, 149, 149, 0.308);
     border-width: 100%;
+    padding-left: .5em;
 
 }
 
 .question-detail-tags,
 .question-tried-expected-all-questions {
     margin-bottom: .5em;
+}
+
+.tags-username-all-questions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.username-all-questions {
+    padding-right: 1em;
 }

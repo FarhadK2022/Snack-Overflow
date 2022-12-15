@@ -18,6 +18,7 @@ const QuestionDetails = () => {
     const dispatch = useDispatch();
     const { questionId } = useParams();
 
+
     const sessionUser = useSelector((state) => state.session.user);
 
     const questionInfoObj = useSelector((state) => {
@@ -69,18 +70,13 @@ const QuestionDetails = () => {
     }
 
 
-
-    // if(!questionInfoObj){
-    //     return null
-    // }
-
     const currentLike = questionInfoObj?.who_liked.filter((obj) => {
         return sessionUser?.id === obj.id
     })
 
-    // const currentVote = questionInfoObj?.answers.filter((obj) => {
-    //     return sessionUser?.id === obj.id
-    // })
+
+
+
 
     return (
         <div className="main-container">
@@ -93,13 +89,13 @@ const QuestionDetails = () => {
                     <div className="question-info-likes">
                         {" "}
                         {questionInfoObj?.likes}{" "}
-                        {sessionUser && sessionUser?.id != questionInfoObj?.user_id && currentLike?.length === 0 ? (
+                        {sessionUser && sessionUser?.id !== questionInfoObj?.user_id && currentLike?.length === 0 ? (
                             <button className="question-like-button" onClick={createLike}>
                                 <i className="fa fa-heart fa-2x" />
                             </button>
                         ) : null}
                         {sessionUser && currentLike?.length >= 1 ? (
-                            <button className="question-like-button" onClick={removeLike}>
+                            <button className="question-unlike-button" onClick={removeLike}>
                                 <i className="fa fa-times fa-2x" />
                             </button>
                         ) : null}
@@ -107,7 +103,11 @@ const QuestionDetails = () => {
                     <div className="question-info">
                         <div> {questionInfoObj?.question}</div>
                         <div> {questionInfoObj?.tried_expected} </div>
-                        <div> Tags: [{questionInfoObj?.tags.split(",").join(" ")}] </div>
+                        <div> Tags: [{questionInfoObj?.tags.split(",").join(", ")}] </div>
+                        <span>{" "}
+                            <i className="fa-solid fa-circle-user"/>{" "}
+                            {questionInfoObj?.user_questions.username}
+                        </span>
                         <div className="question-buttons">
                             <div>
                                 {sessionUser &&
@@ -138,7 +138,7 @@ const QuestionDetails = () => {
                             return (
                                 <li className='specific-answer' key={obj.id}>
                                     <div className="answer-voting">
-                                        {sessionUser && sessionUser.id != obj.user_id ?
+                                        {sessionUser && sessionUser.id !== obj.user_id ?
                                             <>
                                                 <button className="answer-vote-button-up" onClick={(e) => createUpvote(e, obj.id)}>
                                                     {" "}
@@ -146,8 +146,8 @@ const QuestionDetails = () => {
                                                 </button>{" "}
                                             </>
                                             : ''}
-                                        {obj?.votes}{" "}
-                                        {sessionUser && sessionUser.id != obj.user_id ?
+                                        <div className="question-details-vote-number">{obj?.votes}{" "}</div>
+                                        {sessionUser && sessionUser.id !== obj.user_id ?
                                             <>
                                                 <button className="answer-vote-button-down" onClick={(e) => createDownvote(e, obj.id)}>
                                                     {" "}
@@ -160,16 +160,13 @@ const QuestionDetails = () => {
                                         {obj?.body}{" "}
                                         {sessionUser &&
                                             (sessionUser.id === obj?.user_id ? (
-                                                <Link to={`/edit/answers/${obj.id}`}>Edit Answer</Link>
+                                                <Link to={`/edit/answers/${obj.id}`} className='question-details-edit-answer-link'>Edit Answer</Link>
                                             ) : null)}
                                     </div>
                                 </li>
                             );
                         })}
-                    </div>
-                </div>
-                <footer className="bottom-q-info-page">
-                    <div className="question-info-answer-bottom">
+                        <div className="question-info-answer-bottom">
                         {sessionUser &&
                             (sessionUser.id === questionInfoObj?.user_id ? null : (
                                 <CreateAnswerForm />
@@ -178,7 +175,8 @@ const QuestionDetails = () => {
                     <div className="question-info-answer-bottom">
                         {!sessionUser ? <button onClick={onSubmit}>Login to answer</button> : null}
                     </div>
-                </footer>
+                    </div>
+                </div>
             </div>
         </div>
   );
