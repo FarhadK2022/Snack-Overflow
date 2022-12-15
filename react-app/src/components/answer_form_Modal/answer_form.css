@@ -1,0 +1,24 @@
+/* .create-answer-div {
+    display: flex;
+    align-items: end;
+} */
+
+.create-answer-inputField {
+    height: 100px;
+    width: 100%;
+    resize: none;
+}
+
+.submit-answer-button {
+    background: none;
+    border-radius: .3em;
+    height: 2.75em;
+    background-color: rgb(96, 47, 5);
+    color: white;
+}
+
+.submit-answer-button:hover{
+    background-color: rgb(64, 31, 3);
+    border: .1em solid rgb(77, 37, 3);
+
+}
