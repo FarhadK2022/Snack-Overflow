@@ -100,7 +100,10 @@ const QuestionDetails = () => {
                         <div> {questionInfoObj?.question}</div>
                         <div> {questionInfoObj?.tried_expected} </div>
                         <div> Tags: [{questionInfoObj?.tags.split(",").join(" ")}] </div>
-                        <span>{questionInfoObj?.user_questions.username}</span>
+                        <span>{" "}
+                            <i className="fa-solid fa-circle-user"/>{" "}
+                            {questionInfoObj?.user_questions.username}
+                        </span>
                         <div className="question-buttons">
                             <div>
                                 {sessionUser &&

@@ -66,7 +66,9 @@ const Questions = () => {
                                 {obj.tags ?
                                     <p className='question-detail-tags'>[{obj.tags}]</p>
                                     : null}
-                                    <span>{obj.user_questions.username}</span>
+                                    <span>{" "}
+                                    <i className="fa-solid fa-circle-user"/>{" "}
+                                     {obj.user_questions.username}</span>
                             </div>
                         </div>
                     )
