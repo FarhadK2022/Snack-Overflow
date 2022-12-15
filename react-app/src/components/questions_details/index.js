@@ -95,7 +95,7 @@ const QuestionDetails = () => {
                             </button>
                         ) : null}
                         {sessionUser && currentLike?.length >= 1 ? (
-                            <button className="question-like-button" onClick={removeLike}>
+                            <button className="question-unlike-button" onClick={removeLike}>
                                 <i className="fa fa-times fa-2x" />
                             </button>
                         ) : null}
@@ -103,7 +103,7 @@ const QuestionDetails = () => {
                     <div className="question-info">
                         <div> {questionInfoObj?.question}</div>
                         <div> {questionInfoObj?.tried_expected} </div>
-                        <div> Tags: [{questionInfoObj?.tags.split(",").join(" ")}] </div>
+                        <div> Tags: [{questionInfoObj?.tags.split(",").join(", ")}] </div>
                         <span>{" "}
                             <i className="fa-solid fa-circle-user"/>{" "}
                             {questionInfoObj?.user_questions.username}
@@ -146,7 +146,7 @@ const QuestionDetails = () => {
                                                 </button>{" "}
                                             </>
                                             : ''}
-                                        {obj?.votes}{" "}
+                                        <div className="question-details-vote-number">{obj?.votes}{" "}</div>
                                         {sessionUser && sessionUser.id !== obj.user_id ?
                                             <>
                                                 <button className="answer-vote-button-down" onClick={(e) => createDownvote(e, obj.id)}>

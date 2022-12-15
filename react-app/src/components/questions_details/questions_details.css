@@ -35,17 +35,31 @@
   border: none;
   cursor: pointer;
   background-color: white;
+  border-radius: 5px;
 }
 
 .question-like-button:hover {
   cursor: pointer;
-  background-color: pink;
+  background-color: green;
   box-shadow: 0 1px black;
 }
 
 .question-like-button:active {
   cursor: pointer;
   background-color: white;
+}
+
+.question-unlike-button:hover{
+  cursor: pointer;
+  background-color: red;
+  box-shadow: 0 1px black;
+}
+
+.question-unlike-button{
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .question-info {
@@ -55,6 +69,8 @@
   height: 100%;
   justify-content: space-around;
   align-items: flex-start;
+  margin-top: 1em;
+  gap: .5em;
 }
 
 .question-buttons {
@@ -73,7 +89,8 @@
   display: flex;
   height: 25vh;
   padding-bottom: 400px;
-
+  margin-top: 2em;
+  padding-left: .5em;
 }
 
 .question-info-answer {
@@ -177,4 +194,8 @@
 
 .question-details-edit-answer-link:hover{
   color: rgb(142, 70, 8);
+}
+
+.question-details-vote-number{
+  font-size: 20px;
 }

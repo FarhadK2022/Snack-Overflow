@@ -1,0 +1,49 @@
+.edit-answer-text-area {
+    height: 200px;
+    width: 80%;
+    resize: none;
+    border: 1px solid black;
+}
+
+.edit-answer-text-area-div{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.submit-edited-answer-button {
+    background: none;
+    border-radius: .3em;
+    height: 2.75em;
+    background-color: rgb(96, 47, 5);
+    color: white;
+}
+
+.submit-edited-answer-button:hover{
+    background-color: rgb(64, 31, 3);
+    border: .1em solid rgb(77, 37, 3);
+}
+
+.delete-edited-answer-button {
+    background: none;
+    border-radius: .3em;
+    height: 2.75em;
+    background-color: rgb(96, 47, 5);
+    color: white;
+}
+
+.delete-edited-answer-button:hover {
+    background-color: rgb(64, 31, 3);
+    border: .1em solid rgb(77, 37, 3);
+}
+
+.edit-answer-label {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.edit-answer-button-duo {
+    display: flex;
+    justify-content: center;
+}
