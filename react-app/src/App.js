@@ -11,7 +11,8 @@ import Questions from './components/questions';
 import QuestionDetails from './components/questions_details'
 import SearchResultsPage from './components/SearchBar/SearchResultsPage';
 import EditAnswerButton from './components/edit_answer';
-import SideNavBar from './components/SideNavBar';
+import SplashPage from './components/SplashPage';
+import LogoutConfirm from './components/auth/LogoutConfirm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,29 +34,32 @@ function App() {
       <NavBar />
       {/* <SideNavBar /> */}
       <Switch>
-        <Route path='/login' exact={true}>
+        <Route exact path='/login'>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route exact path='/sign-up'>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/ask' exact={true}>
+        <ProtectedRoute exact path='/ask'>
           <QuestionForm />
         </ProtectedRoute>
-        <Route path='/questions' exact={true}>
+        <Route exact path='/questions'>
           <Questions />
         </Route>
-        <Route path='/questions/:questionId' exact={true}>
+        <Route exact path='/questions/:questionId'>
           <QuestionDetails />
         </Route>
-        <ProtectedRoute path='/edit/answers/:answerid' exact={true}>
+        <ProtectedRoute exact path='/edit/answers/:answerid'>
           <EditAnswerButton />
         </ProtectedRoute>
-        <Route path='/search'>
+        <Route exact path='/search'>
           <SearchResultsPage />
         </Route>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <SplashPage />
+        </Route>
+        <Route path='/logout' exact={true}>
+          <LogoutConfirm />
         </Route>
       </Switch>
     </BrowserRouter>

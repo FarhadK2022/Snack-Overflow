@@ -1,0 +1,99 @@
+.main-logout-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 10em; */
+    width: 20em;
+    box-sizing: border-box;
+
+}
+
+.sub-logout-container {
+    border: .1em solid rgba(150, 149, 149, 0.308);
+    border-radius: .5em;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.logout-message {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    box-sizing: border-box;
+
+}
+
+.first-logout-message {
+    margin-bottom: 1em;
+    box-sizing: border-box;
+}
+
+.creator-links-logout {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    gap: 1em;
+}
+
+
+.github-link,
+.cancel-link {
+    text-decoration: none;
+    color: rgb(33, 126, 189);
+}
+
+.cancel-link {
+    background: none;
+    border: none;
+}
+
+
+.github-link:hover {
+    color: rgb(8, 156, 255);
+}
+
+.cancel-link:hover {
+    background-color: rgba(195, 228, 255, 0.5);
+
+}
+
+.logout-cancel-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.logout-button-confirm {
+    box-sizing: border-box;
+    height: 2.75em;
+
+    margin-right: 1em;
+    background-color: rgb(0, 149, 255);
+    color: white;
+    border-radius: .3em;
+    border: .1em solid rgb(0, 124, 247);
+    font-size: small;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+
+.logout-button-confirm:hover {
+    background-color: rgb(16, 128, 208);
+}
+
+
+.super-parent-div {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(229, 229, 229);
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    /* border-top: .02em solid black; */
+    box-shadow: inset 0em 0 .2em rgba(17, 17, 17, 0.377);
+}

@@ -22,7 +22,7 @@ export const getResultsThunk = (filter, searchInput) => async (dispatch) => {
 const initialState = {allResults:{}};
 
 const searchReducer = (state = initialState, action) => {
-  let newState = {};
+//   let newState = {};
   switch (action.type) {
     case GET_RESULTS:{
       const newState = {allResults:{}};

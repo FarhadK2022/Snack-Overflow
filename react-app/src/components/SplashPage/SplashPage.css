@@ -1,0 +1,51 @@
+.splash-page-main-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: gray;
+    height: 100%;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.arrTitles-span {
+    color: red;
+}
+
+.splash-page-main-container-h1 {
+    color: white;
+    font-size: 50px;
+}
+
+.splash-page-main-container-first-h2 {
+    color: white;
+}
+
+.splash-page-main-container-second-h2 {
+    color: white;
+}
+
+.splash-page-main-container-content {
+    color: white;
+}
+
+.splash-page-main-container-community {
+    color: white;
+}
+
+.splash-page-main-container-creators {
+    color: white;
+}
+
+.github-link {
+    color: darkblue;
+}
+
+.splash-page-main-container-content-here {
+    color: darkblue;
+}
+
+.splash-page-main-container-community-here {
+    color: darkblue
+}

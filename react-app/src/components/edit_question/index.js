@@ -108,7 +108,7 @@ function EditQuestionButton() {
             </div>
             <button type='submit'>Submit Edited Question</button>
             <button onClick={() => setShowForm(false)} className='closeedit-button'>Close</button>
-          </form> : (<button onClick={() => setShowForm(true)} className='edit-question-button'> Edit Question</button>
+          </form> : (<button onClick={() => setShowForm(true)} className='edit-question-button'> Edit </button>
           )}
     </>
   )

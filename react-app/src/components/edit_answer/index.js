@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import * as questionActions from '../../store/question'
 import { useParams, useHistory } from 'react-router-dom';
-import { deleteAnswerThunk, editAnswerThunk, getAllAnswersThunk } from "../../store/answer";
+import { deleteAnswerThunk, editAnswerThunk } from "../../store/answer";
 
 function EditAnswerButton() {
   const history = useHistory()

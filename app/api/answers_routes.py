@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_required
-from app.models import Answer, db
+from app.models import Answer, db, User
 from app.forms import AnswerForm
 
 answers_routes = Blueprint("answers", __name__)
@@ -84,3 +84,55 @@ def delete_question(id):
   db.session.delete(answer)
   db.session.commit()
   return {'message': 'Delete Successful'}
+
+
+@answers_routes.route("/<int:id>/upvote", methods=["GET"])
+@login_required
+def addupvote(id):
+  user = User.query.get(current_user.id)
+
+  answer = Answer.query.get(id)
+
+  for x in answer.answer_downvote:
+    if user.id == x.id:
+      answer.answer_downvote.remove(user)
+      answer.answer_upvote.append(user)
+      db.session.commit()
+      return answer.to_dict()
+
+  for y in answer.answer_upvote:
+    if user.id == y.id:
+      answer.answer_upvote.remove(user)
+      db.session.commit()
+      return answer.to_dict()
+
+  answer.answer_upvote.append(user)
+  db.session.commit()
+  return answer.to_dict()
+
+
+
+@answers_routes.route("/<int:id>/downvote", methods=["GET"])
+@login_required
+def adddownvote(id):
+  user = User.query.get(current_user.id)
+
+  answer = Answer.query.get(id)
+
+  for x in answer.answer_upvote:
+    if user.id == x.id:
+      answer.answer_upvote.remove(user)
+      answer.answer_downvote.append(user)
+
+      db.session.commit()
+      return answer.to_dict()
+
+  for y in answer.answer_downvote:
+    if user.id == y.id:
+      answer.answer_downvote.remove(user)
+      db.session.commit()
+      return answer.to_dict()
+
+  answer.answer_downvote.append(user)
+  db.session.commit()
+  return answer.to_dict()

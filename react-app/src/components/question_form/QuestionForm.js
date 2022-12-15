@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 // import { signUp } from '../../store/session';
 import * as questionActions from '../../store/question'
 
+
+
 const QuestionForm = () => {
-  // const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState('');
   const [question, setQuestion] = useState('');
   const [tried_expected, setTried_Expected] = useState('');
   const [tags, setTags] = useState('');
+  const [errorMessage, setErrorMessage] = useState([])
+  const [titleError, setTitleError] = useState("")
+  const [teError, setTeError] = useState("")
+  const [logicCheck, setLogicCheck] = useState(false)
+
   const dispatch = useDispatch();
 
+  let history = useHistory();
 
-let history = useHistory();
-
-const onSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const createdQuestion = {
@@ -26,9 +31,9 @@ const onSubmit = async (e) => {
 
     let path = `/questions`;
     await history.push(path);
-}
+  }
 
-
+  const minLength = 20
 
   const titleSet = (e) => {
     setTitle(e.target.value);
@@ -46,18 +51,30 @@ const onSubmit = async (e) => {
     setTags(e.target.value);
   };
 
-//   if (user) {
-//     return <Redirect to='/' />;
-//   }
 
-// onSubmit={onSignUp}
+  useEffect(() => {
+    const err = []
+    if (title.length < minLength) {
+      err.push("The Title field is required and must be at least 20 characters long")
+    }
+    if (question.length < minLength) {
+      err.push("The Question field is required and must be at least 20 characters long")
+    }
+
+    if (tried_expected.length < minLength) {
+      err.push("The Tried & Expected field is required and must be at least 20 characters long")
+    }
+
+    setErrorMessage(err)
+  }, [title, question, tried_expected])
+
+  const logicSwap = errorMessage.length > 0 ? !logicCheck : logicCheck
+
   return (
     <form onSubmit={onSubmit}>
-      {/* <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div> */}
+      <ul>
+        {errorMessage?.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
       <div>
         <label>Title</label>
         <input
@@ -65,8 +82,10 @@ const onSubmit = async (e) => {
           name='title'
           onChange={titleSet}
           value={title}
-          required
         ></input>
+      </div>
+      <div>
+        {titleError}
       </div>
       <div>
         <label>Question</label>
@@ -75,8 +94,9 @@ const onSubmit = async (e) => {
             name='questiontextarea'
             onChange={questionSet}
             value={question}
-            required
             ></textarea>
+      </div>
+      <div>
       </div>
       <div>
         <label>Tried & Expected</label>
@@ -85,8 +105,10 @@ const onSubmit = async (e) => {
             name='tetextarea'
             onChange={teSet}
             value={tried_expected}
-            required
           ></textarea>
+      </div>
+      <div>
+        {teError}
       </div>
       <div>
         <label>Tags</label>
@@ -95,10 +117,9 @@ const onSubmit = async (e) => {
           name='tags'
           onChange={tagSet}
           value={tags}
-          required
         ></input>
       </div>
-      <button type='submit'>Submit Question</button>
+      <button type='submit' disabled={logicSwap}>Submit Question</button>
     </form>
   );
 };

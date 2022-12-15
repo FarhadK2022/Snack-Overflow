@@ -19,11 +19,11 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password, bio, location, full_name, title));
+      const data = await dispatch(signUp(username.toLowerCase(), email.toLowerCase(), password, bio, location, full_name, title));
       if (data) {
         setErrors(data)
       }
-    } else{
+    } else {
 
       return setErrors([
         "Confirm Password field must be the same as the Password field",
