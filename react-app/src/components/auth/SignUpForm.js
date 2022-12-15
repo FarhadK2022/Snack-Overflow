@@ -77,7 +77,7 @@ const SignUpForm = () => {
     <>
       <div className='main-sign-up-container'>
         <div className='join-site-container'>
-          <h1 className='join-site-text'>Join the Stack Overflow community</h1>
+          <h1 className='join-site-text'>Join the Snack Overflow community</h1>
           <div className='advertisement-to-sign-up'>
             <span className='list-of-things-offered'><i className="fa-solid fa-clipboard-question" style={{ color: "rgb(96, 47, 5)" }}></i> Get unstuck — ask a question</span>
             <span className='list-of-things-offered'><i className="fa-solid fa-sort" style={{ color: "rgb(96, 47, 5)" }}></i> Unlock new privileges like voting and answering</span>
