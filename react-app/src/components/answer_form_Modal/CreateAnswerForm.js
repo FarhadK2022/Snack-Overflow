@@ -10,16 +10,32 @@ const CreateAnswerForm = (setShowModal) => {
   const history = useHistory()
   const sessionUser = useSelector(state => state.session.user)
   const [body, setBody] = useState("");
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
+  const [submitted, setSubmitted] = useState(false)
 
   const { questionId } = useParams()
 
 
   const minLength = 20
 
+
+
+  useEffect(() => {
+    const errors = []
+
+    if(body.length < minLength){
+      errors.push("The Answer field is required and must be at least 20 characters long")
+    }
+
+    setErrors(errors)
+  }, [body])
+
+  console.log(errors)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setSubmitted(true)
+    if (errors.length > 0) return
     const newAnswer = {
       questionId,
       user_id: sessionUser.id,
@@ -28,27 +44,18 @@ const CreateAnswerForm = (setShowModal) => {
 
     await dispatch(createAnswerThunk(newAnswer));
     setBody('');
+    setSubmitted(false)
     return await dispatch(getQuestionByIdThunk(questionId))
   };
-
-  useEffect(() => {
-    const err = []
-
-    if(body.length < minLength){
-      err.push("The Answer field is required and must be at least 20 characters long")
-    }
-
-    setErrors(err)
-  }, [body])
-
-
 
   return (
     <div className="create-answer-div">
     <form onSubmit={handleSubmit}>
+      {submitted && errors.length > 0 && (
       <ul>
         {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      )}
       <div>
       <label>
         Answer:
