@@ -71,8 +71,13 @@ Host Database:
 >  PostgreSQL
 
 
-## Splash Page
+## Snack Overflow Splash Page
 ![Screen Shot 2022-12-15 at 11 45 10 PM](https://user-images.githubusercontent.com/100194132/208048905-2cf5ea86-d6ab-4952-be23-ede24f1b6893.png)
 
-## Home Page
+## Snack Overflow Home Page
 ![Screen Shot 2022-12-15 at 11 28 36 PM](https://user-images.githubusercontent.com/100194132/208046108-7d52c939-ede2-4e34-b52f-ca02a4903186.png)
+
+## Stack Overflow Splash Page (as of December 2022)
+
+
+## Stack Overflow Splash Page (as of December 2022)
