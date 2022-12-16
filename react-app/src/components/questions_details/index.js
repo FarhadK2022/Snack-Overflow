@@ -9,7 +9,6 @@ import {
 import { addUpvoteThunk, addDownvoteThunk } from "../../store/answer";
 import { useParams, useHistory, Link } from "react-router-dom";
 import "./questions_details.css";
-// import EditQuestionButton from "../edit_question";
 import CreateAnswerForm from "../answer_form_Modal/CreateAnswerForm";
 import SideNavBar from "../SideNavBar";
 
@@ -102,8 +101,8 @@ const QuestionDetails = () => {
                     <div className="question-info">
                         <div> {questionInfoObj?.question}</div>
                         <div> {questionInfoObj?.tried_expected} </div>
-                        <div> Tags: {tagsArray?.map((tag) => {
-                            return <Link to='/work-in-progress' className="question-details-tag-link">[{tag}]</Link>
+                        <div> Tags: {tagsArray?.map((tag, idx) => {
+                            return <Link key={idx} to='/work-in-progress' className="question-details-tag-link">[{tag}]</Link>
                         })} </div>
                         <span>{" "}
                             <i className="fa-solid fa-circle-user"/>{" "}
@@ -111,10 +110,14 @@ const QuestionDetails = () => {
                         </span>
                         <div className="question-buttons">
                             <div>
-                                {sessionUser &&
-                                    (sessionUser.id === questionInfoObj?.user_id ? (
-                                        <EditQuestionButton />
-                                    ) : null)}
+                              {sessionUser &&
+                                  (sessionUser.id === questionInfoObj?.user_id && (
+                                    <Link exact="true" to={`/edit/questions/${questionId}`}>
+                                      <button className="edit-question-button">
+                                        Edit
+                                      </button>
+                                    </Link>
+                                  ))}
                             </div>
                             <div>
                                 {sessionUser &&
