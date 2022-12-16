@@ -3,4 +3,55 @@
     margin-right: auto;
     width: 5em;
     padding-top: 10em;
+    display: flex;
+    justify-content: center;
+}
+
+.login-form-button-combo-div{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    /* width: 30em; */
+    margin-top: 2em;
+}
+
+.login-form-login-button{
+    background: none;
+    border-radius: .3em;
+    height: 2.75em;
+    width: 8em;
+    background-color: rgb(96, 47, 5);
+    color: white;
+}
+
+.login-form-demouser-button{
+    background: none;
+    border-radius: .3em;
+    height: 2.75em;
+    width: 13em;
+    background-color: rgb(96, 47, 5);
+    color: white;
+}
+
+.login-form-email-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form-password-div{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+.login-form-password-label{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.login-form-email-label{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
 }

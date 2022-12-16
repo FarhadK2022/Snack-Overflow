@@ -46,8 +46,8 @@ const LoginForm = () => {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
-          <label htmlFor='email'>Email</label>
+        <div className='login-form-email-div'>
+          <label className='login-form-email-label' htmlFor='email'>Email</label>
           <input
             name='email'
             type='text'
@@ -57,8 +57,8 @@ const LoginForm = () => {
             required
           />
         </div>
-        <div>
-          <label htmlFor='password'>Password</label>
+        <div className='login-form-password-div'>
+          <label className='login-form-password-label' htmlFor='password'>Password</label>
           <input
             name='password'
             type='password'
@@ -67,8 +67,10 @@ const LoginForm = () => {
             onChange={updatePassword}
             required
           />
-          <button type='submit'>Login</button>
-          <button type='submit' onClick={setDemoUser}>Log In as Demo User</button>
+          <div className='login-form-button-combo-div'>
+          <button type='submit' className='login-form-login-button'>Log In</button>
+          <button type='submit' className='login-form-demouser-button' onClick={setDemoUser}>Log In as Demo User</button>
+          </div>
         </div>
       </form>
     </div>
