@@ -7,7 +7,7 @@
     /* margin-top: 10em; */
     /* width: 50em; */
     box-sizing: border-box;
-    padding-top: 15em;
+    padding-top: 7em;
     gap: 5em;
     height: 100%;
     width: 100%;
@@ -17,12 +17,14 @@
 
 .join-site-text {
     font-size: x-large;
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
+    color: rgb(58, 58, 58);
 }
 
 .join-site-container {
     display: flex;
     flex-direction: column;
+    padding-top: 7em;
 }
 
 .advertisement-to-sign-up {
@@ -41,5 +43,95 @@
 }
 
 .list-of-things-offered {
+    display: flex;
+    flex-direction: row;
+    gap: .5em;
     font-size: medium;
+
+}
+
+.whole-sign-up-form {
+    border: .1em solid rgba(150, 149, 149, 0.308);
+    border-radius: .5em;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    box-sizing: border-box;
+    background-color: white;
+    height: fit-content;
+    padding: 2em;
+
+}
+
+.sign-up-form-fields {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1em;
+
+}
+
+.sign-up-form-fields-label {
+    font-weight: bold;
+    font-size: smaller;
+    padding-bottom: .25em;
+}
+
+.sign-up-form-inputs {
+    height: 2em;
+    width: 20em;
+    border-radius: .3em;
+    border: .1em solid rgba(162, 161, 161, 0.719);
+    outline: none;
+}
+
+.sign-up-form-inputs:focus {
+    border: .1em solid rgb(96, 47, 5);
+    outline: .4em solid rgba(183, 122, 68, 0.377)
+        /* border-radius: 1em; */
+
+
+}
+
+.password-field-for-sign-up {
+    display: flex;
+    flex-direction: column;
+}
+
+.password-requirement {
+    font-size: .7em;
+    padding-top: .5em;
+    color: rgb(154, 154, 154);
+}
+
+.sign-up-button-submit {
+    box-sizing: border-box;
+    height: 2.5em;
+    width: 100%;
+    background-color: rgb(96, 47, 5);
+
+    color: white;
+    border-radius: .3em;
+    border: .1em solid rgb(77, 37, 3);
+    font-size: small;
+    padding-left: .75em;
+    padding-right: .75em;
+    margin-top: .4em;
+    cursor: pointer;
+    margin-top: 3em;
+
+}
+
+.sign-up-button-submit:hover {
+    background-color: rgb(64, 31, 3);
+
+}
+
+.sign-up-terms-of-service {
+    width: 21em;
+    font-size: small;
+    padding-top: 3em;
+}
+
+.bottom-of-sign-up-text {
+    color: rgb(152, 149, 149);
 }

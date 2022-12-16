@@ -33,6 +33,8 @@ const Questions = () => {
     }
 
 
+
+
     return (
         <div className='main-container'>
             <div>
@@ -64,7 +66,9 @@ const Questions = () => {
                                 <p className='question-tried-expected-all-questions'>{obj.question} {obj.tried_expected.substring(0, 24)}...</p>
                                 <div className='tags-username-all-questions'>
                                     {obj.tags ?
-                                        <p className='question-detail-tags'>[{obj.tags}]</p>
+                                        <p className='question-detail-tags'>{obj.tags.split(',').join(', ').split(',').map((tag) => {
+                                            return <Link to='/work-in-progress' className="questions-tag-link">[{tag}]</Link>
+                                        })}</p>
                                         : null}
                                     <span className='username-all-questions'>{" "}
                                         <i className="fa-solid fa-circle-user" />{" "}

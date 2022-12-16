@@ -65,6 +65,9 @@ const SearchResults = () => {
                   {obj.tags ?
                     <p className='question-detail-tags'>[{obj.tags}]</p>
                     : null}
+                    <span className='username-all-questions'>{" "}
+                      <i className="fa-solid fa-circle-user" />{" "}
+                       {obj.user_questions.username}</span>
                 </div>
               </div>
             )

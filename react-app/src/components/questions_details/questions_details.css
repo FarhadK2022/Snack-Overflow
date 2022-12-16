@@ -199,3 +199,29 @@
 .question-details-vote-number{
   font-size: 20px;
 }
+
+.question-details-tag-link{
+  text-decoration: none;
+  color: rgb(96, 47, 5);
+  padding-left: 5px;
+}
+
+.question-details-tag-link:hover{
+  color: rgb(142, 70, 8);
+}
+
+.question-details-tag-link:visited{
+  color: rgb(96, 47, 5);
+}
+
+.answer-vote-button-down-non-logged{
+  border: none;
+  background-color: darkgray;
+  border-radius: 3px;
+}
+
+.answer-vote-button-up-non-logged{
+  border: none;
+  background-color: darkgray;
+  border-radius: 3px;
+}

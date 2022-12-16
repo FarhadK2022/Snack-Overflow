@@ -100,8 +100,8 @@ export const editQuestionThunk = (payload) => async dispatch => {
 
     if (response.ok) {
         const question = await response.json()
-
         dispatch(editQuestion(question))
+        return question
     }
 }
 
@@ -137,6 +137,7 @@ export const getQuestionByIdThunk = (questionId) => async dispatch => {
     if (response.ok) {
         const question = await response.json()
         dispatch(getQuestionById(question))
+        return question
     }
 }
 
