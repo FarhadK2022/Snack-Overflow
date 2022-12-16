@@ -71,9 +71,10 @@ function EditQuestionButton() {
                 ))}
               </ul>
             )}
-            <div>
-              <label>Title</label>
+            <div className="edit-question-title-input-div">
+              <label>Title: </label>
               <input
+                className="edit-question-title-input"
                 type='text'
                 name='title'
                 value={title}
@@ -82,8 +83,9 @@ function EditQuestionButton() {
               ></input>
             </div>
             <div>
-              <label>Question</label>
+              <label>Question: </label>
               <textarea
+                className="edit-question-question-textarea"
                 type='text'
                 name='questiontextarea'
                 value={question}
@@ -92,7 +94,7 @@ function EditQuestionButton() {
               ></textarea>
             </div>
             <div>
-              <label>Tried & Expected</label>
+              <label>Tried & Expected: </label>
               <textarea
                 type='text'
                 name='tetextarea'
@@ -102,7 +104,7 @@ function EditQuestionButton() {
               ></textarea>
             </div>
             <div>
-              <label>Tags</label>
+              <label>Tags: </label>
               <input
                 type='text'
                 name='tags'
