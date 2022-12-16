@@ -38,8 +38,10 @@ const LoginForm = () => {
   }
 
   return (
+    <div className="login-form-container">
     <form onSubmit={onLogin}>
-      <div>
+      <div className="form-container">
+      <div className="errors-login">
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
@@ -65,10 +67,12 @@ const LoginForm = () => {
           onChange={updatePassword}
           required
         />
+      </div>
         <button type='submit'>Login</button>
         <button type='submit' onClick={setDemoUser}>Log In as Demo User</button>
       </div>
     </form>
+    </div>
   );
 };
 

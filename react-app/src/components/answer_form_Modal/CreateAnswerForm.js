@@ -29,7 +29,7 @@ const CreateAnswerForm = (setShowModal) => {
     setErrors(errors)
   }, [body])
 
-  console.log(errors)
+  // console.log(errors)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
