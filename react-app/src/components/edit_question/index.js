@@ -48,7 +48,7 @@ function EditQuestionButton() {
       tags
     }
     const editedData = await dispatch(editQuestionThunk(updatedData))
-    console.log(editedData)
+    // console.log(editedData)
     if (editedData) {
       history.push(`/questions/${questionId}`)
     }
