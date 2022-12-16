@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -12,14 +12,23 @@ const SignUpForm = () => {
   const [full_name, setFull_Name] = useState('')
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [submitted, setSubmitted] = useState(false)
   const bio = ''
   const location = ''
   const title = ''
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const errors = []
+    if (password.length < 8) errors.push("Password must be at least 8 characters or more")
+    setErrors(errors)
+  }, [password])
+
   const onSignUp = async (e) => {
     e.preventDefault();
+    setSubmitted(true)
+    if (errors.length > 0) return
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username.toLowerCase(), email.toLowerCase(), password, bio, location, full_name, title));
       if (data) {
@@ -79,11 +88,13 @@ const SignUpForm = () => {
         <div className='whole-sign-up-form'>
 
           <form onSubmit={onSignUp}>
-            <div>
+            {submitted && errors.length > 0 && (
+            <div style={{color: 'red'}}>
               {errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
               ))}
             </div>
+            )}
             <div className='sign-up-form-fields'>
               <label className='sign-up-form-fields-label'>Full name</label>
               <input
@@ -109,7 +120,7 @@ const SignUpForm = () => {
             <div className='sign-up-form-fields'>
               <label className='sign-up-form-fields-label'>Email</label>
               <input
-                type='text'
+                type='email'
                 name='email'
                 onChange={updateEmail}
                 value={email}
