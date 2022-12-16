@@ -213,3 +213,15 @@
 .question-details-tag-link:visited{
   color: rgb(96, 47, 5);
 }
+
+.answer-vote-button-down-non-logged{
+  border: none;
+  background-color: darkgray;
+  border-radius: 3px;
+}
+
+.answer-vote-button-up-non-logged{
+  border: none;
+  background-color: darkgray;
+  border-radius: 3px;
+}
