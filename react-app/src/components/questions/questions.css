@@ -110,3 +110,17 @@
 .username-all-questions {
     padding-right: 1em;
 }
+
+.questions-tag-link{
+    text-decoration: none;
+    color: rgb(96, 47, 5);
+    padding-right: 5px;
+}
+
+.questions-tag-link:visited{
+    color: rgb(96, 47, 5);
+}
+
+.questions-tag-link:hover{
+    color: rgb(142, 70, 8);
+  }

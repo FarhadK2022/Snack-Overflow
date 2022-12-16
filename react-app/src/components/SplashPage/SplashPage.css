@@ -16,38 +16,36 @@
 
 .splash-page-main-container-h1 {
     color: white;
-    font-size: 50px;
-    padding-top: 1em;
+    font-size: 45px;
+    padding-top: .5em;
 }
 
 .splash-page-main-container-first-h2 {
     color: white;
-    font-size: 2em;
+    font-size: 30px;
     padding-left: 2em;
 
 }
 
 .splash-page-main-container-second-h2 {
     color: white;
-    margin-top: 2em;
+    margin-top: .5em;
     font-size: 35px;
-
-
 }
 
 .splash-page-main-container-content {
     color: white;
-    margin-top: 5em;
+    margin-top: 2em;
 }
 
 .splash-page-main-container-community {
     color: white;
-    margin-top: 1em;
+    margin-top: .5em;
 }
 
 .splash-page-main-container-creators {
     color: white;
-    margin-top: 1em;
+    margin-top: .5em;
 }
 
 .github-link-splash-page {
@@ -87,4 +85,57 @@
 
 .splash-page-creators-text {
     margin-left: 6em;
+}
+
+.kool-aid-gif{
+    padding-top: 50px;
+    height: 200px;
+}
+
+.splash-image-div{
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 3em;
+}
+
+.random-blurb-one-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.random-blurb-two-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.random-blurb-three-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.random-blurb-four-div{
+    display: flex;
+    flex-direction: column;
+}
+
+h3{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    color: white;
+}
+
+.splash-p{
+    color: rgb(202, 188, 188);
+}
+
+.line{
+    border-bottom: 5px solid black;
+    display: block;
+}
+
+hr{
+    width: 80px;
+    height: 5px;
+    background-color: white;
 }

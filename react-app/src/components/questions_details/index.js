@@ -74,8 +74,7 @@ const QuestionDetails = () => {
         return sessionUser?.id === obj.id
     })
 
-
-
+    const tagsArray = questionInfoObj?.tags.split(",").join(',').split(',')
 
 
     return (
@@ -103,7 +102,9 @@ const QuestionDetails = () => {
                     <div className="question-info">
                         <div> {questionInfoObj?.question}</div>
                         <div> {questionInfoObj?.tried_expected} </div>
-                        <div> Tags: [{questionInfoObj?.tags.split(",").join(", ")}] </div>
+                        <div> Tags: {tagsArray?.map((tag) => {
+                            return <Link to='/work-in-progress' className="question-details-tag-link">[{tag}]</Link>
+                        })} </div>
                         <span>{" "}
                             <i className="fa-solid fa-circle-user"/>{" "}
                             {questionInfoObj?.user_questions.username}
