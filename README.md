@@ -1,15 +1,15 @@
-# SnackOverflow
+# Snack Overflow
 
 ## About
-SnackOverflow, inspired by Stack Overflow, is a website clone for the foodie community. Users and guests alike can come to find answers to their previously unanswered snacking quetions. The site offers a plethora of public opinion on food trends, favorite recipes, community support to learn how to exectute the perfect meal, and much more! This is a tool that can be used to get your questions on cravings answered, put focus on important questions we all face, filter out the best solution to an unsavory situation or to help guide new foodies in their culinary pursuits so we can all enjoy a delicious meal without finding ourselves in a pickle!
+Snack Overflow, inspired by Stack Overflow, is a website clone for the foodie community. Users and guests alike can come to find answers to their previously unanswered snacking questions. The site offers a plethora of public opinion on food trends, favorite recipes, community support, resources on exectuting the perfect meal, and much more! This is a tool that can be used to get your questions on cravings answered, put focus on the important food questions we all face, filter out the best solution to an unsavory situation, or guide new foodies in their culinary pursuits so we can all enjoy a delicious meal without finding ourselves in a pickle!
 
 It has been our absolute pleasure developing this app with you (and our stomachs) in mind. We will continue to make updates and refine the site for a smoother, more mouth-watering experience. We hope you enjoy poking around the site, and that it helps with your next delicious snack or tantalizing meal!
 
-To use the app you can either select the live link, or by downloading the repository and following the steps listed out in the 'Getting Snackoverflow started' section below
+To use the app you can either select the live link, or by downloading from the repository and following the steps listed out in the 'Getting Snackoverflow started' section below
 
 >  Live Site Link: [Snackoverflow](https://snack-overflow.onrender.com)
 
-## Getting SnackOverflow Started
+## Getting Snack Overflow Started
 1. Clone this repository, or download the zip and open the file.
 
 2. Install dependencies.
@@ -58,17 +58,18 @@ The links below offer more details on our Database Schema, Features List, and Us
 [User Stories](https://github.com/FarhadK2022/Snack-Overflow/wiki/User-Stories)
 
 ## Tech Stack
-Frameworks, Platforms, and Libraries used:
+Languages, Frameworks, Platforms, and Libraries used:
 
 >  Python, Flask, Alembic, SQLAlchemy, PyPI, HTML5, CSS3, Node.js, React, Redux
-
-Database:
-
->  PostgreSQL
 
 Hosting:
 
 >  Render
+
+Host Database:
+
+>  PostgreSQL
+
 
 ## Splash Page
 ![Screen Shot 2022-12-15 at 11 45 10 PM](https://user-images.githubusercontent.com/100194132/208048905-2cf5ea86-d6ab-4952-be23-ede24f1b6893.png)
