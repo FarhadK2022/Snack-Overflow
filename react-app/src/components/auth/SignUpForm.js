@@ -120,7 +120,7 @@ const SignUpForm = () => {
             <div className='sign-up-form-fields'>
               <label className='sign-up-form-fields-label'>Email</label>
               <input
-                type='text'
+                type='email'
                 name='email'
                 onChange={updateEmail}
                 value={email}
