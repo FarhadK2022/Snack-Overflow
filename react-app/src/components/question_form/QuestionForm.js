@@ -10,10 +10,11 @@ const QuestionForm = () => {
   const [question, setQuestion] = useState('');
   const [tried_expected, setTried_Expected] = useState('');
   const [tags, setTags] = useState('');
-  const [errorMessage, setErrorMessage] = useState([])
-  const [titleError, setTitleError] = useState("")
-  const [teError, setTeError] = useState("")
-  const [logicCheck, setLogicCheck] = useState(false)
+  const [errors, setErrors] = useState([])
+  const [submitted, setSubmitted] = useState(false)
+  // const [titleError, setTitleError] = useState("")
+  // const [teError, setTeError] = useState("")
+  // const [logicCheck, setLogicCheck] = useState(false)
 
   const dispatch = useDispatch();
 
@@ -21,7 +22,8 @@ const QuestionForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    setSubmitted(true)
+    if (errors.length > 0) return
     const createdQuestion = {
         title, question, tried_expected, tags
     }
@@ -30,6 +32,7 @@ const QuestionForm = () => {
 
     let path = `/questions`;
     await history.push(path);
+    setSubmitted(false)
   }
 
   const minLength = 20
@@ -52,28 +55,31 @@ const QuestionForm = () => {
 
 
   useEffect(() => {
-    const err = []
+    const errors = []
     if (title.length < minLength) {
-      err.push("The Title field is required and must be at least 20 characters long")
+      errors.push("The Title field is required and must be at least 20 characters long")
     }
     if (question.length < minLength) {
-      err.push("The Question field is required and must be at least 20 characters long")
+      errors.push("The Question field is required and must be at least 20 characters long")
     }
 
     if (tried_expected.length < minLength) {
-      err.push("The Tried & Expected field is required and must be at least 20 characters long")
+      errors.push("The Tried & Expected field is required and must be at least 20 characters long")
     }
 
-    setErrorMessage(err)
+    setErrors(errors)
+    return () => setErrors([])
   }, [title, question, tried_expected])
 
-  const logicSwap = errorMessage.length > 0 ? !logicCheck : logicCheck
+  // const logicSwap = errorMessage.length > 0 ? !logicCheck : logicCheck
 
   return (
     <form onSubmit={onSubmit}>
+      {submitted && (
       <ul>
-        {errorMessage?.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errors?.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      )}
       <div>
         <label>Title</label>
         <input
@@ -83,9 +89,9 @@ const QuestionForm = () => {
           value={title}
         ></input>
       </div>
-      <div>
+      {/* <div>
         {titleError}
-      </div>
+      </div> */}
       <div>
         <label>Question</label>
             <textarea
@@ -106,9 +112,9 @@ const QuestionForm = () => {
             value={tried_expected}
           ></textarea>
       </div>
-      <div>
+      {/* <div>
         {teError}
-      </div>
+      </div> */}
       <div>
         <label>Tags</label>
         <input
@@ -118,7 +124,7 @@ const QuestionForm = () => {
           value={tags}
         ></input>
       </div>
-      <button type='submit' disabled={logicSwap}>Submit Question</button>
+      <button type='submit'>Submit Question</button>
     </form>
   );
 };
