@@ -72,7 +72,7 @@ function EditQuestionButton() {
               </ul>
             )}
             <div className="edit-question-title-input-div">
-              <label>Title: </label>
+              <label className="edit-questions-title-label">Title: </label>
               <input
                 className="edit-question-title-input"
                 type='text'
@@ -82,8 +82,8 @@ function EditQuestionButton() {
                 required
               ></input>
             </div>
-            <div>
-              <label>Question: </label>
+            <div className="edit-question-question-textarea-div">
+              <label className="edit-questions-question-label">Question: </label>
               <textarea
                 className="edit-question-question-textarea"
                 type='text'
@@ -93,9 +93,10 @@ function EditQuestionButton() {
                 required
               ></textarea>
             </div>
-            <div>
-              <label>Tried & Expected: </label>
+            <div className="edit-question-triedexpected-textarea-div">
+              <label className="edit-questions-triedexpected-label">Tried & Expected: </label>
               <textarea
+                className="edit-question-triedexpected-textarea"
                 type='text'
                 name='tetextarea'
                 value={tried_expected}
@@ -103,9 +104,10 @@ function EditQuestionButton() {
                 required
               ></textarea>
             </div>
-            <div>
-              <label>Tags: </label>
+            <div className="edit-question-tags-input-div">
+              <label className="edit-questions-tags-label">Tags: </label>
               <input
+                className="edit-question-tags-input"
                 type='text'
                 name='tags'
                 value={tags}
@@ -113,8 +115,10 @@ function EditQuestionButton() {
                 required
               ></input>
             </div>
-            <button type='submit'>Submit Edited Question</button>
-            <button onClick={onCancel} className='closeedit-button'>Close</button>
+            <div className="edit-questions-two-button-div">
+            <button type='submit' className="submit-edit-question-button">Submit Edited Question</button>
+            <button onClick={onCancel} className='close-edit-question-button'>Close</button>
+            </div>
           </form>
           </div>
     </div>
