@@ -78,6 +78,8 @@ Host Database:
 ![Screen Shot 2022-12-15 at 11 28 36 PM](https://user-images.githubusercontent.com/100194132/208046108-7d52c939-ede2-4e34-b52f-ca02a4903186.png)
 
 ## Stack Overflow Splash Page (as of December 2022)
+![Screen Shot 2022-12-16 at 11 12 57 AM](https://user-images.githubusercontent.com/100194132/208191961-418f3863-4937-4e10-812d-881758893877.png)
 
+## Stack Overflow Home Page (as of December 2022)
+![Screen Shot 2022-12-16 at 11 11 02 AM](https://user-images.githubusercontent.com/100194132/208192015-5cbdfa13-a326-4338-8a1d-bb44ff107090.png)
 
-## Stack Overflow Splash Page (as of December 2022)
