@@ -37,7 +37,7 @@ const Questions = () => {
 
     return (
         <div className='main-container'>
-            <div>
+            <div className='side-navbar-for-pages'>
                 <SideNavBar />
             </div>
 

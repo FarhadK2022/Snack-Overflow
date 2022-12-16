@@ -4,6 +4,9 @@
   /* flex-wrap: wrap; */
   width: 80%;
   height: 100vh;
+  border-left: .075em solid rgba(150, 149, 149, 0.308);
+  margin-left: 11.5em;
+  padding-top: 5em;
 }
 
 .question-info-title {
@@ -49,13 +52,13 @@
   background-color: white;
 }
 
-.question-unlike-button:hover{
+.question-unlike-button:hover {
   cursor: pointer;
   background-color: red;
   box-shadow: 0 1px black;
 }
 
-.question-unlike-button{
+.question-unlike-button {
   border: none;
   cursor: pointer;
   background-color: white;
@@ -143,7 +146,7 @@
 
 .answer-vote-button-up:active,
 .answer-vote-button-up:hover,
-.answer-vote-button-up:focus{
+.answer-vote-button-up:focus {
   background-color: rgb(4, 202, 4);
 }
 
@@ -151,7 +154,7 @@
   background-color: rgb(4, 202, 4);
 } */
 
-.answer-vote-button-down:active{
+.answer-vote-button-down:active {
   border: none;
   background-color: red;
 }
@@ -187,40 +190,41 @@
   display: flex;
   margin-top: auto;
 }
-.question-details-edit-answer-link{
+
+.question-details-edit-answer-link {
   color: rgb(96, 47, 5);
   text-decoration: none;
 }
 
-.question-details-edit-answer-link:hover{
+.question-details-edit-answer-link:hover {
   color: rgb(142, 70, 8);
 }
 
-.question-details-vote-number{
+.question-details-vote-number {
   font-size: 20px;
 }
 
-.question-details-tag-link{
+.question-details-tag-link {
   text-decoration: none;
   color: rgb(96, 47, 5);
   padding-left: 5px;
 }
 
-.question-details-tag-link:hover{
+.question-details-tag-link:hover {
   color: rgb(142, 70, 8);
 }
 
-.question-details-tag-link:visited{
+.question-details-tag-link:visited {
   color: rgb(96, 47, 5);
 }
 
-.answer-vote-button-down-non-logged{
+.answer-vote-button-down-non-logged {
   border: none;
   background-color: darkgray;
   border-radius: 3px;
 }
 
-.answer-vote-button-up-non-logged{
+.answer-vote-button-up-non-logged {
   border: none;
   background-color: darkgray;
   border-radius: 3px;

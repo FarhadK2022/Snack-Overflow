@@ -5,9 +5,13 @@
     padding-left: .45em;
     padding-top: 2em;
     /* background-color: aqua; */
-    border-right: .075em solid rgba(150, 149, 149, 0.308);
+    /* border-right: .075em solid rgba(150, 149, 149, 0.308); */
+    margin-top: 5em;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 0;
 
-    width: 6em;
+
     height: 100%;
 
 }

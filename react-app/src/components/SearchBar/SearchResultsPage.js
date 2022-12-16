@@ -39,7 +39,7 @@ const SearchResults = () => {
           <SideNavBar />
         </div>
 
-        <div className='questions-div'>
+        <div className='results-questions-div'>
           <div className='top-container'>
 
             <div className='all-questions-and-button'>
@@ -62,14 +62,16 @@ const SearchResults = () => {
                     <p>{obj.title}</p>
                   </Link>
                   <p className='question-tried-expected-all-questions'>{obj.question} {obj.tried_expected.substring(0, 24)}...</p>
-                  {obj.tags ?
-                    <p className='question-detail-tags'>{obj.tags.split(',').join(', ').split(',').map((tag) => {
-                      return <Link to='/work-in-progress' className="questions-tag-link">[{tag}]</Link>
-                  })}</p>
-                    : null}
+                  <div className='tags-username-all-questions'>
+                    {obj.tags ?
+                      <p className='question-detail-tags'>{obj.tags.split(',').join(', ').split(',').map((tag) => {
+                        return <Link to='/work-in-progress' className="questions-tag-link">[{tag}]</Link>
+                      })}</p>
+                      : null}
                     <span className='username-all-questions'>{" "}
                       <i className="fa-solid fa-circle-user" />{" "}
-                       {obj.user_questions.username}</span>
+                      {obj.user_questions.username}</span>
+                  </div>
                 </div>
               </div>
             )
