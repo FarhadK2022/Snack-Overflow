@@ -6,7 +6,7 @@
     border-radius: 3px;
 }
 
-.edit-answer-text-area-div{
+.edit-answer-text-area-div {
     display: flex;
     justify-content: center;
     padding-top: 20px;
@@ -20,7 +20,7 @@
     color: white;
 }
 
-.submit-edited-answer-button:hover{
+.submit-edited-answer-button:hover {
     background-color: rgb(64, 31, 3);
     border: .1em solid rgb(77, 37, 3);
 }
@@ -47,4 +47,11 @@
 .edit-answer-button-duo {
     display: flex;
     justify-content: center;
+}
+
+.edit-answer-container-div {
+    padding-top: 15em;
+    height: 68.5%;
+    /* margin-top: 15em; */
+    background-color: rgb(229, 229, 229);
 }
