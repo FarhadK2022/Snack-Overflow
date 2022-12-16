@@ -85,7 +85,9 @@ const QuestionDetails = () => {
                 <div className="top-q-info-page">
                     <div className="question-info-likes">
                         {" "}
+                        <div className="like-symbol-likeval">
                         {questionInfoObj?.likes}{" "}
+                        </div>
                         {sessionUser && sessionUser?.id !== questionInfoObj?.user_id && currentLike?.length === 0 ? (
                             <button className="question-like-button" onClick={createLike}>
                                 <i className="fa fa-heart fa-2x" />
@@ -103,7 +105,7 @@ const QuestionDetails = () => {
                         <div> Tags: {tagsArray?.map((tag, idx) => {
                             return <Link key={idx} to='/work-in-progress' className="question-details-tag-link">[{tag}]</Link>
                         })} </div>
-                        <span>{" "}
+                        <span className="user-circle-span">{" "}
                             <i className="fa-solid fa-circle-user" />{" "}
                             {questionInfoObj?.user_questions.username}
                         </span>
@@ -113,7 +115,7 @@ const QuestionDetails = () => {
                                     (sessionUser.id === questionInfoObj?.user_id && (
                                         <Link exact="true" to={`/edit/questions/${questionId}`}>
                                             <button className="edit-question-button">
-                                                Edit
+                                                Edit Question
                                             </button>
                                         </Link>
                                     ))}
@@ -126,7 +128,7 @@ const QuestionDetails = () => {
                                             className="question-delete-button"
                                         >
                                             {" "}
-                                            Delete{" "}
+                                            Delete Question{" "}
                                         </button>
                                     ) : null)}
                             </div>
@@ -136,7 +138,7 @@ const QuestionDetails = () => {
                 <div className="mid-q-info-page">
                     <div className="question-info-answer">
                         {" "}
-                        Answers{" "}
+                        Answers:{" "}
                         {questionInfoObj?.answers.sort((a, b) => {
                              return b.votes - a.votes}).map((obj) => {
                             return (
