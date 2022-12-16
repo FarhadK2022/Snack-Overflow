@@ -146,7 +146,12 @@ const QuestionDetails = () => {
                                                     <i className="fa fa-arrow-up fa-2x" />{" "}
                                                 </button>{" "}
                                             </>
-                                            : ''}
+                                            : <>
+                                            <button className="answer-vote-button-up-non-logged">
+                                                    {" "}
+                                                    <i className="fa fa-arrow-up fa-2x" />{" "}
+                                                </button>{" "}
+                                                </>}
                                         <div className="question-details-vote-number">{obj?.votes}{" "}</div>
                                         {sessionUser && sessionUser.id !== obj.user_id ?
                                             <>
@@ -155,7 +160,12 @@ const QuestionDetails = () => {
                                                     <i className="fa fa-arrow-down fa-2x" />{" "}
                                                 </button>{" "}
                                             </>
-                                            : ''}
+                                            : <>
+                                            <button className="answer-vote-button-down-non-logged">
+                                                    {" "}
+                                                    <i className="fa fa-arrow-down fa-2x" />{" "}
+                                                </button>{" "}
+                                                </>}
                                     </div>
                                     <div className="answer-voting-body">
                                         {obj?.body}{" "}
