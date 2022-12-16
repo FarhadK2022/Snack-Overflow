@@ -75,7 +75,6 @@ const QuestionDetails = () => {
 
     const tagsArray = questionInfoObj?.tags.split(",").join(',').split(',')
 
-
     return (
         <div className="main-container">
             <div className="side-navbar-for-pages">
@@ -138,7 +137,8 @@ const QuestionDetails = () => {
                     <div className="question-info-answer">
                         {" "}
                         Answers{" "}
-                        {questionInfoObj?.answers.map((obj) => {
+                        {questionInfoObj?.answers.sort((a, b) => {
+                             return b.votes - a.votes}).map((obj) => {
                             return (
                                 <li className='specific-answer' key={obj.id}>
                                     <div className="answer-voting">
