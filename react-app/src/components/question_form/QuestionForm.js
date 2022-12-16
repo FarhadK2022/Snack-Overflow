@@ -81,7 +81,7 @@ const QuestionForm = () => {
       </ul>
       )}
       <div>
-        <label>Title</label>
+        <label>Title: </label>
         <input
           type='text'
           name='title'
@@ -93,7 +93,7 @@ const QuestionForm = () => {
         {titleError}
       </div> */}
       <div>
-        <label>Question</label>
+        <label>Question: </label>
             <textarea
             type='text'
             name='questiontextarea'
@@ -104,7 +104,7 @@ const QuestionForm = () => {
       <div>
       </div>
       <div>
-        <label>Tried & Expected</label>
+        <label>Tried & Expected: </label>
           <textarea
             type='text'
             name='tetextarea'
@@ -116,7 +116,7 @@ const QuestionForm = () => {
         {teError}
       </div> */}
       <div>
-        <label>Tags</label>
+        <label>Tags: </label>
         <input
           type='text'
           name='tags'
