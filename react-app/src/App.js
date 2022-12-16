@@ -65,6 +65,9 @@ function App() {
         <Route path='/work-in-progress'>
           <WorkInProgress />
         </Route>
+        <Route>
+          <h1>PAGE NOT FOUND</h1>
+        </Route>
       </Switch>
     </BrowserRouter>
   );
