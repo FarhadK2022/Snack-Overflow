@@ -38,7 +38,7 @@ const addAnswerDownvote = (vote) => ({
 export const addUpvoteThunk = (answerid, userId) => async dispatch => {
     const response = await fetch(`/api/answers/${answerid}/upvote`)
 
-    if(response.ok){
+    if (response.ok) {
         const upvote = await response.json()
         dispatch(addAnswerUpvote(upvote))
         return upvote
@@ -48,7 +48,7 @@ export const addUpvoteThunk = (answerid, userId) => async dispatch => {
 export const addDownvoteThunk = (answerid, userId) => async dispatch => {
     const response = await fetch(`/api/answers/${answerid}/downvote`)
 
-    if(response.ok){
+    if (response.ok) {
         const downvote = await response.json()
         dispatch(addAnswerDownvote(downvote))
         return downvote
@@ -62,7 +62,7 @@ export const deleteAnswerThunk = (answerid) => async dispatch => {
         method: 'DELETE'
     })
 
-    if(response.ok){
+    if (response.ok) {
         const answer = await response.json()
 
         dispatch(deleteAnswer(answer))
@@ -71,17 +71,17 @@ export const deleteAnswerThunk = (answerid) => async dispatch => {
 
 export const editAnswerThunk = (payload) => async dispatch => {
 
-    const { body, answerid  } = payload
+    const { body, answerid } = payload
 
     const response = await fetch(`/api/answers/${answerid}`, {
         method: 'PUT',
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ body })
     })
 
-    if(response.ok){
+    if (response.ok) {
         const answer = await response.json()
 
         dispatch(editAnswer(answer))
@@ -122,19 +122,20 @@ const initialState = { allAnswers: {} }
 const answersReducer = (state = initialState, action) => {
 
 
-    switch(action.type){
-        case ADD_ANSWER:{
+    switch (action.type) {
+        case ADD_ANSWER: {
 
-          if(!state[action.id]){
-              const newState = {
-                  ...state,
-                  [action.payload.id]:{
-                      id: action.payload.id,
-                      body: action.payload.body
-                  }
-              };
-              return newState
-          }
+            if (!state[action.id]) {
+                const newState = {
+                    ...state,
+                    [action.payload.id]: {
+                        id: action.payload.id,
+                        body: action.payload.body
+                    }
+                };
+                return newState
+            }
+            break
         }
 
         case GET_ANSWERS: {
@@ -145,11 +146,11 @@ const answersReducer = (state = initialState, action) => {
             return newState
         }
 
-        case DELETE_ANSWER:{
-            const newState = {...state, allAnswers:{...state.allAnswers}}
+        case DELETE_ANSWER: {
+            const newState = { ...state, allAnswers: { ...state.allAnswers } }
             delete newState.allAnswers[action.payload];
             return newState;
-            }
+        }
 
         case EDIT_ANSWER:
             return {

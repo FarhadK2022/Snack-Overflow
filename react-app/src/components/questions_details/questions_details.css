@@ -21,7 +21,7 @@
 .top-q-info-page {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
   /* height: 25vh; */
   border-bottom: .2em solid rgba(150, 149, 149, 0.308);
   box-sizing: border-box;
