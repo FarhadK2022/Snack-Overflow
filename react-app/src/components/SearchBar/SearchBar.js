@@ -40,7 +40,7 @@ const SearchBar = () => {
             onChange={(e) => setFilter(e.target.value)}
             required
           >
-            <option disabled>Filters</option>
+            <option disabled>Filters:</option>
             <option value={"title"}>By Title</option>
             <option value={"body"}>By Content</option>
             <option value={"tags"}>By Tags</option>
