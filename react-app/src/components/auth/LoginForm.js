@@ -38,41 +38,45 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='whole-login-form'>
+    <div className='main-login-container'>
+      <div className='whole-login-form'>
 
-      <form onSubmit={onLogin}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
-        <div className='login-form-email-div'>
-          <label className='login-form-email-label' htmlFor='email'>Email</label>
-          <input
-            name='email'
-            type='text'
-            placeholder='Email'
-            value={email}
-            onChange={updateEmail}
-            required
-          />
-        </div>
-        <div className='login-form-password-div'>
-          <label className='login-form-password-label' htmlFor='password'>Password</label>
-          <input
-            name='password'
-            type='password'
-            placeholder='Password'
-            value={password}
-            onChange={updatePassword}
-            required
-          />
-          <div className='login-form-button-combo-div'>
-          <button type='submit' className='login-form-login-button'>Log In</button>
-          <button type='submit' className='login-form-demouser-button' onClick={setDemoUser}>Log In as Demo User</button>
+        <form onSubmit={onLogin} className='login-form-all-of-it'>
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
           </div>
-        </div>
-      </form>
+          <div className='login-form-email-div'>
+            <label className='login-form-email-label' htmlFor='email'>Email</label>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+              required
+              className='sign-up-form-inputs'
+            />
+          </div>
+          <div className='login-form-password-div'>
+            <label className='login-form-password-label' htmlFor='password'>Password</label>
+            <input
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+              required
+              className='sign-up-form-inputs'
+            />
+            <div className='login-form-button-combo-div'>
+              <button type='submit' className='login-form-login-button'>Log In</button>
+              <button type='submit' className='login-form-demouser-button' onClick={setDemoUser}>Log In as Demo User</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

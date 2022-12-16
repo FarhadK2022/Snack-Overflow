@@ -42,11 +42,11 @@ const SearchResults = () => {
   } else {
     return (
       <div className='main-container'>
-        <div className="side-navbar-for-pages">
+        <div className='side-navbar-for-pages'>
           <SideNavBar />
         </div>
 
-        <div className='results-questions-div'>
+        <div className='questions-div'>
           <div className='top-container'>
 
             <div className='all-questions-and-button'>
