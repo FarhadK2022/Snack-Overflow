@@ -20,22 +20,29 @@ const SearchResults = () => {
   if (search.length === 0) {
     return (
       <>
-        <div>
+        <div className="side-navbar-for-pages">
           <SideNavBar />
         </div>
-        <div className="no-results-found">
-          <h1>
-            <i className="fa-solid fa-triangle-exclamation fa-10x"></i>
-          </h1>
-          <h1>No Results Found</h1>
-          <h2>Please Check Your Search and Try Again</h2>
-        </div>
+        <h2>
+          <div className="no-results-found">
+            <div className="no-results-found-icon-and-h1">
+              <span className="icon-for-no-results">
+                <i className="fa-solid fa-triangle-exclamation fa-10x"></i>
+              </span>
+              <h1>No Results Found</h1>
+            </div>
+            <div className="error-text-on-search">
+              <h2>Please Check Your Search </h2>
+              <h2> and Try Again</h2>
+            </div>
+          </div>
+        </h2>
       </>
     );
   } else {
     return (
       <div className='main-container'>
-        <div>
+        <div className="side-navbar-for-pages">
           <SideNavBar />
         </div>
 

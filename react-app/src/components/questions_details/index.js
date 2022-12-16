@@ -174,7 +174,7 @@ const QuestionDetails = () => {
                                         {obj?.body}{" "}
                                         {sessionUser &&
                                             (sessionUser.id === obj?.user_id ? (
-                                                <Link to={`/edit/answers/${obj.id}`} className='question-details-edit-answer-link'>Edit Answer</Link>
+                                                <Link to={`/edit/${questionId}/answers/${obj.id}`} className='question-details-edit-answer-link'>Edit Answer</Link>
                                             ) : null)}
                                     </div>
                                 </li>
