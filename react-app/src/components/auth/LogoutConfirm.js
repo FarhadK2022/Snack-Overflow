@@ -36,10 +36,10 @@ const LogoutConfirm = () => {
                         </div>
                         <div className='sub-logout-container'>
                             <div className='creator-links-logout'>
-                                <a className='github-link' href='https://github.com/FarhadK2022' target="_blank">Farhad Koushan</a>
-                                <a className='github-link' href='https://github.com/zswanson92' target="_blank">Zack Swanson</a>
-                                <a className='github-link' href='https://github.com/ricalope' target="_blank">Ricardo Lopez</a>
-                                <a className='github-link' href='https://github.com/ChangeDL' target="_blank">Douglas Loizzo</a>
+                                <a className='github-link' href='https://github.com/FarhadK2022' rel="noreferrer" target="_blank">Farhad Koushan</a>
+                                <a className='github-link' href='https://github.com/zswanson92' rel="noreferrer" target="_blank">Zack Swanson</a>
+                                <a className='github-link' href='https://github.com/ricalope' rel="noreferrer" target="_blank">Ricardo Lopez</a>
+                                <a className='github-link' href='https://github.com/ChangeDL' rel="noreferrer" target="_blank">Douglas Loizzo</a>
                             </div>
                             <div className='logout-cancel-buttons'>
                                 <button className='logout-button-confirm' onClick={event => onLogout(event)}>Logout</button>

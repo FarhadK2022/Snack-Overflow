@@ -77,74 +77,76 @@ const QuestionForm = () => {
 
   return (
     <>
-      <div className= 'main-sign-up-container-1'>
-      <div className='join-site-container'>
-        <div className="question-form-container">
-          <h1 className="join-site-text">What can the Snack Overflow community help with?</h1>
-          <div className="whole-sign-up-form">
+      <div className='main-sign-up-container-1'>
+        <div className='join-site-container'>
+          <div className="question-form-container">
+            <h1 className="join-site-text">What can the Snack Overflow community help with?</h1>
+            <div className="whole-sign-up-form">
 
-          <form onSubmit={onSubmit}>
-            {submitted && (
-              <ul>
-                {errors?.map((error, idx) => (
-                  <li key={idx}>{error}</li>
-                ))}
-              </ul>
-            )}
-            <div className='sign-up-form-fields'>
-              <label className='sign-up-form-fields-label'>Title</label>
-              <input
-                type="text"
-                name="title"
-                onChange={titleSet}
-                value={title}
-                className='sign-up-form-inputs-1'
-                placeholder="Use a title that will help introduce your issue"
-              ></input>
-            </div>
-            <div className='sign-up-form-fields'>
-              <label className='sign-up-form-fields-label'>Question</label>
-              <textarea
-                rows={10}
-                type="text"
-                name="questiontextarea"
-                onChange={questionSet}
-                value={question}
-                className='sign-up-form-inputs-1'
-                placeholder="Please provide the specifics about the issue you are trying to get a better grasp of. The more descriptive you are, the better chance you will get a good answer."
-              ></textarea>
-            </div>
+              <form onSubmit={onSubmit}>
+                {submitted && (
+                  <ul>
+                    {errors?.map((error, idx) => (
+                      <li key={idx}>{error}</li>
+                    ))}
+                  </ul>
+                )}
+                <div className='sign-up-form-fields'>
+                  <label className='sign-up-form-fields-label'>Title</label>
+                  <input
+                    type="text"
+                    name="title"
+                    onChange={titleSet}
+                    value={title}
+                    className='sign-up-form-inputs-1'
+                    placeholder="Use a title that will help introduce your issue"
+                  ></input>
+                </div>
+                <div className='sign-up-form-fields'>
+                  <label className='sign-up-form-fields-label'>Question</label>
+                  <textarea
+                    rows={10}
+                    type="text"
+                    name="questiontextarea"
+                    onChange={questionSet}
+                    value={question}
+                    className='sign-up-form-inputs-1'
+                    style={{ resize: "none" }}
+                    placeholder="Please provide the specifics about the issue you are trying to get a better grasp of. The more descriptive you are, the better chance you will get a good answer."
+                  ></textarea>
+                </div>
 
-            <div className='sign-up-form-fields'>
-              <label className='sign-up-form-fields-label'>Tried & Expected</label>
-              <textarea
-              rows={5}
-                type="text"
-                name="tetextarea"
-                onChange={teSet}
-                value={tried_expected}
-                placeholder='Please input everything you have tried in relation to the question you are posing. If you have results you can report and compare them potential results you were expecting as an out come, detail them here.'
-                className='sign-up-form-inputs-1'
+                <div className='sign-up-form-fields'>
+                  <label className='sign-up-form-fields-label'>Tried & Expected</label>
+                  <textarea
+                    rows={5}
+                    type="text"
+                    name="tetextarea"
+                    onChange={teSet}
+                    value={tried_expected}
+                    placeholder='Please input everything you have tried in relation to the question you are posing. If you have results you can report and compare them potential results you were expecting as an out come, detail them here.'
+                    className='sign-up-form-inputs-1'
+                    style={{ resize: "none" }}
 
-              ></textarea>
-            </div>
+                  ></textarea>
+                </div>
 
-            <div className='sign-up-form-fields'>
-              <label className='sign-up-form-fields-label'>Tags</label>
-              <input
-                height={100}
-                type="text"
-                name="tags"
-                onChange={tagSet}
-                value={tags}
-                placeholder='Tags to increase reach of your question'
-                className='sign-up-form-inputs-1'
-              ></input>
+                <div className='sign-up-form-fields'>
+                  <label className='sign-up-form-fields-label'>Tags</label>
+                  <input
+                    height={100}
+                    type="text"
+                    name="tags"
+                    onChange={tagSet}
+                    value={tags}
+                    placeholder='Tags to increase reach of your question'
+                    className='sign-up-form-inputs-1'
+                  ></input>
+                </div>
+                <button className='sign-up-button-submit' type="submit">Submit Question</button>
+              </form>
             </div>
-            <button className='sign-up-button-submit' type="submit">Submit Question</button>
-          </form>
           </div>
-        </div>
         </div>
       </div>
     </>
