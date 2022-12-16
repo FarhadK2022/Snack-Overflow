@@ -16,7 +16,10 @@ const SideNavBar = () => {
                 <div className='public-links'>
                     <span className='span-questions-link'>
                         <Link to='/questions' exact="true" style={{ textDecoration: 'none' }} className='all-questions-link'>
-                            🍽 Questions
+                            <div className='question-and-emoticon'>
+                                <span>🍽 </span>
+                                <span className='side-bar-question-text'>Questions</span>
+                            </div>
                         </Link>
                     </span>
                     <span className='sidebar-links-not-question'>

@@ -7,7 +7,7 @@ import './edit_answer.css'
 function EditAnswerButton() {
   const history = useHistory()
   const dispatch = useDispatch();
-  const { answerid } = useParams()
+  const { answerid, questionId } = useParams()
 
 
   const currQuestion = useSelector(state => {
@@ -29,7 +29,7 @@ function EditAnswerButton() {
   useEffect(() => {
     const err = []
 
-    if(body.length < 20){
+    if (body.length < 20) {
       err.push("The Answer field is required and must be at least 20 characters long")
     }
 
@@ -40,7 +40,6 @@ function EditAnswerButton() {
     setBody(e.target.value);
   };
 
-  const questionId = Object.values(currQuestion)[0]?.id
   const editCurrentAnswer = async (e) => {
     e.preventDefault();
     setSubmitted(true)
@@ -79,18 +78,18 @@ function EditAnswerButton() {
         <div>
           <label className="edit-answer-label">Answer:</label>
           <div className="edit-answer-text-area-div">
-          <textarea
-            className="edit-answer-text-area"
-            type='text'
-            name='answer-body'
-            value={body}
-            onChange={answerSet}
-          ></textarea>
+            <textarea
+              className="edit-answer-text-area"
+              type='text'
+              name='answer-body'
+              value={body}
+              onChange={answerSet}
+            ></textarea>
           </div>
         </div>
         <div className="edit-answer-button-duo">
-        <button type='submit' className="submit-edited-answer-button">Submit Edited Answer</button>
-        <button onClick={deleteCurrentAnswer} className='delete-edited-answer-button'> Delete Answer </button>
+          <button type='submit' className="submit-edited-answer-button">Submit Edited Answer</button>
+          <button onClick={deleteCurrentAnswer} className='delete-edited-answer-button'> Delete Answer </button>
         </div>
       </form>
     </div>

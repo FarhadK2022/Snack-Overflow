@@ -5,10 +5,13 @@
     padding-left: .45em;
     padding-top: 2em;
     /* background-color: aqua; */
-    border-right: .075em solid rgba(150, 149, 149, 0.308);
-
-    width: 6em;
+    /* border-right: .075em solid rgba(150, 149, 149, 0.308); */
+    margin-top: 5em;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 0;
     height: 100%;
+    width: 50%;
 
 }
 
@@ -76,4 +79,14 @@
 
 .public-links-container {
     padding-top: .75em;
+}
+
+.question-and-emoticon {
+    display: flex;
+    flex-direction: row;
+}
+
+.side-bar-question-text {
+    padding-top: .2em;
+    padding-left: .2em;
 }

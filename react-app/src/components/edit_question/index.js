@@ -48,7 +48,7 @@ function EditQuestionButton() {
       tags
     }
     const editedData = await dispatch(editQuestionThunk(updatedData))
-    console.log(editedData)
+    // console.log(editedData)
     if (editedData) {
       history.push(`/questions/${questionId}`)
     }
@@ -71,48 +71,59 @@ function EditQuestionButton() {
                 ))}
               </ul>
             )}
-            <div>
-              <label>Title</label>
+            <div className="edit-question-title-input-div">
+              <label className="edit-questions-title-label">Title: </label>
               <input
+                className="edit-question-title-input"
                 type='text'
                 name='title'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
+                placeholder="Use a title that will help introduce your issue"
               ></input>
             </div>
-            <div>
-              <label>Question</label>
+            <div className="edit-question-question-textarea-div">
+              <label className="edit-questions-question-label">Question: </label>
               <textarea
+                className="edit-question-question-textarea"
                 type='text'
                 name='questiontextarea'
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 required
+                placeholder="Please provide the specifics about the issue you are trying to get a better grasp of. The more descriptive you are, the better chance you will get a good answer."
               ></textarea>
             </div>
-            <div>
-              <label>Tried & Expected</label>
+            <div className="edit-question-triedexpected-textarea-div">
+              <label className="edit-questions-triedexpected-label">Tried & Expected: </label>
               <textarea
+                className="edit-question-triedexpected-textarea"
                 type='text'
                 name='tetextarea'
                 value={tried_expected}
                 onChange={(e) => setTried_Expected(e.target.value)}
                 required
+                placeholder='Please input everything you have tried in relation to the question you are posing. If you have results you can report and compare them potential results you were expecting as an out come, detail them here.'
+
               ></textarea>
             </div>
-            <div>
-              <label>Tags</label>
+            <div className="edit-question-tags-input-div">
+              <label className="edit-questions-tags-label">Tags: </label>
               <input
+                className="edit-question-tags-input"
                 type='text'
                 name='tags'
                 value={tags}
                 onChange={(e) => setTags(e.target.value)}
-                required
+                placeholder='Please enter in the format "Tag1,Tag2,Tag3"'
+                // required
               ></input>
             </div>
-            <button type='submit'>Submit Edited Question</button>
-            <button onClick={onCancel} className='closeedit-button'>Close</button>
+            <div className="edit-questions-two-button-div">
+            <button type='submit' className="submit-edit-question-button">Submit Edited Question</button>
+            <button onClick={onCancel} className='close-edit-question-button'>Close</button>
+            </div>
           </form>
           </div>
     </div>

@@ -27,8 +27,11 @@
 }
 
 .questions-div {
-    /* margin-left: 1em; */
+    margin-left: 11.5em;
+    padding-top: 5em;
     width: 100%;
+    height: 100%;
+    border-left: .075em solid rgba(150, 149, 149, 0.308);
 
 }
 
@@ -111,16 +114,22 @@
     padding-right: 1em;
 }
 
-.questions-tag-link{
+.questions-tag-link {
     text-decoration: none;
     color: rgb(96, 47, 5);
     padding-right: 5px;
 }
 
-.questions-tag-link:visited{
+.questions-tag-link:visited {
     color: rgb(96, 47, 5);
 }
 
-.questions-tag-link:hover{
+.questions-tag-link:hover {
     color: rgb(142, 70, 8);
-  }
+}
+
+.side-navbar-for-pages {
+    position: fixed;
+    width: 10%;
+
+}

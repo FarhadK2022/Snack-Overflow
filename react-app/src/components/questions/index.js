@@ -37,7 +37,7 @@ const Questions = () => {
 
     return (
         <div className='main-container'>
-            <div>
+            <div className='side-navbar-for-pages'>
                 <SideNavBar />
             </div>
 
@@ -67,7 +67,7 @@ const Questions = () => {
                                 <div className='tags-username-all-questions'>
                                     {obj.tags ?
                                         <p className='question-detail-tags'>{obj.tags.split(',').join(', ').split(',').map((tag) => {
-                                            return <Link to='/work-in-progress' className="questions-tag-link">[{tag}]</Link>
+                                            return <Link key={tag} to='/work-in-progress' className="questions-tag-link">[{tag}]</Link>
                                         })}</p>
                                         : null}
                                     <span className='username-all-questions'>{" "}

@@ -58,7 +58,7 @@ export const addLikeThunk = (questionId, userId) => async dispatch => {
     // const { questionId, user_id } = payload
     const response = await fetch(`/api/questions/${questionId}/like`)
 
-    if(response.ok){
+    if (response.ok) {
         const like = await response.json()
         dispatch(addLike(like))
     }
@@ -68,7 +68,7 @@ export const removeLikeThunk = (questionId, userId) => async dispatch => {
     // const { questionId, user_id } = payload
     const response = await fetch(`/api/questions/${questionId}/unlike`)
 
-    if(response.ok){
+    if (response.ok) {
         const like = await response.json()
         dispatch(removeLike(like))
     }
@@ -146,7 +146,7 @@ const questionsReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
-        case ADD_QUESTION:
+        case ADD_QUESTION: {
 
 
 
@@ -164,6 +164,8 @@ const questionsReducer = (state = initialState, action) => {
 
                 return newState
             }
+            break
+        }
 
 
 
@@ -176,15 +178,14 @@ const questionsReducer = (state = initialState, action) => {
             return newState
         }
 
-        case GET_QUESTION:
+        case GET_QUESTION: {
             const newState = { ...state }
             newState.question = {}
             const question = action.payload
             newState.question = question
             return newState
+        }
 
-
-        
 
         case DELETE_QUESTION: {
             const newState = { ...state }

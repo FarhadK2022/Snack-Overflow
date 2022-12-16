@@ -51,7 +51,7 @@ function App() {
         <Route exact path='/questions/:questionId'>
           <QuestionDetails />
         </Route>
-        <ProtectedRoute exact path='/edit/answers/:answerid'>
+        <ProtectedRoute exact path='/edit/:questionId/answers/:answerid'>
           <EditAnswerButton />
         </ProtectedRoute>
         <Route exact path='/search'>
