@@ -10,9 +10,8 @@
     box-sizing: border-box;
     position: relative;
     z-index: 0;
-
-
     height: 100%;
+    width: 75%;
 
 }
 
@@ -80,4 +79,14 @@
 
 .public-links-container {
     padding-top: .75em;
+}
+
+.question-and-emoticon {
+    display: flex;
+    flex-direction: row;
+}
+
+.side-bar-question-text {
+    padding-top: .2em;
+    padding-left: .2em;
 }
