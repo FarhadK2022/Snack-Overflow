@@ -42,10 +42,7 @@ def get_one_question(id):
 @login_required
 def edit_question(id):
 
-
   question = Question.query.get(id)
-
-
 
   form = QuestionForm()
 
@@ -57,9 +54,6 @@ def edit_question(id):
     new_question = form.data['question']
     new_tried_expected = form.data['tried_expected']
     new_tags = form.data['tags']
-
-
-
 
     question.title = new_title
     question.question= new_question

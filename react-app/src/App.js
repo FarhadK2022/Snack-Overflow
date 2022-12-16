@@ -14,6 +14,7 @@ import EditAnswerButton from './components/edit_answer';
 import SplashPage from './components/SplashPage';
 import LogoutConfirm from './components/auth/LogoutConfirm';
 import WorkInProgress from './components/WorkInProgress/WorkInProgress';
+import EditQuestionButton from './components/edit_question'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -65,6 +66,9 @@ function App() {
         <Route path='/work-in-progress'>
           <WorkInProgress />
         </Route>
+        <ProtectedRoute exact path="/edit/questions/:questionId">
+          <EditQuestionButton />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

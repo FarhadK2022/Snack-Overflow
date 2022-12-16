@@ -1,67 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as questionActions from '../../store/question'
+import { editQuestionThunk } from '../../store/question'
 import { useParams, useHistory } from 'react-router-dom';
-import { getQuestionByIdThunk } from "../../store/question";
 import './edit_question.css'
-
-// import { useHistory } from 'react'
-
 
 
 function EditQuestionButton() {
   const history = useHistory()
   const dispatch = useDispatch();
   const { questionId } = useParams()
-  const currentQuestion = useSelector(state => state.questionsReducer.allQuestions[questionId])
 
+  const currentQuestion = useSelector(state => state.questionsReducer.question[questionId])
 
   const [title, setTitle] = useState(currentQuestion?.title)
   const [question, setQuestion] = useState(currentQuestion?.question)
   const [tried_expected, setTried_Expected] = useState(currentQuestion?.tried_expected)
   const [tags, setTags] = useState(currentQuestion?.tags)
-  const [showForm, setShowForm] = useState(false)
   const [errors, setErrors] = useState([]);
   const [submitted, setSubmitted] = useState(false)
 
-  const titleSet = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const questionSet = (e) => {
-    setQuestion(e.target.value);
-  };
-
-  const teSet = (e) => {
-    setTried_Expected(e.target.value);
-  };
-
-  const tagSet = (e) => {
-    setTags(e.target.value);
-  };
-
-
-
-  const editCurrentQuestion = async (e) => {
-    e.preventDefault();
-    setSubmitted(true)
-    if (errors.length > 0) return
-    const editedQuestion = {
-      questionId, title, question, tried_expected, tags
-    }
-
-    await dispatch(questionActions.editQuestionThunk(editedQuestion))
-
-
-    await dispatch(questionActions.getQuestionByIdThunk(questionId))
-
-    await setShowForm(false)
-    setSubmitted(false)
-    return setTimeout(function () { history.push(`/questions/${questionId}`) }, 10);
-  }
-
   useEffect(() => {
-    dispatch(getQuestionByIdThunk(questionId))
+
     const errors = []
     if (title?.length < 20) {
       errors.push("The Title field is required and must be at least 20 characters long")
@@ -69,23 +28,43 @@ function EditQuestionButton() {
     if (question?.length < 20) {
       errors.push("The Question field is required and must be at least 20 characters long")
     }
-
     if (tried_expected?.length < 20) {
       errors.push("The Tried & Expected field is required and must be at least 20 characters long")
     }
 
     setErrors(errors)
     return () => setErrors([])
-  }, [dispatch, questionId, title, question, tried_expected])
+  }, [title, question, tried_expected])
+  
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    setSubmitted(true)
+    if (errors.length > 0) return
+    const updatedData = {
+      questionId,
+      title,
+      question,
+      tried_expected,
+      tags
+    }
+    const editedData = await dispatch(editQuestionThunk(updatedData))
+    console.log(editedData)
+    if (editedData) {
+      history.push(`/questions/${questionId}`)
+    }
+    setSubmitted(false)
+  }
 
-
+  const onCancel = () => {
+    history.push(`/questions/${questionId}`)
+  }
 
   return (
     <div className="edit-container">
-      {
-        showForm ?
-          <form onSubmit={editCurrentQuestion} className="editquestion-form">
-            {submitted && (
+
+        <div className="inner-edit">
+          <form onSubmit={onSubmit} className="editquestion-form">
+            {submitted && errors.length > 0 && (
               <ul>
                 {errors.map((error, idx) => (
                   <li key={idx}>{error}</li>
@@ -97,8 +76,8 @@ function EditQuestionButton() {
               <input
                 type='text'
                 name='title'
-                onChange={titleSet}
                 value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 required
               ></input>
             </div>
@@ -107,8 +86,8 @@ function EditQuestionButton() {
               <textarea
                 type='text'
                 name='questiontextarea'
-                onChange={questionSet}
                 value={question}
+                onChange={(e) => setQuestion(e.target.value)}
                 required
               ></textarea>
             </div>
@@ -117,8 +96,8 @@ function EditQuestionButton() {
               <textarea
                 type='text'
                 name='tetextarea'
-                onChange={teSet}
                 value={tried_expected}
+                onChange={(e) => setTried_Expected(e.target.value)}
                 required
               ></textarea>
             </div>
@@ -127,15 +106,15 @@ function EditQuestionButton() {
               <input
                 type='text'
                 name='tags'
-                onChange={tagSet}
                 value={tags}
+                onChange={(e) => setTags(e.target.value)}
                 required
               ></input>
             </div>
             <button type='submit'>Submit Edited Question</button>
-            <button onClick={() => setShowForm(false)} className='closeedit-button'>Close</button>
-          </form> : (<button onClick={() => setShowForm(true)} className='edit-question-button'> Edit </button>
-          )}
+            <button onClick={onCancel} className='closeedit-button'>Close</button>
+          </form>
+          </div>
     </div>
   )
 }
