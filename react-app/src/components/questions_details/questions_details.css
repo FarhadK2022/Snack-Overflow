@@ -7,7 +7,6 @@
   border-left: .075em solid rgba(150, 149, 149, 0.308);
   margin-left: 11.5em;
   padding-top: 5em;
-
 }
 
 .question-info-title {
@@ -24,6 +23,11 @@
   flex-direction: row;
   justify-content: end;
   height: 25vh;
+  border-bottom: .2em solid rgba(150, 149, 149, 0.308)
+}
+
+.user-circle-span{
+  padding-bottom: 10px;
 }
 
 .question-info-likes {
@@ -80,6 +84,7 @@
 .question-buttons {
   display: flex;
   flex-direction: row;
+  gap: 1em;
 }
 
 .question-delete-button {
@@ -111,8 +116,10 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
-  padding-top: 5vh;
+  /* padding-top: 1vh; */
   /* padding-bottom: 5vh; */
+  border-bottom: .075em solid rgba(150, 149, 149, 0.308);
+  padding-bottom: .5em;
 }
 
 .answer-voting {
@@ -229,4 +236,9 @@
   border: none;
   background-color: darkgray;
   border-radius: 3px;
+}
+
+.like-symbol-likeval{
+  margin-right: 20px;
+  font-size: 35px;
 }

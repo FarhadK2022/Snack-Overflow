@@ -80,6 +80,7 @@ function EditQuestionButton() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
+                placeholder="Use a title that will help introduce your issue"
               ></input>
             </div>
             <div className="edit-question-question-textarea-div">
@@ -91,6 +92,7 @@ function EditQuestionButton() {
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 required
+                placeholder="Please provide the specifics about the issue you are trying to get a better grasp of. The more descriptive you are, the better chance you will get a good answer."
               ></textarea>
             </div>
             <div className="edit-question-triedexpected-textarea-div">
@@ -102,6 +104,8 @@ function EditQuestionButton() {
                 value={tried_expected}
                 onChange={(e) => setTried_Expected(e.target.value)}
                 required
+                placeholder='Please input everything you have tried in relation to the question you are posing. If you have results you can report and compare them potential results you were expecting as an out come, detail them here.'
+
               ></textarea>
             </div>
             <div className="edit-question-tags-input-div">
@@ -112,7 +116,8 @@ function EditQuestionButton() {
                 name='tags'
                 value={tags}
                 onChange={(e) => setTags(e.target.value)}
-                required
+                placeholder='Please enter in the format "Tag1,Tag2,Tag3"'
+                // required
               ></input>
             </div>
             <div className="edit-questions-two-button-div">
