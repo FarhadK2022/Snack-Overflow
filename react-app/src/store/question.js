@@ -116,9 +116,9 @@ export const createQuestionThunk = (payload) => async dispatch => {
     })
 
     if (response.ok) {
-        const question = await response.json()
-
-        dispatch(addQuestion(question))
+        const data = await response.json()
+        dispatch(addQuestion(data))
+        return data
     }
 }
 
@@ -146,28 +146,12 @@ const questionsReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
+
         case ADD_QUESTION: {
-
-
-
-            if (!state[action.id]) {
-                const newState = {
-                    ...state,
-                    [action.payload.id]: {
-                        id: action.payload.id,
-                        title: action.payload.title,
-                        question: action.payload.question,
-                        tried_expected: action.payload.tried_expected,
-                        tags: action.payload.tags
-                    }
-                };
-
-                return newState
-            }
-            break
+            const newState = { ...state, allQuestions: { ...state.allQuestions } }
+            newState.allQuestions[action.payload.id] = action.payload
+            return newState
         }
-
-
 
         case GET_QUESTIONS: {
 

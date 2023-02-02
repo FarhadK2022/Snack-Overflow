@@ -27,9 +27,9 @@ const QuestionForm = () => {
       tags,
     };
 
-    await dispatch(questionActions.createQuestionThunk(createdQuestion));
+    const submittedQuestion = await dispatch(questionActions.createQuestionThunk(createdQuestion));
 
-    let path = `/questions`;
+    let path = `/questions/${submittedQuestion.id}`;
     await history.push(path);
     setSubmitted(false);
   };
