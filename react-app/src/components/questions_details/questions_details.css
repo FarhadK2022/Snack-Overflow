@@ -51,7 +51,7 @@
 
 .question-like-button:hover {
   cursor: pointer;
-  background-color: green;
+  background-color: rgb(216, 208, 208);
   box-shadow: 0 1px black;
 }
 
@@ -62,7 +62,7 @@
 
 .question-unlike-button:hover {
   cursor: pointer;
-  background-color: red;
+  background-color: rgb(216, 208, 208);
   box-shadow: 0 1px black;
 }
 

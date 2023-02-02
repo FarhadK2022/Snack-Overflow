@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
     getQuestionByIdThunk,
@@ -11,12 +11,16 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import "./questions_details.css";
 import CreateAnswerForm from "../answer_form_Modal/CreateAnswerForm";
 import SideNavBar from "../SideNavBar";
+import { FaHeartBroken, FaHeart } from "react-icons/fa";
+import { IconContext } from "react-icons";
+import ConfirmDelete from "../ConfirmDelete/ConfirmDelete";
 
 const QuestionDetails = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { questionId } = useParams();
 
+    const [confirm, setConfirm] = useState(false)
 
     const sessionUser = useSelector((state) => state.session.user);
 
@@ -28,11 +32,16 @@ const QuestionDetails = () => {
         dispatch(getQuestionByIdThunk(questionId));
     }, [dispatch, questionId]);
 
-    const deleteAQuestion = (e, id) => {
-        e.preventDefault();
-        dispatch(deleteQuestionThunk(id))
-        return setTimeout(function () { history.push('/questions'); }, 10);
-    }
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+
+    // const deleteAQuestion = (e, id) => {
+    //     e.preventDefault();
+    //     dispatch(deleteQuestionThunk(id))
+    //     return setTimeout(function () { history.push('/questions'); }, 10);
+    // }
 
     const createLike = async (e) => {
         e.preventDefault();
@@ -62,6 +71,15 @@ const QuestionDetails = () => {
         return
     }
 
+    const confirmDelete = (e) => {
+        e.preventDefault();
+        setConfirm(true)
+    }
+
+    const theSetConfirm = () => {
+        setConfirm(false)
+    }
+
     const onSubmit = async (e) => {
         e.preventDefault();
 
@@ -86,16 +104,21 @@ const QuestionDetails = () => {
                     <div className="question-info-likes">
                         {" "}
                         <div className="like-symbol-likeval">
-                        {questionInfoObj?.likes}{" "}
+                            {questionInfoObj?.likes}{" "}
                         </div>
                         {sessionUser && sessionUser?.id !== questionInfoObj?.user_id && currentLike?.length === 0 ? (
                             <button className="question-like-button" onClick={createLike}>
-                                <i className="fa fa-heart fa-2x" />
+                                <IconContext.Provider value={{ size: '1.9em', color: 'red' }}>
+                                    <FaHeart />
+                                </IconContext.Provider>
                             </button>
                         ) : null}
                         {sessionUser && currentLike?.length >= 1 ? (
                             <button className="question-unlike-button" onClick={removeLike}>
-                                <i className="fa fa-times fa-2x" />
+
+                                <IconContext.Provider value={{ size: '1.9em', color: 'black' }}>
+                                    <FaHeartBroken />
+                                </IconContext.Provider>
                             </button>
                         ) : null}
                     </div>
@@ -124,13 +147,14 @@ const QuestionDetails = () => {
                                 {sessionUser &&
                                     (sessionUser.id === questionInfoObj?.user_id ? (
                                         <button
-                                            onClick={(event) => deleteAQuestion(event, questionId)}
+                                            onClick={(event) => confirmDelete(event)}
                                             className="question-delete-button"
                                         >
                                             {" "}
                                             Delete Question{" "}
                                         </button>
                                     ) : null)}
+                                {confirm ? <ConfirmDelete confirm={confirm} setconfirm={theSetConfirm} /> : ""}
                             </div>
                         </div>
                     </div>
@@ -140,7 +164,8 @@ const QuestionDetails = () => {
                         {" "}
                         Answers:{" "}
                         {questionInfoObj?.answers.sort((a, b) => {
-                             return b.votes - a.votes}).map((obj) => {
+                            return b.votes - a.votes
+                        }).map((obj) => {
                             return (
                                 <li className='specific-answer' key={obj.id}>
                                     <div className="answer-voting">
