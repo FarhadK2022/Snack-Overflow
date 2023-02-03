@@ -1,11 +1,11 @@
-.side-bar-container {
+/* .side-bar-container {
     display: flex;
     flex-direction: column;
     padding-right: 5em;
     padding-left: .45em;
     padding-top: 2em;
-    /* background-color: aqua; */
-    /* border-right: .075em solid rgba(150, 149, 149, 0.308); */
+    background-color: aqua;
+    border-right: .075em solid rgba(150, 149, 149, 0.308);
     margin-top: 5em;
     box-sizing: border-box;
     position: relative;
@@ -15,13 +15,7 @@
 
 }
 
-.all-questions-link,
-.home-link,
-.public-text,
-.explore-collectives-link {
-    color: gray;
 
-}
 
 .all-questions-link:hover,
 .home-link:hover,
@@ -48,7 +42,7 @@
     flex-direction: column;
     gap: 1.25em;
     padding-top: 1.225em;
-    /* background-color: aqua; */
+    background-color: aqua;
 
     width: 100%;
     font-size: small;
@@ -89,4 +83,57 @@
 .side-bar-question-text {
     padding-top: .2em;
     padding-left: .2em;
+} */
+
+
+.side-bar-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 10px 10px 10px;
+    padding-top: 100px;
+    gap: 20px;
+}
+
+.all-questions-link,
+.home-link,
+.public-text,
+.explore-collectives-link {
+    color: gray;
+
+}
+
+.explore-collectives-link {
+    font-size: small;
+}
+
+.home-link {
+    font-size: small;
+}
+
+.public-text {
+    font-size: x-small;
+}
+
+.public-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: small;
+}
+
+.explore-collectives-text {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.collectives-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.span-questions-link {
+    padding-top: 15px;
 }

@@ -6,11 +6,11 @@ import './SideNavBar.css'
 const SideNavBar = () => {
     return (
         <div className='side-bar-container'>
-            <span className='span-home-link'>
+            <div className='span-home-link'>
                 <Link to='/' exact="true" style={{ textDecoration: 'none' }} className='home-link'>
                     Home
                 </Link>
-            </span>
+            </div>
             <div className='public-links-container'>
                 <p className='public-text'>PUBLIC</p>
                 <div className='public-links'>
@@ -45,8 +45,8 @@ const SideNavBar = () => {
                     <span className='span-questions-link'>
                         <Link to='/work-in-progress' exact="true" style={{ textDecoration: 'none' }} className='explore-collectives-link'>
                             <div className='explore-collectives-text'>
-                                <span className='the-word-explore'>✴️Explore</span>
-                                <span className='the-word-collective'> Collectives</span>
+                                <div className='the-word-explore'>✴️Explore</div>
+                                <div className='the-word-collective'> Collectives</div>
                             </div>
                         </Link>
                     </span>
@@ -58,10 +58,10 @@ const SideNavBar = () => {
                     <span className='span-questions-link'>
                         <Link to='/work-in-progress' exact="true" style={{ textDecoration: 'none' }} className='explore-collectives-link'>
                             <div className='explore-collectives-text'>
-                                <span>💼</span>
-                                <span className='the-word-collective'>Create</span>
-                                <span className='the-word-collective'> free </span>
-                                <span className='the-word-collective'>Team </span>
+                                <div>💼</div>
+                                <div>Create</div>
+                                <div>Free</div>
+                                <div>Team</div>
                             </div>
                         </Link>
                     </span>
